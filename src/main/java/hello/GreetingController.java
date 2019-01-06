@@ -10,12 +10,13 @@ import java.util.Map;
 @Controller
 public class GreetingController {
 
-    @PostMapping
-    public String add(@RequestParam String name, Map<String, Object> model) {
+    @GetMapping("/greeting")
+    public String getGreeting(@RequestParam(required = true, name="name") String name, Map<String, Object> model){
         model.put("name", name);
-        System.out.println("Получен POST запрос со значением: "+name);
+
         return "greeting";
     }
+
 
     @GetMapping
     public String main() {
