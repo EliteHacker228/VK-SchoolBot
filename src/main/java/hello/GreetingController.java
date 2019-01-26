@@ -28,9 +28,18 @@ public class GreetingController {
     }
 
 
-    @GetMapping
+    @GetMapping()
     public String main() {
 
         return "main";
+    }
+
+    @PostMapping()
+    public @ResponseBody Object confirmAnswer(@RequestParam(required = false, name="type") String type,
+                        @RequestParam(required = false, name="group_id") Integer groupId){
+        if(type.equals("confirmation")&&groupId==177305058 ){
+            return "bd646e13";
+        }
+        return "Nothing";
     }
 }
