@@ -37,7 +37,7 @@ public class GreetingController {
         return "main";
     }
 
-    @PostMapping(produces = "application/json")
+    @PostMapping()
     public @ResponseBody Object confirmAnswer(HttpServletRequest request){
 //        if(type.equals("confirmation")&&groupId==177305058 ){
 //            return "bd646e13";
@@ -56,6 +56,6 @@ public class GreetingController {
         //System.out.println(request.getParameterNames());
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson json = gsonBuilder.create();
-        return json.toJson("Nothing");
+        return "bd646e13";
     }
 }
