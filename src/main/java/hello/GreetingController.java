@@ -18,7 +18,8 @@ import java.util.NoSuchElementException;
 public class GreetingController {
 
     @GetMapping(value = "/greeting", produces = "application/json")
-    public @ResponseBody Object getGreeting(@RequestParam(required = true, name="name") String name, Map<String, Object> model){
+    public @ResponseBody
+    Object getGreeting(@RequestParam(required = true, name = "name") String name, Map<String, Object> model) {
 //        model.put("name", name);
 //        Object[] models = {model};
 //
@@ -38,15 +39,15 @@ public class GreetingController {
     }
 
     @PostMapping()
-    public @ResponseBody Object confirmAnswer(HttpServletRequest request){
+    public @ResponseBody
+    Object confirmAnswer(HttpServletRequest request) {
 //        if(type.equals("confirmation")&&groupId==177305058 ){
 //            return "bd646e13";
 //        }
 
 
-
         Map<String, String[]> paarams = request.getParameterMap();
-        for(Map.Entry<String, String[]> pem: paarams.entrySet()){
+        for (Map.Entry<String, String[]> pem : paarams.entrySet()) {
 //
 //            System.out.print(pem.getKey()+" : ");
 //            for(String s:pem.getValue()){
@@ -56,6 +57,8 @@ public class GreetingController {
 //        //System.out.println(request.getParameterNames());
 //        GsonBuilder gsonBuilder = new GsonBuilder();
 //        Gson json = gsonBuilder.create();
+
+        }
         return "ks";
     }
 }
