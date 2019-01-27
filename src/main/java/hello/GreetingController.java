@@ -3,13 +3,13 @@ package hello;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import entities.VKRequest;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.catalina.servlet4preview.http.ServletMapping;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import services.MessageService;
 
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -38,26 +38,36 @@ public class GreetingController {
         return "main";
     }
 
-    @PostMapping()
+    @PostMapping(consumes = "application/json")
     public @ResponseBody
-    Object confirmAnswer(HttpServletRequest request) {
+    Object confirmAnswer(@RequestBody VKRequest vkRequest) {
 //        if(type.equals("confirmation")&&groupId==177305058 ){
 //            return "bd646e13";
 //        }
 
+        //System.out.println(str);
 
-        Map<String, String[]> paarams = request.getParameterMap();
-        for (Map.Entry<String, String[]> pem : paarams.entrySet()) {
-
-            System.out.print(pem.getKey()+" : ");
-            for(String s:pem.getValue()){
-                System.out.println(s);
-            }
-        }
+//        Map<String, String[]> paarams = request.getParameterMap();
+//        for (Map.Entry<String, String[]> pem : paarams.entrySet()) {
+//
+//            System.out.print(pem.getKey()+" : ");
+//            for(String s:pem.getValue()){
+//                System.out.println(s);
+//            }
+//        }
         //System.out.println(request.getParameterNames());
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        Gson json = gsonBuilder.create();
+//        GsonBuilder gsonBuilder = new GsonBuilder();
+//        Gson json = gsonBuilder.create();
+//        System.out.println(str);
 
-        return "ks";
+        //System.out.println(vkRequest.getObject().getText());
+        System.out.println(vkRequest.getObject().getText());
+        GsonBuilder gsonBuilderson = new GsonBuilder();
+        Gson json = gsonBuilderson.create();
+        System.out.println(json.toJson(vkRequest));
+        System.out.println(json.toJson(vkRequest.getObject()));
+        MessageService ms = new MessageService(vkRequest);
+        ms.sendMessage(" ");
+        return "ok";
     }
 }
