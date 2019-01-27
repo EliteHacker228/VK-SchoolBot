@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8fb5255-7d0d-4d44-8b03-7b79b3ec6130" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/entities/VKGroupMessage.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/entities/VKRequest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/services/MessageService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/logging.properties" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_10_0.xml" afterPath="" />
+    <list default="true" id="c8fb5255-7d0d-4d44-8b03-7b79b3ec6130" name="Default" comment="Looger of requests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/AndroidHelloPage.iml" afterPath="$PROJECT_DIR$/AndroidHelloPage.iml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hello/GreetingController.java" afterPath="$PROJECT_DIR$/src/main/java/hello/GreetingController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/main.mustache" />
       <change beforePath="$PROJECT_DIR$/target/classes/hello/GreetingController.class" afterPath="$PROJECT_DIR$/target/classes/hello/GreetingController.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/main.mustache" afterPath="$PROJECT_DIR$/target/classes/templates/main.mustache" />
     </list>
@@ -588,7 +578,14 @@
       <option name="project" value="LOCAL" />
       <updated>1548592313962</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Looger of requests">
+      <created>1548602067746</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1548602067746</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
