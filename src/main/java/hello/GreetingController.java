@@ -48,17 +48,16 @@ public class GreetingController {
 
         Map<String, String[]> paarams = request.getParameterMap();
         for (Map.Entry<String, String[]> pem : paarams.entrySet()) {
-//
-//            System.out.print(pem.getKey()+" : ");
-//            for(String s:pem.getValue()){
-//                System.out.println(s);
-//            }
-//        }
-//        //System.out.println(request.getParameterNames());
-//        GsonBuilder gsonBuilder = new GsonBuilder();
-//        Gson json = gsonBuilder.create();
 
+            System.out.print(pem.getKey()+" : ");
+            for(String s:pem.getValue()){
+                System.out.println(s);
+            }
         }
+        //System.out.println(request.getParameterNames());
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        Gson json = gsonBuilder.create();
+
         return "ks";
     }
 }
