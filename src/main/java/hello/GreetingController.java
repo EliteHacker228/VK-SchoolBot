@@ -17,26 +17,26 @@ import java.util.NoSuchElementException;
 @Controller
 public class GreetingController {
 
-    @GetMapping(value = "/greeting", produces = "application/json")
-    public @ResponseBody
-    Object getGreeting(@RequestParam(required = true, name = "name") String name, Map<String, Object> model) {
-//        model.put("name", name);
-//        Object[] models = {model};
+//    @GetMapping(value = "/greeting", produces = "application/json")
+//    public @ResponseBody
+//    Object getGreeting(@RequestParam(required = true, name = "name") String name, Map<String, Object> model) {
+////        model.put("name", name);
+////        Object[] models = {model};
+////
+////
+////        return models;
+//        GsonBuilder gsonBuilder = new GsonBuilder();
+//        Gson json = gsonBuilder.create();
+//        ServerNode s = new ServerNode(name);
+//        return json.toJson(s);
+//    }
+
+
+//    @GetMapping()
+//    public String main() {
 //
-//
-//        return models;
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        Gson json = gsonBuilder.create();
-        ServerNode s = new ServerNode(name);
-        return json.toJson(s);
-    }
-
-
-    @GetMapping()
-    public String main() {
-
-        return "main";
-    }
+//        return "main";
+//    }
 
     @PostMapping(consumes = "application/json")
     public @ResponseBody
@@ -62,12 +62,21 @@ public class GreetingController {
 
         //System.out.println(vkRequest.getObject().getText());
         System.out.println(vkRequest.getObject().getText());
+
         GsonBuilder gsonBuilderson = new GsonBuilder();
         Gson json = gsonBuilderson.create();
+
         System.out.println(json.toJson(vkRequest));
         System.out.println(json.toJson(vkRequest.getObject()));
-        MessageService ms = new MessageService(vkRequest);
-        ms.sendMessage(" ");
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                MessageService ms = new MessageService(vkRequest);
+                ms.sendMessage("Другое сообщение");
+            }
+        }).start();
+
         return "ok";
     }
 }
