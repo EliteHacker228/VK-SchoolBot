@@ -41,6 +41,7 @@ public class MainController {
         MessageService ms = new MessageService(vkRequest);
 
         Collection<Student> students = makeCollection(studentsRepository.findAll());
+
         if(studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).isEmpty()){
             //System.out.println("empty");
 
@@ -54,11 +55,12 @@ public class MainController {
             ms.sendMessage("Какой твой регион?");
             int counter=1;
 
+            String regions = "";
             for( Region region: regionsRepository.findAll()){
-                System.out.format("%d. "+region.getName(), counter);
+                regions+=String.format("%d. "+region.getName(), counter)+"\n";
                 counter++;
             }
-            System.out.println();
+            ms.sendMessage(regions);
 
 
             return "ok";
@@ -79,6 +81,7 @@ public class MainController {
                 }else{
                     ms.sendMessage("Ошибка! Такого региона нет.");
                     System.out.println();
+                    return "ok";
                 }
 
             }
@@ -112,11 +115,12 @@ public class MainController {
                     ms.sendMessage("Школа записана!");
                 }else{
                     ms.sendMessage("Ошибка! Такой школы нет.");
+                    return "ok";
                 }
 
             }
 
-            ms.sendMessage("Из какого ты класса?");
+            ms.sendMessage("Введи свой класс (например, 7Б, 10А и т.д)");
 
             return "ok";
 
