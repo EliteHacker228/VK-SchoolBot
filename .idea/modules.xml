@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AndroidHelloPage.iml" filepath="$PROJECT_DIR$/AndroidHelloPage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VKBotServerDB.iml" filepath="$PROJECT_DIR$/VKBotServerDB.iml" />
     </modules>
   </component>
 </project>
