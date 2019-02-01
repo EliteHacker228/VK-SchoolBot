@@ -164,6 +164,8 @@ public class MainController {
 
         }
 
+        ms.sendMessage("Здравствуйте!");
+
         return "ok";
     }
 
