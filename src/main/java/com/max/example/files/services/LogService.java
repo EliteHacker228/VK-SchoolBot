@@ -18,7 +18,7 @@ public class LogService implements CommandLineRunner {
                 while (true){
                     try {
                         System.out.println("THREAD");
-                        Thread.sleep(1500000);
+                        Thread.sleep(150000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
