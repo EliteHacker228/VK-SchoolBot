@@ -12,6 +12,7 @@ import com.max.example.files.entities.VKGroupMessage;
 import com.max.example.files.entities.VKRequest;
 import com.max.example.files.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,15 +39,16 @@ public class MainController {
     @PostMapping
     private @ResponseBody String messageGetter(@RequestBody VKRequest vkRequest, VKGroupMessage vkGroupMessage){
         vkGroupMessage=vkRequest.getObject();
-        MessageService ms = new MessageService(vkRequest);
+        MessageService ms = new MessageService(vkRequest, regionsRepository, classesRepository, schoolsRepository, studentsRepository);
         ms.workMethod();
 
-        Collection<Student> students = makeCollection(studentsRepository.findAll());
 
 
 
         return "ok";
     }
+
+
 
     public String[] stringToClass(String str) throws Exception {
 

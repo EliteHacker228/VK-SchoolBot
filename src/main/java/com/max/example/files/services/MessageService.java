@@ -17,10 +17,13 @@ import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
 
 public class MessageService {
     private TransportClient transportClient;
@@ -28,17 +31,30 @@ public class MessageService {
     private VKRequest vkRequest;
     private VKGroupMessage vkGroupMessage;
     private GroupActor actor;
-    @Autowired
+
     private RegionsRepository regionsRepository;
-    @Autowired
     private ClassesRepository classesRepository;
-    @Autowired
     private SchoolsRepository schoolsRepository;
-    @Autowired
     private StudentsRepository studentsRepository;
 
-    public MessageService(VKRequest vkRequest){
-        this.vkRequest=vkRequest;
+//    public MessageService(VKRequest vkRequest){
+//        this.vkRequest=vkRequest;
+//        vkGroupMessage=vkRequest.getObject();
+//
+//        transportClient = HttpTransportClient.getInstance();
+//        vk = new VkApiClient(transportClient);
+//
+//        actor = new GroupActor(177305058, "6afde058b95ce78f27ce1ee66fabc3d66adf81e66d154879c8b57a919e8697580989a30fe9f165896244e");
+//
+//    }
+
+    public MessageService(VKRequest vkRequest, RegionsRepository regionsRepository, ClassesRepository classesRepository, SchoolsRepository schoolsRepository, StudentsRepository studentsRepository) {
+        this.vkRequest = vkRequest;
+        this.regionsRepository = regionsRepository;
+        this.classesRepository = classesRepository;
+        this.schoolsRepository = schoolsRepository;
+        this.studentsRepository = studentsRepository;
+
         vkGroupMessage=vkRequest.getObject();
 
         transportClient = HttpTransportClient.getInstance();
@@ -54,128 +70,141 @@ public class MessageService {
 
     public void workMethod(){
         if(studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).isEmpty()){
-            //System.out.println("empty");
-
-            Student student = new Student();
-            student.setVkId(vkGroupMessage.getFrom_id());
-            studentsRepository.save(student);
-
-            sendMessage("Привет! Ты пока не зарегистрирован в нашей системе!" +
-                    "Для того, чтобы зарегистрироваться, ответь на несколько вопросов.");
-
-            sendMessage("Какой твой регион?");
-            int counter=1;
-
-            String regions = "";
-            for( Region region: regionsRepository.findAll()){
-                regions+=String.format("%d. "+region.getName(), counter)+"\n";
-                counter++;
-            }
-            sendMessage(regions);
-
-            return;
+            studentRegistration();
         }
+
+//        //
+//        if(!studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).isEmpty()){
+//            studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0).getRegionId()==null;
+//            studentRegionRegistration();
+//        }
+//        //
 
         if(!studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).isEmpty() &&
                 studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0).getRegionId()==null){
-            Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
-
-            if(student.getRegionId()==null){
-                if(vkGroupMessage.getText().matches("[-+]?\\d+")
-                        && Integer.parseInt(vkGroupMessage.getText())<=
-                        makeCollection(regionsRepository.findAll()).size()){
-                    student.setRegionId(Integer.parseInt(vkGroupMessage.getText()));
-                    studentsRepository.save(student);
-                    sendMessage("Регион записан!");
-                    System.out.println();
-                }else{
-                    sendMessage("Ошибка! Такого региона нет.");
-                    System.out.println();
-                    return;
-                }
-
-            }
-
-            sendMessage("Из какой ты школы?");
-            System.out.println();
-
-            String schools = "";
-            int counter=1;
-            for( School school: schoolsRepository.findAll()){
-                schools+=String.format("%d. "+school.getName(), counter)+"\n";
-                counter++;
-            }
-            sendMessage(schools);
-
-
-            return;
-
+            studentRegionRegistration();
         }
 
         if(!studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).isEmpty() &&
                 studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0).getSchoolId()==null){
-            Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
-
-            if(student.getSchoolId()==null){
-                if(vkGroupMessage.getText().matches("[-+]?\\d+")
-                        && Integer.parseInt(vkGroupMessage.getText())<=
-                        makeCollection(regionsRepository.findAll()).size()){
-                    student.setSchoolId(Integer.parseInt(vkGroupMessage.getText()));
-                    studentsRepository.save(student);
-                    sendMessage("Школа записана!");
-                }else{
-                    sendMessage("Ошибка! Такой школы нет.");
-                    return;
-                }
-
-            }
-
-            sendMessage("Введи свой класс (например, 7Б, 10А и т.д)");
-
-            return;
-
+            studentSchoolRegistration();
         }
 
         if(!studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).isEmpty() &&
                 studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0).getClassId()==null){
-            Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
-            System.out.println("Ввод класса");
+            studentClassRegistration();
+        }
 
-            if(student.getClassId()==null){
-                System.out.println("Class id: "+student.getClassId());
-                String[] classNode;
-                try {
-                    classNode = stringToClass(vkGroupMessage.getText());
-                    System.out.println("Message: "+vkGroupMessage.getText());
+        System.out.println("Здравствуйте!");
+    }
 
+    private void studentRegistration(){
+        Student student = new Student();
+        student.setVkId(vkGroupMessage.getFrom_id());
+        studentsRepository.save(student);
 
-                    for(SClass sClass: classesRepository.findBySchoolId(student.getSchoolId())){
-                        System.out.println(sClass);
-                        if(     sClass.getNumber()==Integer.parseInt(classNode[0])
-                                && sClass.getLetter().equals(classNode[1])
-                                && sClass.getSchoolId().equals(student.getSchoolId())
-                                ){
+        System.out.println("Привет! Ты пока не зарегистрирован в нашей системе!" +
+                "Для того, чтобы зарегистрироваться, ответь на несколько вопросов.");
 
-                            student.setClassId(sClass.getId());
-                            studentsRepository.save(student);
-                            sendMessage("Готово! ");
-                        }
-                    }
+        System.out.println("Какой твой регион?");
+        int counter=1;
 
-                } catch (Exception e) {
-                    sendMessage("Такого класса нет.");
-                    return;
-                }
+        String regions = "";
+        for( Region region: regionsRepository.findAll()){
+            regions+=String.format("%d. "+region.getName(), counter)+"\n";
+            counter++;
+        }
+        System.out.println(regions);
+    }
+
+    private void studentRegionRegistration(){
+        Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
+
+        if(student.getRegionId()==null){
+            if(vkGroupMessage.getText().matches("[-+]?\\d+")
+                    && Integer.parseInt(vkGroupMessage.getText())<=
+                    makeCollection(regionsRepository.findAll()).size()){
+                student.setRegionId(Integer.parseInt(vkGroupMessage.getText()));
+                studentsRepository.save(student);
+                System.out.println("Регион записан!");
+                System.out.println();
+            }else{
+                System.out.println("Ошибка! Такого региона нет.");
+                System.out.println();
+                return;
             }
-
-            sendMessage("Здравствуйте!");
-
-            return;
 
         }
 
-        sendMessage("Здравствуйте!");
+        System.out.println("Из какой ты школы?");
+        System.out.println();
+
+        String schools = "";
+        int counter=1;
+        for( School school: schoolsRepository.findAll()){
+            schools+=String.format("%d. "+school.getName(), counter)+"\n";
+            counter++;
+        }
+        System.out.println(schools);
     }
+
+    private void studentSchoolRegistration(){
+        Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
+        if(student.getSchoolId()==null){
+            if(vkGroupMessage.getText().matches("[-+]?\\d+")
+                    && Integer.parseInt(vkGroupMessage.getText())<=
+                    makeCollection(regionsRepository.findAll()).size()){
+                student.setSchoolId(Integer.parseInt(vkGroupMessage.getText()));
+                studentsRepository.save(student);
+                System.out.println("Школа записана!");
+            }else{
+                System.out.println("Ошибка! Такой школы нет.");
+                return;
+            }
+
+        }
+
+        System.out.println("Введи свой класс (например, 7Б, 10А и т.д)");
+
+        return;
+    }
+
+    private void studentClassRegistration(){
+        Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
+        System.out.println("Ввод класса");
+
+        if(student.getClassId()==null){
+            System.out.println("Class id: "+student.getClassId());
+            String[] classNode;
+            try {
+                classNode = stringToClass(vkGroupMessage.getText());
+                System.out.println("Message: "+vkGroupMessage.getText());
+
+
+                for(SClass sClass: classesRepository.findBySchoolId(student.getSchoolId())){
+                    System.out.println(sClass);
+                    if(     sClass.getNumber()==Integer.parseInt(classNode[0])
+                            && sClass.getLetter().equals(classNode[1])
+                            && sClass.getSchoolId().equals(student.getSchoolId())
+                            ){
+
+                        student.setClassId(sClass.getId());
+                        studentsRepository.save(student);
+                        System.out.println("Готово! ");
+                    }
+                }
+
+            } catch (Exception e) {
+                System.out.println("Такого класса нет.");
+                return;
+            }
+        }
+
+        System.out.println("Здравствуйте!");
+
+    }
+
+
 
     public <T> Collection<T> makeCollection(Iterable<T> iter) {
         Collection<T> list = new ArrayList<T>();
