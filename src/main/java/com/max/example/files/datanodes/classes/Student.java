@@ -20,6 +20,9 @@ public class Student{
     @Column(name="role")
     private String role;
 
+    @Column(name="status")
+    private String status;
+
     @Column(name="class_id")
     private Integer classId;
 
@@ -79,6 +82,14 @@ public class Student{
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override

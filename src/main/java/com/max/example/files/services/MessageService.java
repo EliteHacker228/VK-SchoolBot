@@ -8,15 +8,22 @@ import com.max.example.files.datanodes.repositories.ClassesRepository;
 import com.max.example.files.datanodes.repositories.RegionsRepository;
 import com.max.example.files.datanodes.repositories.SchoolsRepository;
 import com.max.example.files.datanodes.repositories.StudentsRepository;
+import com.max.example.files.entities.StudentStatus;
 import com.max.example.files.entities.StudentsRoles;
 import com.max.example.files.entities.VKGroupMessage;
 import com.max.example.files.entities.VKRequest;
+import com.vk.api.sdk.actions.Users;
 import com.vk.api.sdk.client.TransportClient;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
+import com.vk.api.sdk.objects.users.UserXtrCounters;
+import com.vk.api.sdk.queries.users.UserField;
+import com.vk.api.sdk.queries.users.UsersGetQuery;
+import com.vk.api.sdk.queries.users.UsersNameCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -25,6 +32,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 public class MessageService {
     private TransportClient transportClient;
@@ -75,26 +83,60 @@ public class MessageService {
             studentRoleRegistration();
 
         } else {
+            Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
+//            UsersGetQuery ugq = vk.users().get(new UserActor(168148426,"6afde058b95ce78f27ce1ee66fabc3d66adf81e66d154879c8b57a919e8697580989a30fe9f165896244e"));
+//            ArrayList<UserXtrCounters> ugqMap = null;
+//            try {
+//                ugqMap = (ArrayList<UserXtrCounters>) ugq.userIds("168148426").fields().nameCase(UsersNameCase.NOMINATIVE).execute();
+//            } catch (ApiException e) {
+//                e.printStackTrace();
+//            } catch (ClientException e) {
+//                e.printStackTrace();
+//            }
+//            UserXtrCounters userXtrCounters = ugqMap.get(0);
+//            System.out.println(userXtrCounters.getFirstName());
+//            System.out.println(userXtrCounters.getLastName());
 
-            if (studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0).getRegionId() == null) {
-                studentRegionRegistration();
-            }
 
-            if (studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0).getSchoolId() == null) {
-                studentSchoolRegistration();
-            }
 
-            if (studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0).getClassId() == null) {
-                studentClassRegistration();
+            switch(StudentStatus.valueOf(student.getStatus())){
+                case STUDENT_REGION_REGISTRATION:
+                    studentRegionRegistration();
+                    break;
+
+                case STUDENT_SCHOOL_REGISTRATION:
+                    studentSchoolRegistration();
+
+                    break;
+
+                case STUDENT_CLASS_REGISTRATION:
+                    studentClassRegistration();
+                    break;
+
+                case STUDENT_IN_ACTION:
+                    System.out.println("Здравствуйте!");
+                    break;
             }
+//            if (student.getRegionId() == null) {
+//                studentRegionRegistration();
+//            }
+//
+//            if (student.getSchoolId() == null) {
+//                studentSchoolRegistration();
+//            }
+//
+//            if (student.getClassId() == null) {
+//                studentClassRegistration();
+//            }
         }
 
-        System.out.println("Здравствуйте!");
+//        System.out.println("Здравствуйте!");
     }
 
     private void studentRegistration() {
         Student student = new Student();
         student.setVkId(vkGroupMessage.getFrom_id());
+        student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
         studentsRepository.save(student);
 
         System.out.println("Привет! Ты пока не зарегистрирован в нашей системе!" +
@@ -132,6 +174,8 @@ public class MessageService {
 
         System.out.println("Из какой ты школы?");
         System.out.println();
+        student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
+        studentsRepository.save(student);
 
         String schools = "";
         int counter = 1;
@@ -159,20 +203,23 @@ public class MessageService {
         }
 
         System.out.println("Введи свой класс (например, 7Б, 10А и т.д)");
+        student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
+        studentsRepository.save(student);
+
 
         return;
     }
 
     private void studentClassRegistration() {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
-        System.out.println("Ввод класса");
+        //System.out.println("Ввод класса");
 
         if (student.getClassId() == null) {
-            System.out.println("Class id: " + student.getClassId());
+            //System.out.println("Class id: " + student.getClassId());
             String[] classNode;
             try {
                 classNode = stringToClass(vkGroupMessage.getText());
-                System.out.println("Message: " + vkGroupMessage.getText());
+                //System.out.println("Message: " + vkGroupMessage.getText());
 
 
                 for (SClass sClass : classesRepository.findBySchoolId(student.getSchoolId())) {
@@ -193,6 +240,9 @@ public class MessageService {
                 return;
             }
         }
+        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+        studentsRepository.save(student);
+
 
         System.out.println("Здравствуйте!");
 
