@@ -2,6 +2,7 @@ package com.max.example.files.datanodes.classes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.max.example.files.entities.StudentsRoles;
 
 import javax.persistence.*;
 
@@ -15,6 +16,9 @@ public class Student{
 
     @Column(name="vk_id")
     private Integer vkId;
+
+    @Column(name="role")
+    private String role;
 
     @Column(name="class_id")
     private Integer classId;
@@ -67,6 +71,14 @@ public class Student{
 
     public void setRegionId(Integer regionId) {
         this.regionId = regionId;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
