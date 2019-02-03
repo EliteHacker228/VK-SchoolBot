@@ -148,16 +148,22 @@ public class MessageService {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         String query = "";
         String text = vkGroupMessage.getText();
-        if(text.contains(".")) {
-            String[] splittedText = text.split(".");
-            query = splittedText[0];
-        }else if(text.length()==1 && text.matches("[-+]?\\d+")){
-            query=text;
-        }else{
+        try {
+            if (text.contains(".")) {
+                String[] splittedText = text.split(".");
+                query = splittedText[0];
+            } else if (text.length() == 1 && text.matches("[-+]?\\d+")) {
+                query = text;
+            } else {
+                sendMessage("Неверная команда");//STUDENT_IN_ACTION
+                student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                studentsRepository.save(student);
+
+            }
+        }catch (NumberFormatException e){
             sendMessage("Неверная команда");//STUDENT_IN_ACTION
             student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
             studentsRepository.save(student);
-
         }
 
 
