@@ -158,12 +158,14 @@ public class MessageService {
                 sendMessage("Неверная команда");//STUDENT_IN_ACTION
                 student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
                 studentsRepository.save(student);
+                return;
 
             }
         }catch (NumberFormatException e){
             sendMessage("Неверная команда");//STUDENT_IN_ACTION
             student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
             studentsRepository.save(student);
+            return;
         }
 
 
