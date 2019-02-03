@@ -103,7 +103,6 @@ public class MessageService {
 
                 case STUDENT_SCHOOL_REGISTRATION:
                     studentSchoolRegistration();
-
                     break;
 
                 case STUDENT_CLASS_REGISTRATION:
@@ -125,7 +124,7 @@ public class MessageService {
                     for(String mstr: marklist){
                         result+=mstr+'\n';
                     }
-                    System.out.println(result);
+                    sendMessage(result);
                     student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
                     studentsRepository.save(student);
             }
@@ -155,18 +154,20 @@ public class MessageService {
         }else if(text.length()==1 && text.matches("[-+]?\\d+")){
             query=text;
         }else{
-            System.out.println("Неверная команда");
+            sendMessage("Неверная команда");//STUDENT_IN_ACTION
+            student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+
         }
 
 
         switch (Integer.parseInt(query)){
             case 1:
-                System.out.println("Извините, функци записи ДЗ пока не работает :(");
+                sendMessage("Извините, функци записи ДЗ пока не работает :(");
                 break;
             case 2:
                 student.setStatus(StudentStatus.STUDENT_CHOOSED_CALCULATOR.name());
                 studentsRepository.save(student);
-                System.out.println("Калькулятор оценок Школобота v1.0. \n" +
+                sendMessage("Калькулятор оценок Школобота v1.0. \n" +
                         "Инструкция: \n" +
                         "1. Введите ваши оценки в одну строку без пробелов и других символов(например: 554354445)\n" +
                         "2. Получите результат.\n" +
@@ -174,7 +175,7 @@ public class MessageService {
                 break;
 
             default:
-                System.out.println("Извините, такой команды нет");
+                sendMessage("Извините, такой команды нет");
             break;
         }
     }
@@ -191,7 +192,7 @@ public class MessageService {
             e.printStackTrace();
         }
         UserXtrCounters userXtrCounters = ugqMap.get(0);
-        System.out.println("Здравствуйте, "+ userXtrCounters.getFirstName()+"! Чего желаете?\n"+
+        sendMessage("Здравствуйте, "+ userXtrCounters.getFirstName()+"! Чего желаете?\n"+
         "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\n" +
                 "\uD83D\uDCDA1. Записать ДЗ\n" +
                 "\uD83D\uDCC82. Калькулятор оценок\n" +
@@ -218,10 +219,10 @@ public class MessageService {
         student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
         studentsRepository.save(student);
 
-        System.out.println("Привет! Ты пока не зарегистрирован в нашей системе!" +
+        sendMessage("Привет! Ты пока не зарегистрирован в нашей системе!" +
                 "Для того, чтобы зарегистрироваться, ответь на несколько вопросов.");
 
-        System.out.println("Какой твой регион?");
+        sendMessage("Какой твой регион?");
         int counter = 1;
 
         String regions = "";
@@ -229,7 +230,7 @@ public class MessageService {
             regions += String.format("%d. " + region.getName(), counter) + "\n";
             counter++;
         }
-        System.out.println(regions);
+        sendMessage(regions);
     }
 
     private void studentRegionRegistration() {
@@ -241,18 +242,17 @@ public class MessageService {
                     makeCollection(regionsRepository.findAll()).size()) {
                 student.setRegionId(Integer.parseInt(vkGroupMessage.getText()));
                 studentsRepository.save(student);
-                System.out.println("Регион записан!");
+                sendMessage("Регион записан!");
                 System.out.println();
             } else {
-                System.out.println("Ошибка! Такого региона нет.");
+                sendMessage("Ошибка! Такого региона нет.");
                 System.out.println();
                 return;
             }
 
         }
 
-        System.out.println("Из какой ты школы?");
-        System.out.println();
+        sendMessage("Из какой ты школы?");
         student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
         studentsRepository.save(student);
 
@@ -262,7 +262,7 @@ public class MessageService {
             schools += String.format("%d. " + school.getName(), counter) + "\n";
             counter++;
         }
-        System.out.println(schools);
+        sendMessage(schools);
     }
 
     private void studentSchoolRegistration() {
@@ -273,15 +273,15 @@ public class MessageService {
                     makeCollection(regionsRepository.findAll()).size()) {
                 student.setSchoolId(Integer.parseInt(vkGroupMessage.getText()));
                 studentsRepository.save(student);
-                System.out.println("Школа записана!");
+                sendMessage("Школа записана!");
             } else {
-                System.out.println("Ошибка! Такой школы нет.");
+                sendMessage("Ошибка! Такой школы нет.");
                 return;
             }
 
         }
 
-        System.out.println("Введи свой класс (например, 7Б, 10А и т.д)");
+        sendMessage("Введи свой класс (например, 7Б, 10А и т.д)");
         student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
         studentsRepository.save(student);
 
@@ -310,12 +310,12 @@ public class MessageService {
 
                         student.setClassId(sClass.getId());
                         studentsRepository.save(student);
-                        System.out.println("Готово! ");
+                        System.out.println("Готово!");
                     }
                 }
 
             } catch (Exception e) {
-                System.out.println("Такого класса нет.");
+                sendMessage("Такого класса нет.");
                 return;
             }
         }
@@ -323,7 +323,7 @@ public class MessageService {
         studentsRepository.save(student);
 
 
-        System.out.println("Здравствуйте!");
+        sendMessage("Здравствуйте!");
 
     }
 
