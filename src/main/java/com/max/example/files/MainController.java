@@ -42,9 +42,6 @@ public class MainController {
         MessageService ms = new MessageService(vkRequest, regionsRepository, classesRepository, schoolsRepository, studentsRepository);
         ms.workMethod();
 
-
-
-
         return "ok";
     }
 

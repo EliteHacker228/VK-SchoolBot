@@ -96,9 +96,6 @@ public class MessageService {
 //            UserXtrCounters userXtrCounters = ugqMap.get(0);
 //            System.out.println(userXtrCounters.getFirstName());
 //            System.out.println(userXtrCounters.getLastName());
-
-
-
             switch(StudentStatus.valueOf(student.getStatus())){
                 case STUDENT_REGION_REGISTRATION:
                     studentRegionRegistration();
@@ -114,8 +111,23 @@ public class MessageService {
                     break;
 
                 case STUDENT_IN_ACTION:
-                    System.out.println("Здравствуйте!");
+                    queryBrancher();
                     break;
+
+                case STUDENT_CHOOSE:
+                    queryRouter();
+                    break;
+
+                case STUDENT_CHOOSED_CALCULATOR:
+                    String result = "";
+                    MarkCalculator mk = new MarkCalculator(vkGroupMessage.getText());
+                    ArrayList<String> marklist = mk.workMethod();
+                    for(String mstr: marklist){
+                        result+=mstr+'\n';
+                    }
+                    System.out.println(result);
+                    student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                    studentsRepository.save(student);
             }
 //            if (student.getRegionId() == null) {
 //                studentRegionRegistration();
@@ -131,6 +143,73 @@ public class MessageService {
         }
 
 //        System.out.println("Здравствуйте!");
+    }
+
+    private void queryRouter(){
+        Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
+        String query = "";
+        String text = vkGroupMessage.getText();
+        if(text.contains(".")) {
+            String[] splittedText = text.split(".");
+            query = splittedText[0];
+        }else if(text.length()==1 && text.matches("[-+]?\\d+")){
+            query=text;
+        }else{
+            System.out.println("Неверная команда");
+        }
+
+
+        switch (Integer.parseInt(query)){
+            case 1:
+                System.out.println("Извините, функци записи ДЗ пока не работает :(");
+                break;
+            case 2:
+                student.setStatus(StudentStatus.STUDENT_CHOOSED_CALCULATOR.name());
+                studentsRepository.save(student);
+                System.out.println("Калькулятор оценок Школобота v1.0. \n" +
+                        "Инструкция: \n" +
+                        "1. Введите ваши оценки в одну строку без пробелов и других символов(например: 554354445)\n" +
+                        "2. Получите результат.\n" +
+                        "Примечание: калькулятор действует только для пятибалльной шкалы оценивания");
+                break;
+
+            default:
+                System.out.println("Извините, такой команды нет");
+            break;
+        }
+    }
+
+    private void queryBrancher(){
+        Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
+        UsersGetQuery ugq = vk.users().get(new UserActor(vkGroupMessage.getFrom_id(),"6afde058b95ce78f27ce1ee66fabc3d66adf81e66d154879c8b57a919e8697580989a30fe9f165896244e"));
+        ArrayList<UserXtrCounters> ugqMap = null;
+        try {
+            ugqMap = (ArrayList<UserXtrCounters>) ugq.userIds("168148426").fields().nameCase(UsersNameCase.NOMINATIVE).execute();
+        } catch (ApiException e) {
+            e.printStackTrace();
+        } catch (ClientException e) {
+            e.printStackTrace();
+        }
+        UserXtrCounters userXtrCounters = ugqMap.get(0);
+        System.out.println("Здравствуйте, "+ userXtrCounters.getFirstName()+"! Чего желаете?\n"+
+        "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\n" +
+                "\uD83D\uDCDA1. Записать ДЗ\n" +
+                "\uD83D\uDCC82. Калькулятор оценок\n" +
+        "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11");
+        student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
+        studentsRepository.save(student);
+    }
+
+    private void studentServiceClac(){
+        Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
+        String text = vkGroupMessage.getText();
+
+        MarkCalculator mk = new MarkCalculator(text.trim());
+        mk.workMethod();
+
+        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+        studentsRepository.save(student);
+
     }
 
     private void studentRegistration() {
