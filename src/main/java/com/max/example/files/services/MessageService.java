@@ -156,6 +156,7 @@ public class MessageService {
         }else{
             sendMessage("Неверная команда");//STUDENT_IN_ACTION
             student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+            studentsRepository.save(student);
 
         }
 
@@ -163,6 +164,8 @@ public class MessageService {
         switch (Integer.parseInt(query)){
             case 1:
                 sendMessage("Извините, функци записи ДЗ пока не работает :(");
+                student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                studentsRepository.save(student);
                 break;
             case 2:
                 student.setStatus(StudentStatus.STUDENT_CHOOSED_CALCULATOR.name());
@@ -176,6 +179,8 @@ public class MessageService {
 
             default:
                 sendMessage("Извините, такой команды нет");
+                student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                studentsRepository.save(student);
             break;
         }
     }

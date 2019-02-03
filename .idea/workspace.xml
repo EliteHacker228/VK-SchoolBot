@@ -31,13 +31,13 @@
       <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="304" column="25" lean-forward="false" selection-start-line="304" selection-start-column="20" selection-end-line="304" selection-end-column="25" />
+            <state relative-caret-position="677">
+              <caret line="182" column="49" lean-forward="false" selection-start-line="182" selection-start-column="49" selection-end-line="182" selection-end-column="49" />
               <folding>
                 <element signature="e#2091#2140#0" expanded="false" />
                 <element signature="e#3584#3747#0" expanded="false" />
                 <element signature="e#5523#5573#0" expanded="false" />
-                <marker date="1549199738729" expanded="false" signature="7709:8001" ph="..." />
+                <marker date="1549200056504" expanded="false" signature="8005:8297" ph="..." />
               </folding>
             </state>
           </provider>
@@ -503,7 +503,14 @@
       <option name="project" value="LOCAL" />
       <updated>1549199161868</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="calculator + messages">
+      <created>1549199764949</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1549199764949</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -547,7 +554,8 @@
     <MESSAGE value="Added roles and statuses" />
     <MESSAGE value="Added roles and statuses + name finder sysytem" />
     <MESSAGE value="calculator" />
-    <option name="LAST_COMMIT_MESSAGE" value="calculator" />
+    <MESSAGE value="calculator + messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="calculator + messages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -622,7 +630,7 @@
             <element signature="e#2091#2140#0" expanded="false" />
             <element signature="e#3584#3747#0" expanded="false" />
             <element signature="e#5523#5573#0" expanded="false" />
-            <marker date="1549199738729" expanded="false" signature="7709:8001" ph="..." />
+            <marker date="1549200056504" expanded="false" signature="8005:8297" ph="..." />
           </folding>
         </state>
       </provider>
@@ -706,7 +714,7 @@
             <element signature="e#2091#2140#0" expanded="false" />
             <element signature="e#3584#3747#0" expanded="false" />
             <element signature="e#5523#5573#0" expanded="false" />
-            <marker date="1549199738729" expanded="false" signature="7709:8001" ph="..." />
+            <marker date="1549200056504" expanded="false" signature="8005:8297" ph="..." />
           </folding>
         </state>
       </provider>
@@ -772,7 +780,7 @@
             <element signature="e#2091#2140#0" expanded="false" />
             <element signature="e#3584#3747#0" expanded="false" />
             <element signature="e#5523#5573#0" expanded="false" />
-            <marker date="1549199738729" expanded="false" signature="7709:8001" ph="..." />
+            <marker date="1549200056504" expanded="false" signature="8005:8297" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1008,13 +1016,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="304" column="25" lean-forward="false" selection-start-line="304" selection-start-column="20" selection-end-line="304" selection-end-column="25" />
+        <state relative-caret-position="677">
+          <caret line="182" column="49" lean-forward="false" selection-start-line="182" selection-start-column="49" selection-end-line="182" selection-end-column="49" />
           <folding>
             <element signature="e#2091#2140#0" expanded="false" />
             <element signature="e#3584#3747#0" expanded="false" />
             <element signature="e#5523#5573#0" expanded="false" />
-            <marker date="1549199738729" expanded="false" signature="7709:8001" ph="..." />
+            <marker date="1549200056504" expanded="false" signature="8005:8297" ph="..." />
           </folding>
         </state>
       </provider>
