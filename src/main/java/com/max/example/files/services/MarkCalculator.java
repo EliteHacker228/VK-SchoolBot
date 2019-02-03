@@ -20,7 +20,7 @@ public class MarkCalculator {
             sum+=Double.parseDouble(digit);
         }
         double middleScore=sum/digits.length;
-        System.out.println("Ваш средний бал: " + middleScore);
+        markList.add("Ваш средний бал: " + middleScore);
 
         if(middleScore>=4.0 && middleScore<4.5){
 

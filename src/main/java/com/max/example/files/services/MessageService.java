@@ -190,7 +190,7 @@ public class MessageService {
         UsersGetQuery ugq = vk.users().get(new UserActor(vkGroupMessage.getFrom_id(),"6afde058b95ce78f27ce1ee66fabc3d66adf81e66d154879c8b57a919e8697580989a30fe9f165896244e"));
         ArrayList<UserXtrCounters> ugqMap = null;
         try {
-            ugqMap = (ArrayList<UserXtrCounters>) ugq.userIds("168148426").fields().nameCase(UsersNameCase.NOMINATIVE).execute();
+            ugqMap = (ArrayList<UserXtrCounters>) ugq.userIds(String.valueOf(vkGroupMessage.getFrom_id())).fields().nameCase(UsersNameCase.NOMINATIVE).execute();
         } catch (ApiException e) {
             e.printStackTrace();
         } catch (ClientException e) {
