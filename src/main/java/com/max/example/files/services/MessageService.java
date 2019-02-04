@@ -261,6 +261,8 @@ public class MessageService {
         student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
         studentsRepository.save(student);
 
+        sendMessage("Задание записано!");
+
     }
 
     private void studentServiceClac(){
