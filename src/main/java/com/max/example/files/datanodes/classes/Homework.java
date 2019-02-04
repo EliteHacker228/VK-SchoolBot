@@ -13,11 +13,14 @@ public class Homework {
     @Column(name="owner_id")
     private Integer ownerId;
 
+    @Column(name="task_text")
+    private String taskText;
+
     @Column(name="date")
-    private String date;
+    private Long date;
 
     @Column(name="remind_date")
-    private String remindDate;
+    private Long remindDate;
 
     public Homework(){
 
@@ -39,19 +42,27 @@ public class Homework {
         this.ownerId = ownerId;
     }
 
-    public String getDate() {
+    public String getTaskText() {
+        return taskText;
+    }
+
+    public void setTaskText(String taskText) {
+        this.taskText = taskText;
+    }
+
+    public Long getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Long date) {
         this.date = date;
     }
 
-    public String getRemindDate() {
+    public Long getRemindDate() {
         return remindDate;
     }
 
-    public void setRemindDate(String remindDate) {
+    public void setRemindDate(Long remindDate) {
         this.remindDate = remindDate;
     }
 }

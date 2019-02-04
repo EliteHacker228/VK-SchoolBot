@@ -1,13 +1,7 @@
 package com.max.example.files.services;
 
-import com.max.example.files.datanodes.classes.Region;
-import com.max.example.files.datanodes.classes.SClass;
-import com.max.example.files.datanodes.classes.School;
-import com.max.example.files.datanodes.classes.Student;
-import com.max.example.files.datanodes.repositories.ClassesRepository;
-import com.max.example.files.datanodes.repositories.RegionsRepository;
-import com.max.example.files.datanodes.repositories.SchoolsRepository;
-import com.max.example.files.datanodes.repositories.StudentsRepository;
+import com.max.example.files.datanodes.classes.*;
+import com.max.example.files.datanodes.repositories.*;
 import com.max.example.files.entities.StudentStatus;
 import com.max.example.files.entities.StudentsRoles;
 import com.max.example.files.entities.VKGroupMessage;
@@ -30,8 +24,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Map;
 
 public class MessageService {
@@ -45,6 +42,7 @@ public class MessageService {
     private ClassesRepository classesRepository;
     private SchoolsRepository schoolsRepository;
     private StudentsRepository studentsRepository;
+    private HomeworkRepository homeworkRepository;
 
 //    public MessageService(VKRequest vkRequest){
 //        this.vkRequest=vkRequest;
@@ -57,12 +55,16 @@ public class MessageService {
 //
 //    }
 
-    public MessageService(VKRequest vkRequest, RegionsRepository regionsRepository, ClassesRepository classesRepository, SchoolsRepository schoolsRepository, StudentsRepository studentsRepository) {
+    public MessageService(VKRequest vkRequest, RegionsRepository regionsRepository,
+                          ClassesRepository classesRepository,SchoolsRepository schoolsRepository,
+                          StudentsRepository studentsRepository, HomeworkRepository homeworkRepository) {
+
         this.vkRequest = vkRequest;
         this.regionsRepository = regionsRepository;
         this.classesRepository = classesRepository;
         this.schoolsRepository = schoolsRepository;
         this.studentsRepository = studentsRepository;
+        this.homeworkRepository=homeworkRepository;
 
         vkGroupMessage = vkRequest.getObject();
 
@@ -118,15 +120,12 @@ public class MessageService {
                     break;
 
                 case STUDENT_CHOOSED_CALCULATOR:
-                    String result = "";
-                    MarkCalculator mk = new MarkCalculator(vkGroupMessage.getText());
-                    ArrayList<String> marklist = mk.workMethod();
-                    for(String mstr: marklist){
-                        result+=mstr+'\n';
-                    }
-                    sendMessage(result);
-                    student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
-                    studentsRepository.save(student);
+                    studentServiceClac();
+                    break;
+
+                case STUDENT_CHOSED_ADD_HOMEWORK:
+                    studentServiceAddHomework();
+                    break;
             }
 //            if (student.getRegionId() == null) {
 //                studentRegionRegistration();
@@ -171,8 +170,14 @@ public class MessageService {
 
         switch (Integer.parseInt(query)){
             case 1:
-                sendMessage("Извините, функци записи ДЗ пока не работает :(");
-                student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                sendMessage("Записать ДЗ.\n" +
+                        "Инстукрция:\n" +
+                        "1. Отправьте боту сообщение вида: \"задание(день сдачи ДЗ-месяц сдачи ДЗ)\"\n" +
+                        "Пример:\n" +
+                        "Литература(05.02)\n" +
+                        "Алгебра(06.02)\n" +
+                        "2. Бот напомнит о задании за сутки до указанного вами срока");
+                student.setStatus(StudentStatus.STUDENT_CHOSED_ADD_HOMEWORK.name());
                 studentsRepository.save(student);
                 break;
             case 2:
@@ -214,13 +219,55 @@ public class MessageService {
         studentsRepository.save(student);
     }
 
-    private void studentServiceClac(){
+    private void studentServiceAddHomework(){
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         String text = vkGroupMessage.getText();
 
-        MarkCalculator mk = new MarkCalculator(text.trim());
-        mk.workMethod();
+        String textDate;
+        Date parsingdate = null;
+        Date reminddate = null;
+        if(text.contains("(") && text.indexOf("(")==text.indexOf(")")-6){
+            Date date = new Date();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy");
+            textDate = text.substring(text.indexOf("(")+1, text.indexOf(")"))+"."+format.format(date);
+            //Дата сдачи ДЗ
 
+
+            SimpleDateFormat ft = new SimpleDateFormat("dd.MM.yyyy");
+            try {
+                parsingdate=ft.parse(textDate);
+            } catch (ParseException e) {
+                sendMessage("Неверный формат даты");
+                return;
+            }
+            reminddate=new Date(parsingdate.getTime()-86400000L);
+        }else{
+            sendMessage("Неверный формат даты");
+            return;
+        }
+
+        Homework homework = new Homework();
+
+        homework.setDate(parsingdate.getTime());
+        homework.setRemindDate(reminddate.getTime());
+        homework.setOwnerId(vkGroupMessage.getFrom_id());
+        homework.setTaskText(text.substring(0, text.indexOf("(")));
+        homeworkRepository.save(homework);
+
+        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+        studentsRepository.save(student);
+
+    }
+
+    private void studentServiceClac(){
+        Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
+        String result = "";
+        MarkCalculator mk = new MarkCalculator(vkGroupMessage.getText());
+        ArrayList<String> marklist = mk.workMethod();
+        for(String mstr: marklist){
+            result+=mstr+'\n';
+        }
+        sendMessage(result);
         student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
         studentsRepository.save(student);
 

@@ -4,10 +4,7 @@ import com.max.example.files.datanodes.classes.Region;
 import com.max.example.files.datanodes.classes.SClass;
 import com.max.example.files.datanodes.classes.School;
 import com.max.example.files.datanodes.classes.Student;
-import com.max.example.files.datanodes.repositories.ClassesRepository;
-import com.max.example.files.datanodes.repositories.RegionsRepository;
-import com.max.example.files.datanodes.repositories.SchoolsRepository;
-import com.max.example.files.datanodes.repositories.StudentsRepository;
+import com.max.example.files.datanodes.repositories.*;
 import com.max.example.files.entities.VKGroupMessage;
 import com.max.example.files.entities.VKRequest;
 import com.max.example.files.services.MessageService;
@@ -36,10 +33,14 @@ public class MainController {
     @Autowired
     private StudentsRepository studentsRepository;
 
+    @Autowired
+    private HomeworkRepository homeworkRepository;
+
     @PostMapping
     private @ResponseBody String messageGetter(@RequestBody VKRequest vkRequest, VKGroupMessage vkGroupMessage){
         vkGroupMessage=vkRequest.getObject();
-        MessageService ms = new MessageService(vkRequest, regionsRepository, classesRepository, schoolsRepository, studentsRepository);
+        MessageService ms = new MessageService(vkRequest, regionsRepository, classesRepository,
+                schoolsRepository, studentsRepository, homeworkRepository);
         ms.workMethod();
 
         return "ok";
