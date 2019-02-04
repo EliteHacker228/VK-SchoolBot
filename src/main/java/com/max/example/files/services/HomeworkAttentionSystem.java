@@ -51,6 +51,7 @@ public class HomeworkAttentionSystem implements CommandLineRunner {
                             try {
                                 vk.messages().send(actor).userId(hw.getOwnerId()).message("Напоминание о домашнем задании:\n" +
                                         hw.getTaskText()).execute();
+                                homeworkRepository.deleteById(hw.getId());
                             } catch (ApiException e) {
                                 e.printStackTrace();
                             } catch (ClientException e) {

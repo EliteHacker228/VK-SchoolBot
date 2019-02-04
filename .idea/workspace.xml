@@ -46,8 +46,8 @@
       <file leaf-file-name="HomeworkAttentionSystem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="49" column="46" lean-forward="false" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
+            <state relative-caret-position="566">
+              <caret line="53" column="74" lean-forward="false" selection-start-line="53" selection-start-column="74" selection-end-line="53" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -631,7 +631,14 @@
       <option name="project" value="LOCAL" />
       <updated>1549295776972</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="fixed homework attention system">
+      <created>1549297289357</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1549297289357</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -684,7 +691,8 @@
     <MESSAGE value="added homework attention system" />
     <MESSAGE value="added homework attention system + fixed status setter before wrong date format message" />
     <MESSAGE value="homework attention system + confirm message" />
-    <option name="LAST_COMMIT_MESSAGE" value="homework attention system + confirm message" />
+    <MESSAGE value="fixed homework attention system" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed homework attention system" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1134,8 +1142,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="49" column="46" lean-forward="false" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
+        <state relative-caret-position="566">
+          <caret line="53" column="74" lean-forward="false" selection-start-line="53" selection-start-column="74" selection-end-line="53" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
