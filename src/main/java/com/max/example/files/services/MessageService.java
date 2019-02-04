@@ -238,11 +238,15 @@ public class MessageService {
                 parsingdate=ft.parse(textDate);
             } catch (ParseException e) {
                 sendMessage("Неверный формат даты");
+                student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                studentsRepository.save(student);
                 return;
             }
             reminddate=new Date(parsingdate.getTime()-86400000L);
         }else{
             sendMessage("Неверный формат даты");
+            student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+            studentsRepository.save(student);
             return;
         }
 
