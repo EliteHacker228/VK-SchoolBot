@@ -55,7 +55,7 @@ public class MessageService {
 //    }
 
     public MessageService(VKRequest vkRequest, RegionsRepository regionsRepository,
-                          ClassesRepository classesRepository,SchoolsRepository schoolsRepository,
+                          ClassesRepository classesRepository, SchoolsRepository schoolsRepository,
                           StudentsRepository studentsRepository, HomeworkRepository homeworkRepository) {
 
         this.vkRequest = vkRequest;
@@ -63,7 +63,7 @@ public class MessageService {
         this.classesRepository = classesRepository;
         this.schoolsRepository = schoolsRepository;
         this.studentsRepository = studentsRepository;
-        this.homeworkRepository=homeworkRepository;
+        this.homeworkRepository = homeworkRepository;
 
         vkGroupMessage = vkRequest.getObject();
 
@@ -97,7 +97,7 @@ public class MessageService {
 //            UserXtrCounters userXtrCounters = ugqMap.get(0);
 //            System.out.println(userXtrCounters.getFirstName());
 //            System.out.println(userXtrCounters.getLastName());
-            switch(StudentStatus.valueOf(student.getStatus())){
+            switch (StudentStatus.valueOf(student.getStatus())) {
                 case STUDENT_REGION_REGISTRATION:
                     studentRegionRegistration();
                     break;
@@ -142,7 +142,7 @@ public class MessageService {
 //        System.out.println("Здравствуйте!");
     }
 
-    private void queryRouter(){
+    private void queryRouter() {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         String query = "";
         String text = vkGroupMessage.getText();
@@ -159,7 +159,7 @@ public class MessageService {
                 return;
 
             }
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             sendMessage("Неверная команда");//STUDENT_IN_ACTION
             student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
             studentsRepository.save(student);
@@ -167,7 +167,7 @@ public class MessageService {
         }
 
 
-        switch (Integer.parseInt(query)){
+        switch (Integer.parseInt(query)) {
             case 1:
                 sendMessage("Записать ДЗ.\n" +
                         "Инстукрция:\n" +
@@ -199,13 +199,13 @@ public class MessageService {
                 sendMessage("Извините, такой команды нет");
                 student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
                 studentsRepository.save(student);
-            break;
+                break;
         }
     }
 
-    private void queryBrancher(){
+    private void queryBrancher() {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
-        UsersGetQuery ugq = vk.users().get(new UserActor(vkGroupMessage.getFrom_id(),"6afde058b95ce78f27ce1ee66fabc3d66adf81e66d154879c8b57a919e8697580989a30fe9f165896244e"));
+        UsersGetQuery ugq = vk.users().get(new UserActor(vkGroupMessage.getFrom_id(), "6afde058b95ce78f27ce1ee66fabc3d66adf81e66d154879c8b57a919e8697580989a30fe9f165896244e"));
         ArrayList<UserXtrCounters> ugqMap = null;
         try {
             ugqMap = (ArrayList<UserXtrCounters>) ugq.userIds(String.valueOf(vkGroupMessage.getFrom_id())).fields().nameCase(UsersNameCase.NOMINATIVE).execute();
@@ -215,37 +215,36 @@ public class MessageService {
             e.printStackTrace();
         }
         UserXtrCounters userXtrCounters = ugqMap.get(0);
-        sendMessage("Здравствуйте, "+ userXtrCounters.getFirstName()+"! Чего желаете?\n"+
-        "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\n" +
+        sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
+                "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\n" +
                 "\uD83D\uDCDA1. Записать ДЗ\n" +
                 "\uD83D\uDCDA2. Просмотреть записанное ДЗ\n" +
                 "\uD83D\uDCC83. Калькулятор оценок\n" +
-        "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11");
+                "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11");
         student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
         studentsRepository.save(student);
     }
 
-    private void studentShowAllHomework(){
-        try {
-            Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
-            List<Homework> homeworkList = homeworkRepository.findByOwnerId(student.getVkId());
-            String message = "";
-            int count = 1;
-            SimpleDateFormat sf = new SimpleDateFormat("dd.MM");
-            for (Homework hw : homeworkList) {
-                message += String.valueOf(count) + ". " + sf.format(sf.parse(String.valueOf(hw.getRemindDate())))+ " " + hw.getTaskText()+"\n";
+    private void studentShowAllHomework() {
 
-            }
-            sendMessage(message);
-            student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
-            studentsRepository.save(student);
-        }catch (ParseException e) {
-            sendMessage("Неверный формат даты!");
+        Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
+        List<Homework> homeworkList = homeworkRepository.findByOwnerId(student.getVkId());
+        String message = "";
+        int count = 1;
+        SimpleDateFormat sf = new SimpleDateFormat("dd.MM");
+        for (Homework hw : homeworkList) {
+            Date date = new Date(hw.getDate());
+            message += String.valueOf(count) + ". " + sf.format(date) + " " + hw.getTaskText() + "\n";
+
         }
+        sendMessage(message);
+        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+        studentsRepository.save(student);
+
 
     }
 
-    private void studentServiceAddHomework(){
+    private void studentServiceAddHomework() {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         String text = vkGroupMessage.getText();
 //        String textDate;
@@ -292,16 +291,16 @@ public class MessageService {
 
         String[] splitted = text.split(pattern.toString());
 
-        for(String s: splitted){
-            String taskText =  s.trim();
+        for (String s : splitted) {
+            String taskText = s.trim();
             //System.out.println(taskText);
 
-            if(m.find()){
+            if (m.find()) {
                 String date = m.group().trim();
                 String splittedDate[] = date.split("[()]");
                 date = splittedDate[1];
                 Date dateDate = new Date();
-                date+="."+new GregorianCalendar().get(Calendar.YEAR);
+                date += "." + new GregorianCalendar().get(Calendar.YEAR);
                 System.out.println(date);
                 SimpleDateFormat ft = new SimpleDateFormat("dd.MM.yyyy");
                 Date newDate = null;
@@ -314,14 +313,14 @@ public class MessageService {
                 Homework hw = new Homework();
                 hw.setTaskText(taskText);
                 hw.setDate(newDate.getTime());
-                hw.setRemindDate(newDate.getTime()-86400000L);
+                hw.setRemindDate(newDate.getTime() - 86400000L);
                 hw.setOwnerId(student.getVkId());
                 homeworkRepository.save(hw);
 
                 student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
                 studentsRepository.save(student);
 
-            }else{
+            } else {
                 sendMessage("Неверный формат даты!");
                 student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
                 studentsRepository.save(student);
@@ -333,13 +332,13 @@ public class MessageService {
 
     }
 
-    private void studentServiceClac(){
+    private void studentServiceClac() {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         String result = "";
         MarkCalculator mk = new MarkCalculator(vkGroupMessage.getText());
         ArrayList<String> marklist = mk.workMethod();
-        for(String mstr: marklist){
-            result+=mstr+'\n';
+        for (String mstr : marklist) {
+            result += mstr + '\n';
         }
         sendMessage(result);
         student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
@@ -461,7 +460,7 @@ public class MessageService {
 
     }
 
-    private void studentRoleRegistration(){
+    private void studentRoleRegistration() {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         student.setRole(StudentsRoles.STUDENT.name());
         studentsRepository.save(student);
