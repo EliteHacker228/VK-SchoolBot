@@ -167,6 +167,7 @@ public class MessageService {
         }
 
 
+
         switch (Integer.parseInt(query)) {
             case 1:
                 sendMessage("Записать ДЗ.\n" +
@@ -195,6 +196,37 @@ public class MessageService {
                         "Примечание: калькулятор действует только для пятибалльной шкалы оценивания");
                 break;
 
+            case 4:
+                if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
+                        student.getRole().equals(StudentsRoles.ADMIN.name()) ||
+                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
+                    //Изменение статус
+                    sendMessage("Объявление");
+                        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                        studentsRepository.save(student);
+
+                }else{
+                    sendMessage("Извините, такой команды нет");
+                    student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                    studentsRepository.save(student);
+                }
+
+                break;
+
+            case 5:
+                if(student.getRole().equals(StudentsRoles.ADMIN.name()) ||
+                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
+                    sendMessage("Ключ");
+                    //Отправка ключа
+                        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                        studentsRepository.save(student);
+                }else{
+                    sendMessage("Извините, такой команды нет");
+                    student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                    studentsRepository.save(student);
+                }
+                break;
+
             default:
                 sendMessage("Извините, такой команды нет");
                 student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
@@ -215,12 +247,37 @@ public class MessageService {
             e.printStackTrace();
         }
         UserXtrCounters userXtrCounters = ugqMap.get(0);
-        sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
-                "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\n" +
-                "\uD83D\uDCDA1. Записать ДЗ\n" +
-                "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
-                "\uD83D\uDCC83. Калькулятор оценок\n" +
-                "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11");
+        if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
+                student.getRole().equals(StudentsRoles.ADMIN.name()) ||
+                student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
+
+            sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
+                    "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\n" +
+                    "\uD83D\uDCDA1. Записать ДЗ\n" +
+                    "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
+                    "\uD83D\uDCC83. Калькулятор оценок\n" +
+                    "⚠4. Отправить объявление\n" +
+                    "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11");
+
+        } else if(
+                student.getRole().equals(StudentsRoles.ADMIN.name()) ||
+                student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
+            sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
+                    "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\n" +
+                    "\uD83D\uDCDA1. Записать ДЗ\n" +
+                    "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
+                    "\uD83D\uDCC83. Калькулятор оценок\n" +
+                    "⚠4. Отправить объявление\n" +
+                    "\uD83D\uDD135. Сгенерировать ключ доверенного ученика\n" +
+                    "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11");
+        }else {
+            sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
+                    "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\n" +
+                    "\uD83D\uDCDA1. Записать ДЗ\n" +
+                    "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
+                    "\uD83D\uDCC83. Калькулятор оценок\n" +
+                    "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11");
+        }
         student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
         studentsRepository.save(student);
     }
