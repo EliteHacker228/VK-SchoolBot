@@ -26,10 +26,9 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MessageService {
     private TransportClient transportClient;
@@ -222,46 +221,86 @@ public class MessageService {
     private void studentServiceAddHomework(){
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         String text = vkGroupMessage.getText();
+//        String textDate;
+//        Date parsingdate = null;
+//        Date reminddate = null;
+//        if(text.contains("(") && text.indexOf("(")==text.indexOf(")")-6){
+//            Date date = new Date();
+//            SimpleDateFormat format = new SimpleDateFormat("yyyy");
+//            textDate = text.substring(text.indexOf("(")+1, text.indexOf(")"))+"."+format.format(date);
+//            //Дата сдачи ДЗ
+//
+//
+//            SimpleDateFormat ft = new SimpleDateFormat("dd.MM.yyyy");
+//            try {
+//                parsingdate=ft.parse(textDate);
+//            } catch (ParseException e) {
+//                sendMessage("Неверный формат даты");
+//                student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+//                studentsRepository.save(student);
+//                return;
+//            }
+//            reminddate=new Date(parsingdate.getTime()-86400000L);
+//        }else{
+//            sendMessage("Неверный формат даты");
+//            student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+//            studentsRepository.save(student);
+//            return;
+//        }
+//
+//        Homework homework = new Homework();
+//
+//        homework.setDate(parsingdate.getTime());
+//        homework.setRemindDate(reminddate.getTime());
+//        homework.setOwnerId(vkGroupMessage.getFrom_id());
+//        homework.setTaskText(text.substring(0, text.indexOf("(")));
+//        homeworkRepository.save(homework);
+//
+//        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+//        studentsRepository.save(student);
+//
+//        sendMessage("Задание записано!");
+        Pattern pattern = Pattern.compile("[(]\\d\\d[.]\\d\\d[)]");
+        Matcher m = pattern.matcher(text);
 
-        String textDate;
-        Date parsingdate = null;
-        Date reminddate = null;
-        if(text.contains("(") && text.indexOf("(")==text.indexOf(")")-6){
-            Date date = new Date();
-            SimpleDateFormat format = new SimpleDateFormat("yyyy");
-            textDate = text.substring(text.indexOf("(")+1, text.indexOf(")"))+"."+format.format(date);
-            //Дата сдачи ДЗ
+        String[] splitted = text.split(pattern.toString());
 
+        for(String s: splitted){
+            String taskText =  s.trim();
+            //System.out.println(taskText);
 
-            SimpleDateFormat ft = new SimpleDateFormat("dd.MM.yyyy");
-            try {
-                parsingdate=ft.parse(textDate);
-            } catch (ParseException e) {
-                sendMessage("Неверный формат даты");
+            if(m.find()){
+                String date = m.group().trim();
+                String splittedDate[] = date.split("[()]");
+                date = splittedDate[1];
+                Date dateDate = new Date();
+                date+="."+new GregorianCalendar().get(Calendar.YEAR);
+                System.out.println(date);
+                SimpleDateFormat ft = new SimpleDateFormat("dd.MM.yyyy");
+                Date newDate = null;
+                try {
+                    newDate = ft.parse(date);
+                    //System.out.println(newDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Homework hw = new Homework();
+                hw.setTaskText(taskText);
+                hw.setDate(newDate.getTime());
+                hw.setRemindDate(newDate.getTime()-86400000L);
+                hw.setOwnerId(student.getVkId());
+                homeworkRepository.save(hw);
+
+                student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                studentsRepository.save(student);
+
+            }else{
+                sendMessage("Неверный формат даты!");
                 student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
                 studentsRepository.save(student);
                 return;
             }
-            reminddate=new Date(parsingdate.getTime()-86400000L);
-        }else{
-            sendMessage("Неверный формат даты");
-            student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
-            studentsRepository.save(student);
-            return;
         }
-
-        Homework homework = new Homework();
-
-        homework.setDate(parsingdate.getTime());
-        homework.setRemindDate(reminddate.getTime());
-        homework.setOwnerId(vkGroupMessage.getFrom_id());
-        homework.setTaskText(text.substring(0, text.indexOf("(")));
-        homeworkRepository.save(homework);
-
-        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
-        studentsRepository.save(student);
-
-        sendMessage("Задание записано!");
 
     }
 
