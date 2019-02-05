@@ -218,7 +218,7 @@ public class MessageService {
         sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
                 "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\n" +
                 "\uD83D\uDCDA1. Записать ДЗ\n" +
-                "\uD83D\uDCDA2. Просмотреть записанное ДЗ\n" +
+                "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
                 "\uD83D\uDCC83. Калькулятор оценок\n" +
                 "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11");
         student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
