@@ -293,7 +293,6 @@ public class MessageService {
 
                 student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
                 studentsRepository.save(student);
-                sendMessage("Задание записано!");
 
             }else{
                 sendMessage("Неверный формат даты!");
@@ -302,6 +301,8 @@ public class MessageService {
                 return;
             }
         }
+        sendMessage("Задание записано!");
+
 
     }
 
