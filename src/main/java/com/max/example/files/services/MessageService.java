@@ -180,6 +180,12 @@ public class MessageService {
                 studentsRepository.save(student);
                 break;
             case 2:
+                sendMessage("Просмотр всех записанных вами ДЗ");
+                studentShowAllHomework();
+//                student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+//                studentsRepository.save(student);
+                break;
+            case 3:
                 student.setStatus(StudentStatus.STUDENT_CHOOSED_CALCULATOR.name());
                 studentsRepository.save(student);
                 sendMessage("Калькулятор оценок Школобота v1.0. \n" +
@@ -212,10 +218,31 @@ public class MessageService {
         sendMessage("Здравствуйте, "+ userXtrCounters.getFirstName()+"! Чего желаете?\n"+
         "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\n" +
                 "\uD83D\uDCDA1. Записать ДЗ\n" +
-                "\uD83D\uDCC82. Калькулятор оценок\n" +
+                "\uD83D\uDCDA2. Просмотреть записанное ДЗ\n" +
+                "\uD83D\uDCC83. Калькулятор оценок\n" +
         "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11");
         student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
         studentsRepository.save(student);
+    }
+
+    private void studentShowAllHomework(){
+        try {
+            Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
+            List<Homework> homeworkList = homeworkRepository.findByOwnerId(student.getVkId());
+            String message = "";
+            int count = 1;
+            SimpleDateFormat sf = new SimpleDateFormat("dd.MM");
+            for (Homework hw : homeworkList) {
+                message += String.valueOf(count) + ". " + sf.format(sf.parse(String.valueOf(hw.getRemindDate())))+ " " + hw.getTaskText()+"\n";
+
+            }
+            sendMessage(message);
+            student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+            studentsRepository.save(student);
+        }catch (ParseException e) {
+            sendMessage("Неверный формат даты!");
+        }
+
     }
 
     private void studentServiceAddHomework(){
