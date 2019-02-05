@@ -197,9 +197,7 @@ public class MessageService {
                 break;
 
             case 4:
-                if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
-                        student.getRole().equals(StudentsRoles.ADMIN.name()) ||
-                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
+                if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name())){
                     //Изменение статус
                     sendMessage("Объявление");
                         student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
