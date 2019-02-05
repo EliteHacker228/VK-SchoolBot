@@ -197,7 +197,9 @@ public class MessageService {
                 break;
 
             case 4:
-                if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name())){
+                if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
+                        student.getRole().equals(StudentsRoles.ADMIN.name()) ||
+                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
                     //Изменение статус
                     sendMessage("Объявление");
                         student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
@@ -245,9 +247,7 @@ public class MessageService {
             e.printStackTrace();
         }
         UserXtrCounters userXtrCounters = ugqMap.get(0);
-        if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
-                student.getRole().equals(StudentsRoles.ADMIN.name()) ||
-                student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
+        if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name())){
 
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
                     "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\n" +
