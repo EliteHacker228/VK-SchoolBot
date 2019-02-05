@@ -200,8 +200,17 @@ public class MessageService {
                 if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
                         student.getRole().equals(StudentsRoles.ADMIN.name()) ||
                         student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
-                    //Изменение статус
-                    sendMessage("Объявление");
+
+                    student.setStatus(StudentStatus.STUDENT_CHOSED_SEND_ATTENTION.name());
+                    sendMessage("Напишите текст обяъвления здесь.\n" +
+                            "Текст должен быть вида:\n" +
+                            "1.текст объявления(10Б) - отправка обявления 10Б классу\n" +
+                            "2.текст объявления(10!) - отправка обявление всей параллели 10х классов\n" +
+                            "3.текст объявления(10Б, 9А, 8В) - отправка обявления 10Б, 9А и 8В классам\n" +
+                            "4.текст объявления(10-8) - отправка сообщения параллелям с 10 по 8\n" +
+                            "5.текст объявления(*) - отправка объявления всем параллелям\n" +
+                            "Для отмены отправки напишите 0");
+                    //studentSendAttention();
                         student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
                         studentsRepository.save(student);
 
@@ -278,6 +287,12 @@ public class MessageService {
         }
         student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
         studentsRepository.save(student);
+    }
+
+    private void studentSendAttention(){
+        Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
+        int schoolId = student.getSchoolId();
+
     }
 
     private void studentShowAllHomework() {
