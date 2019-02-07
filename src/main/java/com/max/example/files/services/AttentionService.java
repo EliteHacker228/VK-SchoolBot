@@ -37,31 +37,40 @@ public class AttentionService {
         String text=message;
         System.out.println("MSG: "+message);
         if(text.split("[()]")[1].contains("*")){
-            //System.out.println("Отправим всем классам");
+
             int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
             for(SClass sClass: classesRepository.findBySchoolId(schoolId)){
                 for(Student s: studentsRepository.findByClassId(sClass.getId())){
                     sendMessage(text.split("[()]")[0], s.getVkId());
                 }
             }
-
-//        }else if(text.contains("-")){
-//            String[] splittedText = text.split("[()]");
-//            String neededText=splittedText[1];
-//            String[] sndt = neededText.split("-");
-//            int val1 = Integer.parseInt(sndt[0]);
-//            int val2 = Integer.parseInt(sndt[1]);
+        }else if(text.split("[()]")[1].contains("-")){
+            String[] splittedText = text.split("[()]");
+            String neededText=splittedText[1];
+            String[] sndt = neededText.split("-");
+            int val1 = Integer.parseInt(sndt[0]);
+            int val2 = Integer.parseInt(sndt[1]);
 //            System.out.println("Отправим сообщения всем параллелям с "+
 //                    Math.min(val1, val2)+" по "+Math.max(val1, val2)+" класс");
-//            //System.out.println(splittedText[2]);
-//
-//        }else if(text.contains("!")){
+            int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
+
+            for(SClass sClass: classesRepository.findBySchoolId(schoolId)){
+                for(int i = Math.min(val1, val2); i<=Math.max(val1, val2); i++){
+                    if(sClass.getNumber()==i){
+                        for(Student s: studentsRepository.findByClassId(sClass.getId())){
+                            sendMessage(text.split("[()]")[0], s.getVkId());
+                        }
+                    }
+                }
+            }
+
+//        }else if(text.split("[()]")[1].contains("!")){
 //            String[] splittedText = text.split("[()]");
 //            String neededText=splittedText[1];
 //            String sndt=neededText.split("!")[0];
 //            System.out.println("Отправим сообщение всем "+sndt+"-м классам");
 //
-//        }else if(text.contains(",")){
+//        }else if(text.split("[()]")[1].contains(",")){
 //            String[] splittedText = text.split("[()]");
 //            String neededText=splittedText[1];
 //            String[] sndt=neededText.split(",");
@@ -72,8 +81,7 @@ public class AttentionService {
 //            System.out.println(" классам");
 //
 //        }else if(messageOneClassValidator(text)){
-//            System.out.println("Содержит");
-//            messageOneClassValidator(text);
+//            text.split("[()]")[1].contains("-");
         }else{
             sendMessage("Неверно указан класс/параллель", vkRequest.getObject().getFrom_id());
         }
