@@ -11,5 +11,6 @@ public interface ClassesRepository  extends CrudRepository<SClass, Integer>{
     List<SClass> findByNumber (Integer number);
     List<SClass> findByLetter (String letter);
     List<SClass> findBySchoolId (Integer schoolId);
+    List<SClass> findByIds (Integer id);
 
 }

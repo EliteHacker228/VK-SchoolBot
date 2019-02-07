@@ -64,11 +64,19 @@ public class AttentionService {
                 }
             }
 
-//        }else if(text.split("[()]")[1].contains("!")){
-//            String[] splittedText = text.split("[()]");
-//            String neededText=splittedText[1];
-//            String sndt=neededText.split("!")[0];
-//            System.out.println("Отправим сообщение всем "+sndt+"-м классам");
+        }else if(text.split("[()]")[1].contains("!")){
+            String[] splittedText = text.split("[()]");
+            String neededText=splittedText[1];
+            String sndt=neededText.split("!")[0];
+            Integer number = Integer.parseInt(sndt);
+            int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
+            for(SClass sClass: classesRepository.findBySchoolId(schoolId)){
+                for(Student s: studentsRepository.findByClassId(sClass.getId())){
+                    if(classesRepository.findByIds(s.getClassId()).get(0).getNumber()==number){
+                        sendMessage(text.split("[()]")[0], s.getVkId());
+                    }
+                }
+            }
 //
 //        }else if(text.split("[()]")[1].contains(",")){
 //            String[] splittedText = text.split("[()]");
