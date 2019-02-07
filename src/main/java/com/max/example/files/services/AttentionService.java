@@ -12,6 +12,8 @@ import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
 
+import java.util.ArrayList;
+
 public class AttentionService {
     private StudentsRepository studentsRepository;
     private ClassesRepository classesRepository;
@@ -77,19 +79,41 @@ public class AttentionService {
                     }
                 }
             }
-//
-//        }else if(text.split("[()]")[1].contains(",")){
-//            String[] splittedText = text.split("[()]");
-//            String neededText=splittedText[1];
-//            String[] sndt=neededText.split(",");
-//            System.out.print("Отправим объявление: ");
-//            for(String s: sndt){
-//                System.out.print(s);
-//            }
-//            System.out.println(" классам");
-//
+
+        }else if(text.split("[()]")[1].contains(",")){
+            String[] splittedText = text.split("[()]");
+            String neededText=splittedText[1];
+            String[] sndt=neededText.split(",");
+
+            int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
+            //System.out.print("Отправим объявление: ");
+
+            ArrayList<SClass> classes = new ArrayList<>();
+            ArrayList<SClass> sClassArrayList = new ArrayList<SClass>(classesRepository.findBySchoolId(schoolId));
+
+            for(String s: sndt){
+                String letter = s.substring(s.length()-1,s.length());//Буква
+                String number = s.substring(0,s.length()-1);//Число
+
+                for(SClass sClass1: sClassArrayList) {
+                    if(sClass1.getLetter()==letter &&
+                       sClass1.getNumber() == Integer.parseInt(number)){
+                        classes.add(sClass1);
+                    }
+
+                }
+            }
+
+            for(SClass sClass: sClassArrayList){
+                ArrayList<Student> students = new ArrayList<>(studentsRepository.findByClassId(sClass.getId()));
+                for(Student student: students){
+                    sendMessage(text.split("[()]")[0], student.getVkId());
+                }
+            }
+            //System.out.println(" классам");
+
 //        }else if(messageOneClassValidator(text)){
-//            text.split("[()]")[1].contains("-");
+//            text.split("[()]")[1].contains("Буква");
         }else{
             sendMessage("Неверно указан класс/параллель", vkRequest.getObject().getFrom_id());
         }
