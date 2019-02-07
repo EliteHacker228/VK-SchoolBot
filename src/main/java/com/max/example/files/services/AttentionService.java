@@ -72,7 +72,7 @@ public class AttentionService {
             int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
             for(SClass sClass: classesRepository.findBySchoolId(schoolId)){
                 for(Student s: studentsRepository.findByClassId(sClass.getId())){
-                    if(classesRepository.findByIds(s.getClassId()).get(0).getNumber()==number){
+                    if(classesRepository.findByid(s.getClassId()).get(0).getNumber()==number){
                         sendMessage(text.split("[()]")[0], s.getVkId());
                     }
                 }
