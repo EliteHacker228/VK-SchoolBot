@@ -205,7 +205,6 @@ public class MessageService {
                         student.getRole().equals(StudentsRoles.ADMIN.name()) ||
                         student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
 
-                    student.setStatus(StudentStatus.STUDENT_CHOSED_SEND_ATTENTION.name());
                     sendMessage("Напишите текст обяъвления здесь.\n" +
                             "Текст должен быть вида:\n" +
                             "1.текст объявления(10Б) - отправка обявления 10Б классу\n" +
@@ -214,7 +213,8 @@ public class MessageService {
                             "4.текст объявления(10-8) - отправка сообщения параллелям с 10 по 8\n" +
                             "5.текст объявления(*) - отправка объявления всем параллелям\n" +
                             "Для отмены отправки напишите 0");
-
+                    student.setStatus(StudentStatus.STUDENT_CHOSED_SEND_ATTENTION.name());
+                    studentsRepository.save(student);
 
                 }else{
                     sendMessage("Извините, такой команды нет");
