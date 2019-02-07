@@ -8,4 +8,5 @@ import java.util.List;
 public interface StudentsRepository extends CrudRepository<Student, Integer>{
 
     List<Student> findByVkId(Integer vkId);
+    List<Student> findByClassId(Integer classId);
 }

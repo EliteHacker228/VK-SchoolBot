@@ -125,6 +125,10 @@ public class MessageService {
                 case STUDENT_CHOSED_ADD_HOMEWORK:
                     studentServiceAddHomework();
                     break;
+
+                case STUDENT_CHOSED_SEND_ATTENTION:
+                    studentSendAttention();
+                    break;
             }
 //            if (student.getRegionId() == null) {
 //                studentRegionRegistration();
@@ -210,9 +214,7 @@ public class MessageService {
                             "4.текст объявления(10-8) - отправка сообщения параллелям с 10 по 8\n" +
                             "5.текст объявления(*) - отправка объявления всем параллелям\n" +
                             "Для отмены отправки напишите 0");
-                    //studentSendAttention();
-                        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
-                        studentsRepository.save(student);
+
 
                 }else{
                     sendMessage("Извините, такой команды нет");
@@ -291,7 +293,11 @@ public class MessageService {
 
     private void studentSendAttention(){
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
-        int schoolId = student.getSchoolId();
+        String attention = vkGroupMessage.getText();
+        AttentionService as = new AttentionService(attention, vkRequest, studentsRepository, classesRepository);
+        as.workMethod();
+        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+        studentsRepository.save(student);
 
     }
 
@@ -562,7 +568,7 @@ public class MessageService {
         }
     }
 
-    public void sendMessage(String text) {
+    private void sendMessage(String text) {
         try {
             vk.messages().send(actor).userId(vkRequest.getObject().getFrom_id()).message(text).execute();
         } catch (ApiException e) {
