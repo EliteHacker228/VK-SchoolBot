@@ -35,12 +35,13 @@ public class AttentionService {
 
     public void workMethod(){
         String text=message;
-        if(text.contains("*")){
+        System.out.println("MSG: "+message);
+        if(text.split("[()]")[1].contains("*")){
             //System.out.println("Отправим всем классам");
             int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
             for(SClass sClass: classesRepository.findBySchoolId(schoolId)){
                 for(Student s: studentsRepository.findByClassId(sClass.getId())){
-                    sendMessage(message, s.getVkId());
+                    sendMessage(text.split("[()]")[0], s.getVkId());
                 }
             }
 
