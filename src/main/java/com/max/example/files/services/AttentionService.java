@@ -96,7 +96,7 @@ public class AttentionService {
                 String number = s.substring(0,s.length()-1);//Число
 
                 for(SClass sClass1: sClassArrayList) {
-                    if(sClass1.getLetter()==letter &&
+                    if(sClass1.getLetter().equals(letter) &&
                        sClass1.getNumber() == Integer.parseInt(number)){
                         classes.add(sClass1);
                     }
@@ -112,8 +112,24 @@ public class AttentionService {
             }
             //System.out.println(" классам");
 
-//        }else if(messageOneClassValidator(text)){
-//            text.split("[()]")[1].contains("Буква");
+        }else if(messageOneClassValidator(text)){
+            String[] splittedText = text.split("[()]");
+            String s=splittedText[1];
+
+            int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
+            String letter = s.substring(s.length()-1,s.length());//Буква
+            String number = s.substring(0,s.length()-1);//Число
+
+            ArrayList<SClass> sClassArrayList = new ArrayList<SClass>(classesRepository.findBySchoolId(schoolId));
+            for(SClass sClass: sClassArrayList){
+                if(sClass.getLetter().equals(letter) && sClass.getNumber()==Integer.parseInt(number)){
+                    ArrayList<Student> students = new ArrayList<>(studentsRepository.findByClassId(sClass.getId()));
+                    for(Student student: students){
+                        sendMessage(splittedText[0], student.getVkId());
+                    }
+                }
+            }
+
         }else{
             sendMessage("Неверно указан класс/параллель", vkRequest.getObject().getFrom_id());
         }
