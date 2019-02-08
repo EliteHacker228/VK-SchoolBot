@@ -167,6 +167,10 @@ public class MessageService {
         String text = vkGroupMessage.getText();
         if(privateKeysRepository.findByKey(text).size()>0){
             sendMessage("Ключ валиден");
+
+            student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
+            studentsRepository.save(student);
+            queryBrancher();
             return;
         }
         try {
