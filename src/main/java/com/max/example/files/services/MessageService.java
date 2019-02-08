@@ -121,18 +121,24 @@ public class MessageService {
                 case STUDENT_CHOOSED_CALCULATOR:
                     studentServiceClac();
 
+                    student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
+                    studentsRepository.save(student);
                     queryBrancher();
                     break;
 
                 case STUDENT_CHOSED_ADD_HOMEWORK:
                     studentServiceAddHomework();
 
+                    student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
+                    studentsRepository.save(student);
                     queryBrancher();
                     break;
 
                 case STUDENT_CHOSED_SEND_ATTENTION:
                     studentSendAttention();
 
+                    student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
+                    studentsRepository.save(student);
                     queryBrancher();
                     break;
             }
@@ -321,11 +327,12 @@ public class MessageService {
 
         }
         sendMessage(message);
-        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+//        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+//        studentsRepository.save(student);
+
+        student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
         studentsRepository.save(student);
-
         queryBrancher();
-
 
     }
 
