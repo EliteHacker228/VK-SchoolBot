@@ -294,31 +294,25 @@ public class MessageService {
         if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name())){
 
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
-                    "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\n" +
                     "\uD83D\uDCDA1. Записать ДЗ\n" +
                     "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
                     "\uD83D\uDCC83. Калькулятор оценок\n" +
-                    "⚠4. Отправить объявление\n" +
-                    "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11");
+                    "⚠4. Отправить объявление\n");
 
         } else if(
                 student.getRole().equals(StudentsRoles.ADMIN.name()) ||
                 student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
-                    "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\n" +
                     "\uD83D\uDCDA1. Записать ДЗ\n" +
                     "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
                     "\uD83D\uDCC83. Калькулятор оценок\n" +
                     "⚠4. Отправить объявление\n" +
-                    "\uD83D\uDD135. Сгенерировать ключ доверенного ученика\n" +
-                    "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11");
+                    "\uD83D\uDD135. Сгенерировать ключ доверенного ученика\n");
         }else {
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
-                    "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\n" +
                     "\uD83D\uDCDA1. Записать ДЗ\n" +
                     "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
-                    "\uD83D\uDCC83. Калькулятор оценок\n" +
-                    "\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11\uD83D\uDD11");
+                    "\uD83D\uDCC83. Калькулятор оценок\n");
         }
         student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
         studentsRepository.save(student);
