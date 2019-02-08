@@ -323,6 +323,7 @@ public class MessageService {
         sendMessage(message);
         student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
         studentsRepository.save(student);
+
         queryBrancher();
 
 
