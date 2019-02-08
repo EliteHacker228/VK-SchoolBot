@@ -19,17 +19,17 @@
       <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="175" column="13" lean-forward="true" selection-start-line="175" selection-start-column="13" selection-end-line="175" selection-end-column="13" />
+            <state relative-caret-position="379">
+              <caret line="168" column="68" lean-forward="false" selection-start-line="168" selection-start-column="68" selection-end-line="168" selection-end-column="68" />
               <folding>
                 <element signature="e#1871#1920#0" expanded="false" />
                 <element signature="e#3639#3802#0" expanded="false" />
                 <element signature="e#5925#5975#0" expanded="false" />
-                <element signature="e#8771#8847#0" expanded="false" />
+                <element signature="e#8778#8854#0" expanded="false" />
                 <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
-                <element signature="e#16793#16819#0" expanded="false" />
+                <element signature="e#16800#16826#0" expanded="false" />
                 <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
@@ -548,13 +548,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00001" summary="refractored">
-      <created>1549107830260</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1549107830260</updated>
-    </task>
     <task id="LOCAL-00002" summary="refractored with separated methods">
       <created>1549110747046</created>
       <option name="number" value="00002" />
@@ -891,7 +884,14 @@
       <option name="project" value="LOCAL" />
       <updated>1549633821926</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="added key gen">
+      <created>1549634410139</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1549634410139</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -979,11 +979,11 @@
             <element signature="e#1871#1920#0" expanded="false" />
             <element signature="e#3639#3802#0" expanded="false" />
             <element signature="e#5925#5975#0" expanded="false" />
-            <element signature="e#8771#8847#0" expanded="false" />
+            <element signature="e#8778#8854#0" expanded="false" />
             <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
-            <element signature="e#16793#16819#0" expanded="false" />
+            <element signature="e#16800#16826#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
@@ -1061,11 +1061,11 @@
             <element signature="e#1871#1920#0" expanded="false" />
             <element signature="e#3639#3802#0" expanded="false" />
             <element signature="e#5925#5975#0" expanded="false" />
-            <element signature="e#8771#8847#0" expanded="false" />
+            <element signature="e#8778#8854#0" expanded="false" />
             <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
-            <element signature="e#16793#16819#0" expanded="false" />
+            <element signature="e#16800#16826#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
@@ -1136,11 +1136,11 @@
             <element signature="e#1871#1920#0" expanded="false" />
             <element signature="e#3639#3802#0" expanded="false" />
             <element signature="e#5925#5975#0" expanded="false" />
-            <element signature="e#8771#8847#0" expanded="false" />
+            <element signature="e#8778#8854#0" expanded="false" />
             <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
-            <element signature="e#16793#16819#0" expanded="false" />
+            <element signature="e#16800#16826#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
@@ -1402,17 +1402,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="175" column="13" lean-forward="true" selection-start-line="175" selection-start-column="13" selection-end-line="175" selection-end-column="13" />
+        <state relative-caret-position="379">
+          <caret line="168" column="68" lean-forward="false" selection-start-line="168" selection-start-column="68" selection-end-line="168" selection-end-column="68" />
           <folding>
             <element signature="e#1871#1920#0" expanded="false" />
             <element signature="e#3639#3802#0" expanded="false" />
             <element signature="e#5925#5975#0" expanded="false" />
-            <element signature="e#8771#8847#0" expanded="false" />
+            <element signature="e#8778#8854#0" expanded="false" />
             <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
-            <element signature="e#16793#16819#0" expanded="false" />
+            <element signature="e#16800#16826#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />

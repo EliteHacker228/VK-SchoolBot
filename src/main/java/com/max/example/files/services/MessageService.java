@@ -166,7 +166,7 @@ public class MessageService {
         String query = "";
         String text = vkGroupMessage.getText();
         if(privateKeysRepository.findByKey(text).size()>0){
-            if(student.getRole().equals(StudentsRoles.STUDENT)){
+            if(student.getRole().equals(StudentsRoles.STUDENT.name())){
                 student.setRole(StudentsRoles.TRUSTED_STUDENT.name());
                 studentsRepository.save(student);
                 sendMessage("Ключ активирован. Вам выданы дополнительные разрешения.");
