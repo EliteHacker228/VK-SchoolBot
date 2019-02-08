@@ -165,6 +165,9 @@ public class MessageService {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         String query = "";
         String text = vkGroupMessage.getText();
+        if(privateKeysRepository.findByKey(text).size()>0){
+            sendMessage("Ключ валиден");
+        }
         try {
             if (text.contains(".")) {
                 String[] splittedText = text.split(".");
