@@ -120,14 +120,20 @@ public class MessageService {
 
                 case STUDENT_CHOOSED_CALCULATOR:
                     studentServiceClac();
+
+                    queryBrancher();
                     break;
 
                 case STUDENT_CHOSED_ADD_HOMEWORK:
                     studentServiceAddHomework();
+
+                    queryBrancher();
                     break;
 
                 case STUDENT_CHOSED_SEND_ATTENTION:
                     studentSendAttention();
+
+                    queryBrancher();
                     break;
             }
 //            if (student.getRegionId() == null) {
