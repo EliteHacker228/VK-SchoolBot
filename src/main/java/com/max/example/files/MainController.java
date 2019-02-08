@@ -45,6 +45,10 @@ public class MainController {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                System.out.println(vkRequest);
+                System.out.println("=================");
+                System.out.println(vkRequest.getObject());
+
                 VKGroupMessage vkGroupMessage=vkRequest.getObject();
                 MessageService ms = new MessageService(vkRequest, regionsRepository, classesRepository,
                         schoolsRepository, studentsRepository, homeworkRepository, privateKeysRepository);
