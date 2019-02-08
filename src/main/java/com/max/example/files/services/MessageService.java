@@ -42,6 +42,7 @@ public class MessageService {
     private SchoolsRepository schoolsRepository;
     private StudentsRepository studentsRepository;
     private HomeworkRepository homeworkRepository;
+    private PrivateKeysRepository privateKeysRepository;
 
 //    public MessageService(VKRequest vkRequest){
 //        this.vkRequest=vkRequest;
@@ -56,7 +57,8 @@ public class MessageService {
 
     public MessageService(VKRequest vkRequest, RegionsRepository regionsRepository,
                           ClassesRepository classesRepository, SchoolsRepository schoolsRepository,
-                          StudentsRepository studentsRepository, HomeworkRepository homeworkRepository) {
+                          StudentsRepository studentsRepository, HomeworkRepository homeworkRepository,
+                          PrivateKeysRepository privateKeysRepository) {
 
         this.vkRequest = vkRequest;
         this.regionsRepository = regionsRepository;
@@ -64,6 +66,7 @@ public class MessageService {
         this.schoolsRepository = schoolsRepository;
         this.studentsRepository = studentsRepository;
         this.homeworkRepository = homeworkRepository;
+        this.privateKeysRepository=privateKeysRepository;
 
         vkGroupMessage = vkRequest.getObject();
 
@@ -239,10 +242,12 @@ public class MessageService {
             case 5:
                 if(student.getRole().equals(StudentsRoles.ADMIN.name()) ||
                         student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
-                    sendMessage("Ключ");
-                    //Отправка ключа
-                        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                    sendMessage("Ключ(действителен 1 раз): "+studentGetKey());
+
+                        student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
                         studentsRepository.save(student);
+
+                        queryBrancher();
                 }else{
                     sendMessage("Извините, такой команды нет");
                     student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
@@ -301,6 +306,13 @@ public class MessageService {
         }
         student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
         studentsRepository.save(student);
+    }
+
+    private String studentGetKey(){
+        PrivateKey privateKey = new PrivateKey();
+        privateKey.setKey(String.valueOf(System.nanoTime()));
+        privateKeysRepository.save(privateKey);
+        return privateKey.getKey();
     }
 
     private void studentSendAttention(){
