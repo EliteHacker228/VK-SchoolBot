@@ -20,13 +20,11 @@ public class MarkCalculator {
             sum+=Double.parseDouble(digit);
         }
         double middleScore=sum/digits.length;
-        markList.add("Ваш средний бал: " + middleScore);
+        markList.add("Ваш средний бал: " + String.format("%.2f", middleScore));
 
         if(middleScore>=4.0 && middleScore<4.5){
-
             markList.add(howMuchFives(middleScore, sum, digits.length, 4.5));
             markList.add(howMuchFours(middleScore, sum, digits.length, 3.5));
-
         }
 
         if(middleScore>=3.0 && middleScore<4.0){
@@ -35,17 +33,6 @@ public class MarkCalculator {
         }
 
         if(middleScore>=2.0 && middleScore<3.0){
-            int count=digits.length;
-            int val=0;
-            while(middleScore<3.0){
-                sum+=5;
-                count++;
-                val++;
-                middleScore=sum/count;
-            }
-            System.out.println("Вам нужно получить ещё "+val
-                    +" оценок \"5\", чтобы ваш средний бал стал " + middleScore);
-
             markList.add(howMuchFives(middleScore, sum, digits.length, 3.0));
             markList.add(howMuchFours(middleScore, sum, digits.length, 2.5));
         }
@@ -62,7 +49,7 @@ public class MarkCalculator {
             middleScore=sum/count;
         }
        return "Вам нужно получить ещё "+val
-                +" оценок \"5\", чтобы ваш средний бал стал " + middleScore;
+                +" оценок \"5\", чтобы ваш средний бал стал " +  String.format("%.2f",middleScore);
     }
 
     public static String howMuchFours(double middleScore, double sum, int count, double expectableResult){
@@ -75,6 +62,6 @@ public class MarkCalculator {
         }
 
         return "Вам нужно получить ещё "+val
-                +" оценок \"4\", чтобы ваш средний бал стал " + middleScore;
+                +" оценок \"4\", чтобы ваш средний бал стал " +  String.format("%.2f",middleScore);
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="">
+    <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="fixed calculator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MarkCalculator.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MarkCalculator.java" />
     </list>
@@ -19,8 +19,8 @@
       <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="454" column="38" lean-forward="true" selection-start-line="454" selection-start-column="38" selection-end-line="454" selection-end-column="38" />
+            <state relative-caret-position="612">
+              <caret line="465" column="0" lean-forward="true" selection-start-line="465" selection-start-column="0" selection-end-line="465" selection-end-column="0" />
               <folding>
                 <element signature="e#1871#1920#0" expanded="false" />
                 <element signature="e#3639#3802#0" expanded="false" />
@@ -45,8 +45,8 @@
       <file leaf-file-name="MarkCalculator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MarkCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="46" column="81" lean-forward="true" selection-start-line="46" selection-start-column="81" selection-end-line="46" selection-end-column="81" />
+            <state relative-caret-position="329">
+              <caret line="51" column="98" lean-forward="false" selection-start-line="51" selection-start-column="98" selection-end-line="51" selection-end-column="98" />
               <folding />
             </state>
           </provider>
@@ -549,13 +549,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00003" summary="refractored with separated methods">
-      <created>1549110755354</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1549110755354</updated>
-    </task>
     <task id="LOCAL-00004" summary="refractored with separated methods">
       <created>1549110761742</created>
       <option name="number" value="00004" />
@@ -892,7 +885,14 @@
       <option name="project" value="LOCAL" />
       <updated>1549634753816</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="added key gen // try to fix calculator">
+      <created>1549636798430</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1549636798430</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -931,7 +931,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added homework attention system" />
     <MESSAGE value="added homework attention system + fixed status setter before wrong date format message" />
     <MESSAGE value="homework attention system + confirm message" />
     <MESSAGE value="fixed homework attention system" />
@@ -956,7 +955,8 @@
     <MESSAGE value="Test version 2+" />
     <MESSAGE value="Key gen v1" />
     <MESSAGE value="added key gen" />
-    <option name="LAST_COMMIT_MESSAGE" value="added key gen" />
+    <MESSAGE value="added key gen // try to fix calculator" />
+    <option name="LAST_COMMIT_MESSAGE" value="added key gen // try to fix calculator" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1399,8 +1399,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="454" column="38" lean-forward="true" selection-start-line="454" selection-start-column="38" selection-end-line="454" selection-end-column="38" />
+        <state relative-caret-position="612">
+          <caret line="465" column="0" lean-forward="true" selection-start-line="465" selection-start-column="0" selection-end-line="465" selection-end-column="0" />
           <folding>
             <element signature="e#1871#1920#0" expanded="false" />
             <element signature="e#3639#3802#0" expanded="false" />
@@ -1423,8 +1423,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MarkCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="46" column="81" lean-forward="true" selection-start-line="46" selection-start-column="81" selection-end-line="46" selection-end-column="81" />
+        <state relative-caret-position="329">
+          <caret line="51" column="98" lean-forward="false" selection-start-line="51" selection-start-column="98" selection-end-line="51" selection-end-column="98" />
           <folding />
         </state>
       </provider>
