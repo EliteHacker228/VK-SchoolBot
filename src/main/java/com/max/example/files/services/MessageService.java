@@ -167,6 +167,7 @@ public class MessageService {
         String text = vkGroupMessage.getText();
         if(privateKeysRepository.findByKey(text).size()>0){
             sendMessage("Ключ валиден");
+            return;
         }
         try {
             if (text.contains(".")) {
