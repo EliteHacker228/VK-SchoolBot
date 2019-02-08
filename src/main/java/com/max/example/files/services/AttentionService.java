@@ -38,6 +38,9 @@ public class AttentionService {
     public void workMethod(){
         String text=message;
         System.out.println("MSG: "+message);
+        if(text.equals("0")){
+            sendMessage("Отправка отменена", vkRequest.getObject().getFrom_id());
+        }
         if(text.split("[()]")[1].contains("*")){
 
             int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
@@ -132,6 +135,7 @@ public class AttentionService {
 
         }else{
             sendMessage("Неверно указан класс/параллель", vkRequest.getObject().getFrom_id());
+            //sendMessage("Отправлено", vkRequest.getObject().getFrom_id());
         }
     }
 
