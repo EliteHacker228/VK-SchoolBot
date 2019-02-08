@@ -47,7 +47,7 @@ public class MarkCalculator {
                     +" оценок \"5\", чтобы ваш средний бал стал " + middleScore);
 
             markList.add(howMuchFives(middleScore, sum, digits.length, 3.0));
-            markList.add(howMuchFours(middleScore, sum, digits.length, 3.0));
+            markList.add(howMuchFours(middleScore, sum, digits.length, 2.5));
         }
 
         return markList;
