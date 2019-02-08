@@ -40,6 +40,7 @@ public class AttentionService {
         System.out.println("MSG: "+message);
         if(text.equals("0")){
             sendMessage("Отправка отменена", vkRequest.getObject().getFrom_id());
+            return;
         }
         if(text.split("[()]")[1].contains("*")){
 
