@@ -166,7 +166,15 @@ public class MessageService {
         String query = "";
         String text = vkGroupMessage.getText();
         if(privateKeysRepository.findByKey(text).size()>0){
-            sendMessage("Ключ валиден");
+            if(student.getRole().equals(StudentsRoles.STUDENT)){
+                student.setRole(StudentsRoles.TRUSTED_STUDENT.name());
+                studentsRepository.save(student);
+                sendMessage("Ключ активирован. Вам выданы дополнительные разрешения.");
+                privateKeysRepository.delete(privateKeysRepository.findByKey(text).get(0));
+            }else{
+                sendMessage("У вас уже есть дополнительные разрешения");
+            }
+
 
             student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
             studentsRepository.save(student);
