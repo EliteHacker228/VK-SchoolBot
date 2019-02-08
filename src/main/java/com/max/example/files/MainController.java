@@ -1,5 +1,7 @@
 package com.max.example.files;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.max.example.files.datanodes.classes.Region;
 import com.max.example.files.datanodes.classes.SClass;
 import com.max.example.files.datanodes.classes.School;
@@ -45,9 +47,12 @@ public class MainController {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println(vkRequest);
+                GsonBuilder gsonBuilder = new GsonBuilder();
+                Gson json = gsonBuilder.create();
+
+                System.out.println(json.toJson(vkRequest));
                 System.out.println("=================");
-                System.out.println(vkRequest.getObject());
+                System.out.println(json.toJson(vkRequest.getObject()));
 
                 VKGroupMessage vkGroupMessage=vkRequest.getObject();
                 MessageService ms = new MessageService(vkRequest, regionsRepository, classesRepository,
