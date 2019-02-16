@@ -19,8 +19,8 @@
       <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="205" column="38" lean-forward="false" selection-start-line="205" selection-start-column="38" selection-end-line="205" selection-end-column="38" />
+            <state relative-caret-position="19">
+              <caret line="505" column="17" lean-forward="false" selection-start-line="505" selection-start-column="17" selection-end-line="505" selection-end-column="17" />
               <folding>
                 <element signature="e#1871#1920#0" expanded="false" />
                 <element signature="e#3639#3802#0" expanded="false" />
@@ -28,10 +28,9 @@
                 <element signature="e#8756#8832#0" expanded="false" />
                 <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
-                <element signature="e#16862#16888#0" expanded="false" />
+                <element signature="e#16903#16929#0" expanded="false" />
                 <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
-                <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentSchoolRegistration#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
@@ -120,6 +119,7 @@
       <find>text</find>
       <find>нев</find>
       <find>неверная</find>
+      <find>люч</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Max\Documents\GitHub\Test-Server\src\main\java\com\max\example\files</dir>
@@ -492,13 +492,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00011" summary="1st try to fix double messages">
-      <created>1549214566391</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1549214566391</updated>
-    </task>
     <task id="LOCAL-00012" summary="1st try to fix double messages x2">
       <created>1549215596186</created>
       <option name="number" value="00012" />
@@ -835,7 +828,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550335058933</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="experimental admin key system">
+      <created>1550335834517</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1550335834517</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -926,10 +926,9 @@
             <element signature="e#8756#8832#0" expanded="false" />
             <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
-            <element signature="e#16862#16888#0" expanded="false" />
+            <element signature="e#16903#16929#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
-            <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentSchoolRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
@@ -1005,10 +1004,9 @@
             <element signature="e#8756#8832#0" expanded="false" />
             <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
-            <element signature="e#16862#16888#0" expanded="false" />
+            <element signature="e#16903#16929#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
-            <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentSchoolRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
@@ -1077,10 +1075,9 @@
             <element signature="e#8756#8832#0" expanded="false" />
             <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
-            <element signature="e#16862#16888#0" expanded="false" />
+            <element signature="e#16903#16929#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
-            <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentSchoolRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
@@ -1346,8 +1343,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="205" column="38" lean-forward="false" selection-start-line="205" selection-start-column="38" selection-end-line="205" selection-end-column="38" />
+        <state relative-caret-position="19">
+          <caret line="505" column="17" lean-forward="false" selection-start-line="505" selection-start-column="17" selection-end-line="505" selection-end-column="17" />
           <folding>
             <element signature="e#1871#1920#0" expanded="false" />
             <element signature="e#3639#3802#0" expanded="false" />
@@ -1355,10 +1352,9 @@
             <element signature="e#8756#8832#0" expanded="false" />
             <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
-            <element signature="e#16862#16888#0" expanded="false" />
+            <element signature="e#16903#16929#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
-            <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentSchoolRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />

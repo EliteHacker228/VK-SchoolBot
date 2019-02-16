@@ -258,7 +258,7 @@ public class MessageService {
             case 5:
                 if(student.getRole().equals(StudentsRoles.ADMIN.name()) ||
                         student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
-                    sendMessage("Ключ(действителен 1 раз): "+studentGetKey(StudentsRoles.TRUSTED_STUDENT));
+                    sendMessage("Ключ доступа для старосты(действителен 1 раз): "+studentGetKey(StudentsRoles.TRUSTED_STUDENT));
 
                         student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
                         studentsRepository.save(student);
@@ -273,7 +273,7 @@ public class MessageService {
 
             case 101:
                 if(student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
-                    sendMessage("Ключ(действителен 1 раз): "+studentGetKey(StudentsRoles.ADMIN));
+                    sendMessage("Ключ доступа для учителя(действителен 1 раз): "+studentGetKey(StudentsRoles.ADMIN));
 
                     student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
                     studentsRepository.save(student);
