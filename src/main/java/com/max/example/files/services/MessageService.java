@@ -104,18 +104,19 @@ public class MessageService {
                 activateKey(student);
                 return;
             }
+            emptyFieldsChecker(student);
             switch (StudentStatus.valueOf(student.getStatus())) {
-                case STUDENT_REGION_REGISTRATION:
-                    studentRegionRegistration();
-                    break;
-
-                case STUDENT_SCHOOL_REGISTRATION:
-                    studentSchoolRegistration();
-                    break;
-
-                case STUDENT_CLASS_REGISTRATION:
-                    studentClassRegistration();
-                    break;
+//                case STUDENT_REGION_REGISTRATION:
+//                    studentRegionRegistration();
+//                    break;
+//
+//                case STUDENT_SCHOOL_REGISTRATION:
+//                    studentSchoolRegistration();
+//                    break;
+//
+//                case STUDENT_CLASS_REGISTRATION:
+//                    studentClassRegistration();
+//                    break;
 
                 case STUDENT_IN_ACTION:
                     queryBrancher();
@@ -328,6 +329,22 @@ public class MessageService {
                     "\uD83D\uDCC83. Калькулятор оценок\n");
         }
         student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
+        studentsRepository.save(student);
+    }
+
+    private void emptyFieldsChecker(Student student){
+        if(student.getRegionId()==null){
+            student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
+            studentRegionRegistration();
+        }else if(student.getSchoolId()==null){
+            student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
+            studentSchoolRegistration();
+        }else if(student.getClassId()==null){
+            student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
+            studentClassRegistration();
+        }else{
+            return;
+        }
         studentsRepository.save(student);
     }
 
