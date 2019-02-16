@@ -271,7 +271,7 @@ public class MessageService {
                 }
                 break;
 
-            case 9:
+            case 101:
                 if(student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
                     sendMessage("Ключ(действителен 1 раз): "+studentGetKey(StudentsRoles.ADMIN));
 
