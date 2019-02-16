@@ -336,16 +336,21 @@ public class MessageService {
         if(student.getRegionId()==null){
             student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
             studentRegionRegistration();
+            studentsRepository.save(student);
+            return;
         }else if(student.getSchoolId()==null){
             student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
             studentSchoolRegistration();
+            studentsRepository.save(student);
+            return;
         }else if(student.getClassId()==null){
             student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
             studentClassRegistration();
+            studentsRepository.save(student);
+            return;
         }else{
             return;
         }
-        studentsRepository.save(student);
     }
 
     private void activateKey(Student student){
