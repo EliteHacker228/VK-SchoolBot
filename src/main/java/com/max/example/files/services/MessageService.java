@@ -647,6 +647,9 @@ public class MessageService {
     public String[] stringToClass(String str) throws Exception {
 
         str = str.toUpperCase();
+        str=str.replace(" ", "");
+        str=str.replace("-", "");
+
         if (str.matches("[-+]?\\d+")) {
             throw new Exception("Wrong class");
         }
