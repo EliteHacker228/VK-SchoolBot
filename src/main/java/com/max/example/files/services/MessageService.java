@@ -100,6 +100,9 @@ public class MessageService {
 //            UserXtrCounters userXtrCounters = ugqMap.get(0);
 //            System.out.println(userXtrCounters.getFirstName());
 //            System.out.println(userXtrCounters.getLastName());
+            if(privateKeysRepository.findByKey(vkGroupMessage.getText()).size()>0){
+                activateKey(student);
+            }
             switch (StudentStatus.valueOf(student.getStatus())) {
                 case STUDENT_REGION_REGISTRATION:
                     studentRegionRegistration();
@@ -165,22 +168,7 @@ public class MessageService {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         String query = "";
         String text = vkGroupMessage.getText();
-        if(privateKeysRepository.findByKey(text).size()>0){
-            if(student.getRole().equals(StudentsRoles.STUDENT.name())){
-                student.setRole(StudentsRoles.TRUSTED_STUDENT.name());
-                studentsRepository.save(student);
-                sendMessage("Ключ активирован. Вам выданы дополнительные разрешения.");
-                privateKeysRepository.delete(privateKeysRepository.findByKey(text).get(0));
-            }else{
-                sendMessage("У вас уже есть дополнительные разрешения");
-            }
-
-
-            student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
-            studentsRepository.save(student);
-            queryBrancher();
-            return;
-        }
+        activateKey(student);
         try {
             if (text.contains(".")) {
                 String[] splittedText = text.split(".");
@@ -338,6 +326,40 @@ public class MessageService {
         }
         student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
         studentsRepository.save(student);
+    }
+
+    private void activateKey(Student student){
+        String text = vkGroupMessage.getText();
+        if(privateKeysRepository.findByKey(text).size()>0){
+            if(student.getRole().equals(StudentsRoles.STUDENT.name())){
+                student.setRole(privateKeysRepository.findByKey(text).get(0).getRole());
+                studentsRepository.save(student);
+                String msg = "Ключ активирован. Вам выданы дополнительные разрешения уровня ";
+                student.setRole(privateKeysRepository.findByKey(text).get(0).getRole());
+
+                switch(privateKeysRepository.findByKey(text).get(0).getRole()){
+                    case "ADMIN": {
+                        msg+="учитель.";
+                        break;
+                    }
+
+                    case "TRUSTED_STUDENT": {
+                        msg+="староста.";
+                        break;
+                    }
+                }
+                sendMessage(msg);
+                privateKeysRepository.delete(privateKeysRepository.findByKey(text).get(0));
+            }else{
+                sendMessage("У вас уже есть дополнительные разрешения");
+            }
+
+
+            student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
+            studentsRepository.save(student);
+            queryBrancher();
+            return;
+        }
     }
 
     private String studentGetKey(StudentsRoles studentsRole){
