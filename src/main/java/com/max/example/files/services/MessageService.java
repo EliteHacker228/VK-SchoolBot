@@ -258,12 +258,27 @@ public class MessageService {
             case 5:
                 if(student.getRole().equals(StudentsRoles.ADMIN.name()) ||
                         student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
-                    sendMessage("Ключ(действителен 1 раз): "+studentGetKey());
+                    sendMessage("Ключ(действителен 1 раз): "+studentGetKey(StudentsRoles.TRUSTED_STUDENT));
 
                         student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
                         studentsRepository.save(student);
 
                         queryBrancher();
+                }else{
+                    sendMessage("Извините, такой команды нет");
+                    student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                    studentsRepository.save(student);
+                }
+                break;
+
+            case 101:
+                if(student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
+                    sendMessage("Ключ(действителен 1 раз): "+studentGetKey(StudentsRoles.ADMIN));
+
+                    student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
+                    studentsRepository.save(student);
+
+                    queryBrancher();
                 }else{
                     sendMessage("Извините, такой команды нет");
                     student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
@@ -300,14 +315,21 @@ public class MessageService {
                     "⚠4. Отправить объявление\n");
 
         } else if(
-                student.getRole().equals(StudentsRoles.ADMIN.name()) ||
-                student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
+                student.getRole().equals(StudentsRoles.ADMIN.name())){
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
                     "\uD83D\uDCDA1. Записать ДЗ\n" +
                     "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
                     "\uD83D\uDCC83. Калькулятор оценок\n" +
                     "⚠4. Отправить объявление\n" +
                     "\uD83D\uDD135. Сгенерировать ключ доверенного ученика\n");
+        }else if(student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
+            sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
+                    "\uD83D\uDCDA1. Записать ДЗ\n" +
+                    "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
+                    "\uD83D\uDCC83. Калькулятор оценок\n" +
+                    "⚠4. Отправить объявление\n" +
+                    "\uD83D\uDD135. Сгенерировать ключ доверенного ученика\n"+
+                    "\uD83D\uDD13101. Сгенерировать ключ учителя\n");
         }else {
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
                     "\uD83D\uDCDA1. Записать ДЗ\n" +
@@ -318,9 +340,10 @@ public class MessageService {
         studentsRepository.save(student);
     }
 
-    private String studentGetKey(){
+    private String studentGetKey(StudentsRoles studentsRole){
         PrivateKey privateKey = new PrivateKey();
         privateKey.setKey(String.valueOf(System.nanoTime()));
+        privateKey.setRole(studentsRole.name());
         privateKeysRepository.save(privateKey);
         return privateKey.getKey();
     }

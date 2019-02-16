@@ -16,6 +16,9 @@ public class PrivateKey {
     @Column(name="key")
     String key;
 
+    @Column(name="role")
+    String role;
+
     public PrivateKey(){
 
     }
@@ -35,5 +38,13 @@ public class PrivateKey {
     public void setKey(String key) {
         String privateKey = DigestUtils.sha256Hex(key);
         this.key = privateKey;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
