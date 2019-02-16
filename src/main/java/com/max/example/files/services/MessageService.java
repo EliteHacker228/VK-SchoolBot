@@ -169,6 +169,8 @@ public class MessageService {
         String query = "";
         String text = vkGroupMessage.getText();
         activateKey(student);
+        //student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
+        //            queryBrancher();
         try {
             if (text.contains(".")) {
                 String[] splittedText = text.split(".");
@@ -354,10 +356,8 @@ public class MessageService {
                 sendMessage("У вас уже есть дополнительные разрешения");
             }
 
-
-            student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
             studentsRepository.save(student);
-            queryBrancher();
+
             return;
         }
     }
