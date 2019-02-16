@@ -102,6 +102,7 @@ public class MessageService {
 //            System.out.println(userXtrCounters.getLastName());
             if(privateKeysRepository.findByKey(vkGroupMessage.getText()).size()>0){
                 activateKey(student);
+                return;
             }
             switch (StudentStatus.valueOf(student.getStatus())) {
                 case STUDENT_REGION_REGISTRATION:
