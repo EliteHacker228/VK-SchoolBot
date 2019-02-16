@@ -185,7 +185,7 @@ public class MessageService {
             if (text.contains(".")) {
                 String[] splittedText = text.split(".");
                 query = splittedText[0];
-            } else if (text.length() == 1 && text.matches("[-+]?\\d+")) {
+            } else if (text.matches("[-+]?\\d+")) {
                 query = text;
             } else {
                 sendMessage("Неверная команда");//STUDENT_IN_ACTION
