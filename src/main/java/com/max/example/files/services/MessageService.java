@@ -100,23 +100,31 @@ public class MessageService {
 //            UserXtrCounters userXtrCounters = ugqMap.get(0);
 //            System.out.println(userXtrCounters.getFirstName());
 //            System.out.println(userXtrCounters.getLastName());
-            if(privateKeysRepository.findByKey(vkGroupMessage.getText()).size()>0){
-                activateKey(student);
-                return;
-            }
-            emptyFieldsChecker(student);
+
             switch (StudentStatus.valueOf(student.getStatus())) {
-//                case STUDENT_REGION_REGISTRATION:
-//                    studentRegionRegistration();
-//                    break;
-//
-//                case STUDENT_SCHOOL_REGISTRATION:
-//                    studentSchoolRegistration();
-//                    break;
-//
-//                case STUDENT_CLASS_REGISTRATION:
-//                    studentClassRegistration();
-//                    break;
+                case STUDENT_REGION_REGISTRATION:
+                    if(privateKeysRepository.findByKey(vkGroupMessage.getText()).size()>0){
+                        activateKey(student);
+                        return;
+                    }
+                    studentRegionRegistration();
+                    break;
+
+                case STUDENT_SCHOOL_REGISTRATION:
+                    if(privateKeysRepository.findByKey(vkGroupMessage.getText()).size()>0){
+                        activateKey(student);
+                        return;
+                    }
+                    studentSchoolRegistration();
+                    break;
+
+                case STUDENT_CLASS_REGISTRATION:
+                    if(privateKeysRepository.findByKey(vkGroupMessage.getText()).size()>0){
+                        activateKey(student);
+                        return;
+                    }
+                    studentClassRegistration();
+                    break;
 
                 case STUDENT_IN_ACTION:
                     queryBrancher();
@@ -330,27 +338,6 @@ public class MessageService {
         }
         student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
         studentsRepository.save(student);
-    }
-
-    private void emptyFieldsChecker(Student student){
-        if(student.getRegionId()==null){
-            student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
-            studentRegionRegistration();
-            studentsRepository.save(student);
-            return;
-        }else if(student.getSchoolId()==null){
-            student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
-            studentSchoolRegistration();
-            studentsRepository.save(student);
-            return;
-        }else if(student.getClassId()==null){
-            student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
-            studentClassRegistration();
-            studentsRepository.save(student);
-            return;
-        }else{
-            return;
-        }
     }
 
     private void activateKey(Student student){
