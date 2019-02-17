@@ -392,7 +392,7 @@ public class MessageService {
         }
         UserXtrCounters userXtrCounters = ugqMap.get(0);
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
-        String attention = "⚠ Вам поступило объявление от ^"+student.getVkId()+"["+userXtrCounters.getFirstName()+" "+userXtrCounters.getLastName()+"] "+":\n"+vkGroupMessage.getText();
+        String attention = "⚠ Вам поступило объявление от ^id"+student.getVkId()+"["+userXtrCounters.getFirstName()+" "+userXtrCounters.getLastName()+"] "+":\n"+vkGroupMessage.getText();
         AttentionService as = new AttentionService(attention, vkRequest, studentsRepository, classesRepository);
         as.workMethod();
         student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
