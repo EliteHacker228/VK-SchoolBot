@@ -43,6 +43,7 @@ public class MessageService {
     private StudentsRepository studentsRepository;
     private HomeworkRepository homeworkRepository;
     private PrivateKeysRepository privateKeysRepository;
+    private UserXtrCounters userXtrCounters;
 
 //    public MessageService(VKRequest vkRequest){
 //        this.vkRequest=vkRequest;
@@ -305,7 +306,7 @@ public class MessageService {
         } catch (ClientException e) {
             e.printStackTrace();
         }
-        UserXtrCounters userXtrCounters = ugqMap.get(0);
+        userXtrCounters = ugqMap.get(0);
         if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name())){
 
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
@@ -382,7 +383,7 @@ public class MessageService {
 
     private void studentSendAttention(){
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
-        String attention = vkGroupMessage.getText();
+        String attention = "⚠ Вам поступило объявление от *"+student.getVkId()+"("+userXtrCounters.getFirstName()+" "+userXtrCounters.getLastName()+"):\n"+vkGroupMessage.getText();
         AttentionService as = new AttentionService(attention, vkRequest, studentsRepository, classesRepository);
         as.workMethod();
         student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
