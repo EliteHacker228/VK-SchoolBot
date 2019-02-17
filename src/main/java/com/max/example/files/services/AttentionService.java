@@ -48,7 +48,7 @@ public class AttentionService {
                 int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
                 for (SClass sClass : classesRepository.findBySchoolId(schoolId)) {
                     for (Student s : studentsRepository.findByClassId(sClass.getId())) {
-                        sendMessage(text.split("[()]")[0], s.getVkId());
+                        sendMessage(text.split("[()]")[0].replace("[", "(").replace("]", ")".replace("^", "*")), s.getVkId());
                     }
                 }
             } else if (text.split("[()]")[1].contains("-")) {
@@ -65,7 +65,7 @@ public class AttentionService {
                     for (int i = Math.min(val1, val2); i <= Math.max(val1, val2); i++) {
                         if (sClass.getNumber() == i) {
                             for (Student s : studentsRepository.findByClassId(sClass.getId())) {
-                                sendMessage(text.split("[()]")[0], s.getVkId());
+                                sendMessage(text.split("[()]")[0].replace("[", "(").replace("]", ")".replace("^", "*")), s.getVkId());
                             }
                         }
                     }
@@ -80,7 +80,7 @@ public class AttentionService {
                 for (SClass sClass : classesRepository.findBySchoolId(schoolId)) {
                     for (Student s : studentsRepository.findByClassId(sClass.getId())) {
                         if (classesRepository.findByid(s.getClassId()).get(0).getNumber() == number) {
-                            sendMessage(text.split("[()]")[0], s.getVkId());
+                            sendMessage(text.split("[()]")[0].replace("[", "(").replace("]", ")".replace("^", "*")), s.getVkId());
                         }
                     }
                 }
@@ -112,7 +112,7 @@ public class AttentionService {
                 for (SClass sClass : sClassArrayList) {
                     ArrayList<Student> students = new ArrayList<>(studentsRepository.findByClassId(sClass.getId()));
                     for (Student student : students) {
-                        sendMessage(text.split("[()]")[0], student.getVkId());
+                        sendMessage(text.split("[()]")[0].replace("[", "(").replace("]", ")".replace("^", "*")), student.getVkId());
                     }
                 }
                 //System.out.println(" классам");
@@ -130,7 +130,7 @@ public class AttentionService {
                     if (sClass.getLetter().equals(letter) && sClass.getNumber() == Integer.parseInt(number)) {
                         ArrayList<Student> students = new ArrayList<>(studentsRepository.findByClassId(sClass.getId()));
                         for (Student student : students) {
-                            sendMessage(splittedText[0], student.getVkId());
+                            sendMessage(text.split("[()]")[0].replace("[", "(").replace("]", ")".replace("^", "*")), student.getVkId());
                         }
                     }
                 }

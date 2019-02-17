@@ -384,7 +384,7 @@ public class MessageService {
         UsersGetQuery ugq = vk.users().get(new UserActor(vkGroupMessage.getFrom_id(), "6afde058b95ce78f27ce1ee66fabc3d66adf81e66d154879c8b57a919e8697580989a30fe9f165896244e"));
         ArrayList<UserXtrCounters> ugqMap = null;
         try {
-            ugqMap = (ArrayList<UserXtrCounters>) ugq.userIds(String.valueOf(vkGroupMessage.getFrom_id())).fields().nameCase(UsersNameCase.NOMINATIVE).execute();
+            ugqMap = (ArrayList<UserXtrCounters>) ugq.userIds(String.valueOf(vkGroupMessage.getFrom_id())).fields().nameCase(UsersNameCase.GENITIVE).execute();
         } catch (ApiException e) {
             e.printStackTrace();
         } catch (ClientException e) {
@@ -392,7 +392,7 @@ public class MessageService {
         }
         UserXtrCounters userXtrCounters = ugqMap.get(0);
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
-        String attention = "⚠ Вам поступило объявление от" +userXtrCounters.getFirstName()+" "+userXtrCounters.getLastName()+":\n"+vkGroupMessage.getText();
+        String attention = "⚠ Вам поступило объявление от ^"+student.getVkId()+"["+userXtrCounters.getFirstName()+" "+userXtrCounters.getLastName()+"] "+":\n"+vkGroupMessage.getText();
         AttentionService as = new AttentionService(attention, vkRequest, studentsRepository, classesRepository);
         as.workMethod();
         student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
