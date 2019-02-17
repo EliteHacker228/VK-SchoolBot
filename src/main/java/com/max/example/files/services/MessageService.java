@@ -43,7 +43,6 @@ public class MessageService {
     private StudentsRepository studentsRepository;
     private HomeworkRepository homeworkRepository;
     private PrivateKeysRepository privateKeysRepository;
-    private UserXtrCounters userXtrCounters;
 
 //    public MessageService(VKRequest vkRequest){
 //        this.vkRequest=vkRequest;
@@ -306,7 +305,7 @@ public class MessageService {
         } catch (ClientException e) {
             e.printStackTrace();
         }
-        userXtrCounters = ugqMap.get(0);
+        UserXtrCounters userXtrCounters = ugqMap.get(0);
         if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name())){
 
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
@@ -382,6 +381,16 @@ public class MessageService {
     }
 
     private void studentSendAttention(){
+        UsersGetQuery ugq = vk.users().get(new UserActor(vkGroupMessage.getFrom_id(), "6afde058b95ce78f27ce1ee66fabc3d66adf81e66d154879c8b57a919e8697580989a30fe9f165896244e"));
+        ArrayList<UserXtrCounters> ugqMap = null;
+        try {
+            ugqMap = (ArrayList<UserXtrCounters>) ugq.userIds(String.valueOf(vkGroupMessage.getFrom_id())).fields().nameCase(UsersNameCase.NOMINATIVE).execute();
+        } catch (ApiException e) {
+            e.printStackTrace();
+        } catch (ClientException e) {
+            e.printStackTrace();
+        }
+        UserXtrCounters userXtrCounters = ugqMap.get(0);
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         String attention = "⚠ Вам поступило объявление от *"+student.getVkId()+"("+userXtrCounters.getFirstName()+" "+userXtrCounters.getLastName()+"):\n"+vkGroupMessage.getText();
         AttentionService as = new AttentionService(attention, vkRequest, studentsRepository, classesRepository);
