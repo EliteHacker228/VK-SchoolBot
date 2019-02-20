@@ -119,6 +119,8 @@ public class MessageService {
 //            System.out.println(userXtrCounters.getLastName());
 
 
+
+
             switch (StudentStatus.valueOf(student.getStatus())) {
                 case STUDENT_REGION_REGISTRATION:
                     if(privateKeysRepository.findByKey(vkGroupMessage.getText()).size()>0){
@@ -590,9 +592,9 @@ public class MessageService {
         }
 
         if(student.getRole().equals(StudentsRoles.STUDENT)) {
-            sendMessage("Из какой ты школы?");
+            sendMessage("Укажи номер своей школы.");
         }else{
-            sendMessage("Из какой ты школы?  \n Если не видишь в списке свою школу - отправь её официальное название" +
+            sendMessage("Укажи номер своей школы. \n Если не видишь в списке свою школу - отправь её официальное название" +
                     "(например, МАОУ СОШ №67 с УИОП), и она зарегистрируется в системе.");
         }
 
@@ -628,17 +630,16 @@ public class MessageService {
                     schoolsRepository.save(school);
 
                     int schoolId = school.getId();
-                    SClass sClass = new SClass();
 
 
                     for (int i = 1; i <= 11; i++) {
                         for (char c = 'А'; c <= 'Д'; c++) {
 //                        System.out.println(i+" "+c);
+                            SClass sClass = new SClass();
 
                             sClass.setSchoolId(schoolId);
                             sClass.setNumber(i);
                             sClass.setLetter(String.valueOf(c));
-
                             classesRepository.save(sClass);
                         }
                     }
