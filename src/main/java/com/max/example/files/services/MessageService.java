@@ -82,21 +82,14 @@ public class MessageService {
 
     }
 
-    public Student studentFieldsValidator(Student student){
+//    public boolean studentFieldsValidator(Student student){
 //        if(student.getRegionId()==null){
 //            student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
 //            studentsRepository.save(student);
 //
-//        }else if(student.getSchoolId()==null){
-//            student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
-//            studentsRepository.save(student);
-//
-//        }else if(student.getClassId()==null){
-//            student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
-//            studentsRepository.save(student);
 //        }
-        return student;
-    }
+//        return false;
+//    }
 
     public void workMethod() {
         if (studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).isEmpty()) {
@@ -104,7 +97,7 @@ public class MessageService {
             studentRoleRegistration();
 
         } else {
-            Student student = studentFieldsValidator(studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0));
+            Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
 //            UsersGetQuery ugq = vk.users().get(new UserActor(168148426,"6afde058b95ce78f27ce1ee66fabc3d66adf81e66d154879c8b57a919e8697580989a30fe9f165896244e"));
 //            ArrayList<UserXtrCounters> ugqMap = null;
 //            try {
@@ -117,7 +110,44 @@ public class MessageService {
 //            UserXtrCounters userXtrCounters = ugqMap.get(0);
 //            System.out.println(userXtrCounters.getFirstName());
 //            System.out.println(userXtrCounters.getLastName());
+            if(student.getRegionId()==null
+                    && !student.getStatus().equals(StudentStatus.STUDENT_REGION_REGISTRATION.name())){
 
+                int counter = 1;
+                String msg = "Регион не зарегистрирован! Укажите ваш регион: \n";
+                String regions = "";
+                for (Region region : regionsRepository.findAll()) {
+                    regions += String.format("%d. " + region.getName(), counter) + "\n";
+                    counter++;
+                }
+                sendMessage(msg+regions);
+                student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
+                studentsRepository.save(student);
+                return;
+            }else if(student.getSchoolId()==null
+                    && !student.getStatus().equals(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name())){
+
+                sendMessage("Укажи номер своей школы. \n Если не видишь в списке свою школу - отправь её официальное название" +
+                        "(например, МАОУ СОШ №67 с УИОП), и она зарегистрируется в системе.");
+                String schools = "";
+                int counter = 1;
+                for (School school : schoolsRepository.findAll()) {
+                    schools += String.format("%d. " + school.getName(), counter) + "\n";
+                    counter++;
+                }
+                sendMessage(schools);
+
+                student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
+                studentsRepository.save(student);
+                return;
+            }else if(student.getClassId()==null
+                    && !student.getStatus().equals(StudentStatus.STUDENT_CLASS_REGISTRATION.name())){
+
+                sendMessage("Введи свой класс (например, 7Б, 10А и т.д)");
+                student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
+                studentsRepository.save(student);
+                return;
+            }
 
 
 
