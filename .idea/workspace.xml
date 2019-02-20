@@ -19,8 +19,8 @@
       <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-627">
-              <caret line="699" column="21" lean-forward="false" selection-start-line="699" selection-start-column="21" selection-end-line="699" selection-end-column="21" />
+            <state relative-caret-position="243">
+              <caret line="624" column="13" lean-forward="true" selection-start-line="624" selection-start-column="13" selection-end-line="624" selection-end-column="13" />
               <folding>
                 <element signature="e#1872#1921#0" expanded="false" />
                 <element signature="e#3924#4087#0" expanded="false" />
@@ -558,13 +558,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00041" summary="added attention service">
-      <created>1549621716108</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1549621716108</updated>
-    </task>
     <task id="LOCAL-00042" summary="Test version">
       <created>1549622149673</created>
       <option name="number" value="00042" />
@@ -901,7 +894,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550689241364</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="school reg system + fields validator x">
+      <created>1550689643456</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1550689643456</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1429,8 +1429,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-627">
-          <caret line="699" column="21" lean-forward="false" selection-start-line="699" selection-start-column="21" selection-end-line="699" selection-end-column="21" />
+        <state relative-caret-position="243">
+          <caret line="624" column="13" lean-forward="true" selection-start-line="624" selection-start-column="13" selection-end-line="624" selection-end-column="13" />
           <folding>
             <element signature="e#1872#1921#0" expanded="false" />
             <element signature="e#3924#4087#0" expanded="false" />
