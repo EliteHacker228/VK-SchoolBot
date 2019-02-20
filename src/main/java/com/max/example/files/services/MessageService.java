@@ -116,21 +116,22 @@ public class MessageService {
 //            UserXtrCounters userXtrCounters = ugqMap.get(0);
 //            System.out.println(userXtrCounters.getFirstName());
 //            System.out.println(userXtrCounters.getLastName());
-//                if(student.getRegionId()==null){
-//                    student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
-//                    studentsRepository.save(student);
-//                    return;
-//
-//                }else if(student.getSchoolId()==null){
-//                    student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
-//                    studentsRepository.save(student);
-//                    return;
-//
-//                }else if(student.getClassId()==null){
-//                    student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
-//                    studentsRepository.save(student);
-//                    return;
-//                }
+
+                if(student.getRegionId()==null){
+                    student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
+                    studentsRepository.save(student);
+                    return;
+
+                }else if(student.getSchoolId()==null){
+                    student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
+                    studentsRepository.save(student);
+                    return;
+
+                }else if(student.getClassId()==null){
+                    student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
+                    studentsRepository.save(student);
+                    return;
+                }
 
             switch (StudentStatus.valueOf(student.getStatus())) {
                 case STUDENT_REGION_REGISTRATION:
@@ -588,7 +589,14 @@ public class MessageService {
                 sendMessage("Регион записан!");
                 System.out.println();
             } else {
-                sendMessage("Ошибка! Такого региона нет.");
+                int counter = 1;
+                String msg = "Ошибка! Такого региона нет. Укажите корректный регион: \n";
+                String regions = "";
+                for (Region region : regionsRepository.findAll()) {
+                    regions += String.format("%d. " + region.getName(), counter) + "\n";
+                    counter++;
+                }
+                sendMessage(msg+regions);
                 System.out.println();
                 return;
             }
