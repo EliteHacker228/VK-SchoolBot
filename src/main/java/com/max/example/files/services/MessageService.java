@@ -86,13 +86,35 @@ public class MessageService {
             student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
             studentsRepository.save(student);
 
+            sendMessage("Пожалуйста, укажите ваш регино");
+            int counter = 1;
+
+            String regions = "";
+            for (Region region : regionsRepository.findAll()) {
+                regions += String.format("%d. " + region.getName(), counter) + "\n";
+                counter++;
+            }
+            sendMessage(regions);
+
         }else if(student.getSchoolId()==null){
             student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
             studentsRepository.save(student);
 
+            sendMessage("Пожалуйста, укажите вашу школу");
+            String schools = "";
+            int counter = 1;
+            for (School school : schoolsRepository.findAll()) {
+                schools += String.format("%d. " + school.getName(), counter) + "\n";
+                counter++;
+            }
+            sendMessage(schools);
+
+
         }else if(student.getClassId()==null){
             student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
             studentsRepository.save(student);
+            sendMessage("Введи свой класс (например, 7Б, 10А и т.д)");
+
         }
         return student;
     }
