@@ -627,6 +627,7 @@ public class MessageService {
         }
 
         if(student.getSchoolId()!=null){
+            queryBrancher();
             student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
             studentsRepository.save(student);
             return;
@@ -700,6 +701,7 @@ public class MessageService {
         }
 
         if(student.getClassId()!=null){
+            queryBrancher();
             student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
             studentsRepository.save(student);
             return;
