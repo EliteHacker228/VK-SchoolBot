@@ -590,7 +590,7 @@ public class MessageService {
                 System.out.println();
             } else {
                 int counter = 1;
-                String msg = "Ошибка! Такого региона нет. Укажите корректный регион: \n";
+                String msg = "Регион не зарегистрирован! Укажите ваш регион: \n";
                 String regions = "";
                 for (Region region : regionsRepository.findAll()) {
                     regions += String.format("%d. " + region.getName(), counter) + "\n";
@@ -606,8 +606,8 @@ public class MessageService {
         if(student.getRole().equals(StudentsRoles.STUDENT)) {
             sendMessage("Из какой ты школы?");
         }else{
-            sendMessage("Из какой ты школы? Если не видишь в списке свою школу - отправь её официальное название" +
-                    "(например, МАОУ СОШ №67 с УИОП), и она зарегистрируется в системе");
+            sendMessage("Из какой ты школы?  \n Если не видишь в списке свою школу - отправь её официальное название" +
+                    "(например, МАОУ СОШ №67 с УИОП), и она зарегистрируется в системе.");
         }
 
         student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
@@ -635,26 +635,31 @@ public class MessageService {
                 School school = new School();
                 school.setName(vkGroupMessage.getText().trim());
                 school.setRegionId(student.getRegionId());
-                schoolsRepository.save(school);
+                if(schoolsRepository.findByName(school.getName()).size()>0){
+                    student.setSchoolId(schoolsRepository.findByName(school.getName()).get(0).getId());
+                    sendMessage("Школа зарегистрирована! Вы - ученик/учитель " + school.getName());
+                }else {
+                    schoolsRepository.save(school);
 
-                int schoolId = school.getId();
-                SClass sClass = new SClass();
+                    int schoolId = school.getId();
+                    SClass sClass = new SClass();
 
 
-                for(int i = 1; i<=11; i++){
-                    for(char c = 'А'; c<='Д'; c++){
+                    for (int i = 1; i <= 11; i++) {
+                        for (char c = 'А'; c <= 'Д'; c++) {
 //                        System.out.println(i+" "+c);
 
-                        sClass.setSchoolId(schoolId);
-                        sClass.setNumber(i);
-                        sClass.setLetter(String.valueOf(c));
+                            sClass.setSchoolId(schoolId);
+                            sClass.setNumber(i);
+                            sClass.setLetter(String.valueOf(c));
 
-                        classesRepository.save(sClass);
+                            classesRepository.save(sClass);
+                        }
                     }
+                    student.setSchoolId(schoolId);
+                    //studentsRepository.save(student);
+                    sendMessage("Школа зарегистрирована! Вы - ученик/учитель " + school.getName());
                 }
-            student.setSchoolId(schoolId);
-            //studentsRepository.save(student);
-            sendMessage("Школа зарегистрирована! Вы - ученик/учитель "+school.getName());
 
             }else {
                 sendMessage("Ошибка! Неверно указана школа.");
