@@ -81,7 +81,7 @@ public class MessageService {
 
     }
 
-    public void studentFieldsValidator(Student student){
+    public Student studentFieldsValidator(Student student){
         if(student.getRegionId()==null){
             student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
             studentsRepository.save(student);
@@ -94,6 +94,7 @@ public class MessageService {
             student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
             studentsRepository.save(student);
         }
+        return student;
     }
 
     public void workMethod() {
@@ -102,8 +103,8 @@ public class MessageService {
             studentRoleRegistration();
 
         } else {
-            Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
-            studentFieldsValidator(student);
+            Student student = studentFieldsValidator(studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0));
+
 //            UsersGetQuery ugq = vk.users().get(new UserActor(168148426,"6afde058b95ce78f27ce1ee66fabc3d66adf81e66d154879c8b57a919e8697580989a30fe9f165896244e"));
 //            ArrayList<UserXtrCounters> ugqMap = null;
 //            try {
