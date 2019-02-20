@@ -564,7 +564,13 @@ public class MessageService {
 
         }
 
-        sendMessage("Из какой ты школы?");
+        if(student.getRole().equals(StudentsRoles.STUDENT)) {
+            sendMessage("Из какой ты школы?");
+        }else{
+            sendMessage("Из какой ты школы? Если не видишь в списке свою школу - отправь её официальное название" +
+                    "(например, МАОУ СОШ №67 с УИОП), и она зарегистрируется в системе");
+        }
+
         student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
         studentsRepository.save(student);
 
@@ -586,8 +592,33 @@ public class MessageService {
                 student.setSchoolId(Integer.parseInt(vkGroupMessage.getText()));
                 studentsRepository.save(student);
                 sendMessage("Школа записана!");
-            } else {
-                sendMessage("Ошибка! Такой школы нет.");
+            }else if(!student.getRole().equals(StudentsRoles.STUDENT) && vkGroupMessage.getText().contains("№")){
+                School school = new School();
+                school.setName(vkGroupMessage.getText().trim());
+                school.setRegionId(student.getRegionId());
+                schoolsRepository.save(school);
+
+                int schoolId = school.getId();
+                SClass sClass = new SClass();
+
+
+                for(int i = 1; i<=11; i++){
+                    for(char c = 'А'; c<='Д'; c++){
+//                        System.out.println(i+" "+c);
+
+                        sClass.setSchoolId(schoolId);
+                        sClass.setNumber(i);
+                        sClass.setLetter(String.valueOf(c));
+
+                        classesRepository.save(sClass);
+                    }
+                }
+            student.setSchoolId(schoolId);
+            //studentsRepository.save(student);
+            sendMessage("Школа зарегистрирована! Вы - ученик/учитель "+school.getName());
+
+            }else {
+                sendMessage("Ошибка! Неверно указана школа.");
                 return;
             }
 
