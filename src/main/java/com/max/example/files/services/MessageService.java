@@ -99,7 +99,8 @@ public class MessageService {
             sendMessage(regions);
 
 
-        }else if(student.getSchoolId()==null){
+        }else if(student.getSchoolId()==null &&
+                !student.getStatus().equals(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name())){
             student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
             studentsRepository.save(student);
 
@@ -113,7 +114,8 @@ public class MessageService {
             sendMessage(schools);
 
 
-        }else if(student.getClassId()==null){
+        }else if(student.getClassId()==null &&
+                !student.getStatus().equals(StudentStatus.STUDENT_CLASS_REGISTRATION.name())){
             student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
             studentsRepository.save(student);
             sendMessage("Введи свой класс (например, 7Б, 10А и т.д)");
