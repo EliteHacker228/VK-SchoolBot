@@ -19,12 +19,12 @@
       <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="590" column="20" lean-forward="true" selection-start-line="590" selection-start-column="20" selection-end-line="590" selection-end-column="20" />
+            <state relative-caret-position="277">
+              <caret line="119" column="16" lean-forward="false" selection-start-line="119" selection-start-column="16" selection-end-line="119" selection-end-column="16" />
               <folding>
                 <element signature="e#1871#1920#0" expanded="false" />
                 <element signature="e#4304#4467#0" expanded="false" />
-                <element signature="e#7858#7908#0" expanded="false" />
+                <element signature="e#7888#7938#0" expanded="false" />
                 <element signature="method#queryRouter#0;class#MessageService#0" expanded="false" />
                 <element signature="method#queryBrancher#0;class#MessageService#0" expanded="false" />
                 <element signature="method#activateKey#0;class#MessageService#0" expanded="false" />
@@ -32,7 +32,7 @@
                 <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
-                <element signature="e#20236#20262#0" expanded="false" />
+                <element signature="e#20266#20292#0" expanded="false" />
                 <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
               </folding>
@@ -538,13 +538,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00032" summary="UNTESTED ATTENTION SERVICE, WARNING!!!">
-      <created>1549549832277</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1549549832277</updated>
-    </task>
     <task id="LOCAL-00033" summary="UNTESTED ATTENTION SERVICE, WARNING!!!">
       <created>1549550079116</created>
       <option name="number" value="00033" />
@@ -881,7 +874,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550682621407</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="school reg system + fields validator x">
+      <created>1550683108964</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1550683108964</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -994,7 +994,7 @@
           <folding>
             <element signature="e#1871#1920#0" expanded="false" />
             <element signature="e#4304#4467#0" expanded="false" />
-            <element signature="e#7858#7908#0" expanded="false" />
+            <element signature="e#7888#7938#0" expanded="false" />
             <element signature="method#queryRouter#0;class#MessageService#0" expanded="false" />
             <element signature="method#queryBrancher#0;class#MessageService#0" expanded="false" />
             <element signature="method#activateKey#0;class#MessageService#0" expanded="false" />
@@ -1002,7 +1002,7 @@
             <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
-            <element signature="e#20236#20262#0" expanded="false" />
+            <element signature="e#20266#20292#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
           </folding>
@@ -1073,7 +1073,7 @@
           <folding>
             <element signature="e#1871#1920#0" expanded="false" />
             <element signature="e#4304#4467#0" expanded="false" />
-            <element signature="e#7858#7908#0" expanded="false" />
+            <element signature="e#7888#7938#0" expanded="false" />
             <element signature="method#queryRouter#0;class#MessageService#0" expanded="false" />
             <element signature="method#queryBrancher#0;class#MessageService#0" expanded="false" />
             <element signature="method#activateKey#0;class#MessageService#0" expanded="false" />
@@ -1081,7 +1081,7 @@
             <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
-            <element signature="e#20236#20262#0" expanded="false" />
+            <element signature="e#20266#20292#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
           </folding>
@@ -1145,7 +1145,7 @@
           <folding>
             <element signature="e#1871#1920#0" expanded="false" />
             <element signature="e#4304#4467#0" expanded="false" />
-            <element signature="e#7858#7908#0" expanded="false" />
+            <element signature="e#7888#7938#0" expanded="false" />
             <element signature="method#queryRouter#0;class#MessageService#0" expanded="false" />
             <element signature="method#queryBrancher#0;class#MessageService#0" expanded="false" />
             <element signature="method#activateKey#0;class#MessageService#0" expanded="false" />
@@ -1153,7 +1153,7 @@
             <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
-            <element signature="e#20236#20262#0" expanded="false" />
+            <element signature="e#20266#20292#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
           </folding>
@@ -1400,12 +1400,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="590" column="20" lean-forward="true" selection-start-line="590" selection-start-column="20" selection-end-line="590" selection-end-column="20" />
+        <state relative-caret-position="277">
+          <caret line="119" column="16" lean-forward="false" selection-start-line="119" selection-start-column="16" selection-end-line="119" selection-end-column="16" />
           <folding>
             <element signature="e#1871#1920#0" expanded="false" />
             <element signature="e#4304#4467#0" expanded="false" />
-            <element signature="e#7858#7908#0" expanded="false" />
+            <element signature="e#7888#7938#0" expanded="false" />
             <element signature="method#queryRouter#0;class#MessageService#0" expanded="false" />
             <element signature="method#queryBrancher#0;class#MessageService#0" expanded="false" />
             <element signature="method#activateKey#0;class#MessageService#0" expanded="false" />
@@ -1413,7 +1413,7 @@
             <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
-            <element signature="e#20236#20262#0" expanded="false" />
+            <element signature="e#20266#20292#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
           </folding>
