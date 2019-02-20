@@ -83,10 +83,9 @@ public class MessageService {
 
     public Student studentFieldsValidator(Student student){
         if(student.getRegionId()==null){
-            student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
-            studentsRepository.save(student);
 
-            sendMessage("Пожалуйста, укажите ваш регино");
+
+            sendMessage("Пожалуйста, укажите ваш регион");
             int counter = 1;
 
             String regions = "";
@@ -95,6 +94,8 @@ public class MessageService {
                 counter++;
             }
             sendMessage(regions);
+            student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
+            studentsRepository.save(student);
 
         }else if(student.getSchoolId()==null){
             student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
