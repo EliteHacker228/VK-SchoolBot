@@ -147,6 +147,9 @@ public class MessageService {
                 student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
                 studentsRepository.save(student);
                 return;
+            }else{
+                student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                studentsRepository.save(student);
             }
 
 
