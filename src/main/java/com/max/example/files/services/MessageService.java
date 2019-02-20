@@ -44,6 +44,7 @@ public class MessageService {
     private HomeworkRepository homeworkRepository;
     private PrivateKeysRepository privateKeysRepository;
 
+
 //    public MessageService(VKRequest vkRequest){
 //        this.vkRequest=vkRequest;
 //        vkGroupMessage=vkRequest.getObject();
@@ -117,18 +118,6 @@ public class MessageService {
 //            System.out.println(userXtrCounters.getFirstName());
 //            System.out.println(userXtrCounters.getLastName());
 
-                if(student.getRegionId()==null){
-                    student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
-                    studentsRepository.save(student);
-
-                }else if(student.getSchoolId()==null){
-                    student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
-                    studentsRepository.save(student);
-
-                }else if(student.getClassId()==null){
-                    student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
-                    studentsRepository.save(student);
-                }
 
             switch (StudentStatus.valueOf(student.getStatus())) {
                 case STUDENT_REGION_REGISTRATION:
