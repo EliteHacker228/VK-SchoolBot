@@ -19,8 +19,8 @@
       <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="157" column="0" lean-forward="true" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+            <state relative-caret-position="-627">
+              <caret line="699" column="21" lean-forward="false" selection-start-line="699" selection-start-column="21" selection-end-line="699" selection-end-column="21" />
               <folding>
                 <element signature="e#1872#1921#0" expanded="false" />
                 <element signature="e#3924#4087#0" expanded="false" />
@@ -35,6 +35,7 @@
                 <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
                 <element signature="e#21288#21314#0" expanded="false" />
                 <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
+                <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
               </folding>
             </state>
@@ -557,13 +558,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00040" summary="added attention service">
-      <created>1549621508890</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1549621508891</updated>
-    </task>
     <task id="LOCAL-00041" summary="added attention service">
       <created>1549621716108</created>
       <option name="number" value="00041" />
@@ -900,7 +894,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550688297969</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="school reg system + fields validator x">
+      <created>1550689241364</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1550689241364</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1024,6 +1025,7 @@
             <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
             <element signature="e#21288#21314#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
+            <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
           </folding>
         </state>
@@ -1104,6 +1106,7 @@
             <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
             <element signature="e#21288#21314#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
+            <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
           </folding>
         </state>
@@ -1177,6 +1180,7 @@
             <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
             <element signature="e#21288#21314#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
+            <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
           </folding>
         </state>
@@ -1425,8 +1429,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="157" column="0" lean-forward="true" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+        <state relative-caret-position="-627">
+          <caret line="699" column="21" lean-forward="false" selection-start-line="699" selection-start-column="21" selection-end-line="699" selection-end-column="21" />
           <folding>
             <element signature="e#1872#1921#0" expanded="false" />
             <element signature="e#3924#4087#0" expanded="false" />
@@ -1441,6 +1445,7 @@
             <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
             <element signature="e#21288#21314#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
+            <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
           </folding>
         </state>

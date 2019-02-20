@@ -611,6 +611,12 @@ public class MessageService {
                 studentsRepository.save(student);
                 sendMessage("Регион записан!");
                 System.out.println();
+
+                if(student.getSchoolId()!=null){
+                    student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                    studentsRepository.save(student);
+                    return;
+                }
             } else {
                 int counter = 1;
                 String msg = "Регион не зарегистрирован! Укажите ваш регион: \n";
@@ -654,6 +660,12 @@ public class MessageService {
                 student.setSchoolId(Integer.parseInt(vkGroupMessage.getText()));
                 studentsRepository.save(student);
                 sendMessage("Школа записана!");
+
+                if(student.getClassId()!=null){
+                    student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                    studentsRepository.save(student);
+                    return;
+                }
             }else if(!student.getRole().equals(StudentsRoles.STUDENT) && vkGroupMessage.getText().contains("№")){
                 School school = new School();
                 school.setName(vkGroupMessage.getText().trim());
@@ -681,6 +693,11 @@ public class MessageService {
                     student.setSchoolId(schoolId);
                     //studentsRepository.save(student);
                     sendMessage("Школа зарегистрирована! Вы - ученик/учитель " + school.getName());
+                    if(student.getClassId()!=null){
+                        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                        studentsRepository.save(student);
+                        return;
+                    }
                 }
 
             }else {
