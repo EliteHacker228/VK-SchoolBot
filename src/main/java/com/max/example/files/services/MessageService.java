@@ -442,6 +442,10 @@ public class MessageService {
     private void studentAddScheduleNode(){
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         String text = vkGroupMessage.getText().replace("\n", "");
+        if(text.replace(" ","").equals("0")){
+            sendMessage("Отправка отменена");
+            return;
+        }
 
         ArrayList<SchoolScheduleNode> schoolScheduleNodes = ScheduleCreatorService.stringToScheduleConverter(text);
         for(SchoolScheduleNode sn: schoolScheduleNodes){
