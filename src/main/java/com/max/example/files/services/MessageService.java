@@ -457,6 +457,7 @@ public class MessageService {
                     sn.setClassId(sClass.getId());
                 }
             }
+            /*TODO Переделать систему id, привести её к виду "id_класса+класс+день"*/
 
 
             schoolScheduleRepository.save(sn);

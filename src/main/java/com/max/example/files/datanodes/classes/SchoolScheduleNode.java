@@ -26,7 +26,7 @@ public class SchoolScheduleNode{
     public SchoolScheduleNode(){}
 
     public SchoolScheduleNode(String className, String lessons, String day) {
-        this.id=className+" "+day;
+        this.id=classId+"" +className+" "+day;
         this.classId=classId;
         this.className = className;
         this.lessons = lessons;
@@ -34,7 +34,7 @@ public class SchoolScheduleNode{
     }
 
     public SchoolScheduleNode(Integer classId, String className, String lessons, String day) {
-        this.id=className+" "+day;
+        this.id=classId+"" +className+" "+day;
         this.classId=classId;
         this.className = className;
         this.lessons = lessons;
