@@ -7,9 +7,9 @@ import javax.persistence.*;
 public class SchoolScheduleNode{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Integer id;
+    private String id;
 
     @Column(name = "classId")
     private Integer classId;
@@ -26,6 +26,7 @@ public class SchoolScheduleNode{
     public SchoolScheduleNode(){}
 
     public SchoolScheduleNode(String className, String lessons, String day) {
+        this.id=className+" "+day;
         this.classId=classId;
         this.className = className;
         this.lessons = lessons;
@@ -33,6 +34,7 @@ public class SchoolScheduleNode{
     }
 
     public SchoolScheduleNode(Integer classId, String className, String lessons, String day) {
+        this.id=className+" "+day;
         this.classId=classId;
         this.className = className;
         this.lessons = lessons;
@@ -72,11 +74,11 @@ public class SchoolScheduleNode{
         this.day = day;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

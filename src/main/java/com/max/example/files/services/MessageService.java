@@ -457,6 +457,8 @@ public class MessageService {
                     sn.setClassId(sClass.getId());
                 }
             }
+
+
             schoolScheduleRepository.save(sn);
         }
 
