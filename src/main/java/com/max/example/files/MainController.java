@@ -41,6 +41,9 @@ public class MainController {
     @Autowired
     private PrivateKeysRepository privateKeysRepository;
 
+    @Autowired
+    private SchoolScheduleRepository schoolScheduleRepository;
+
 
     @PostMapping
     private @ResponseBody String messageGetter(@RequestBody VKRequest vkRequest){
@@ -56,7 +59,8 @@ public class MainController {
 
                 VKGroupMessage vkGroupMessage=vkRequest.getObject();
                 MessageService ms = new MessageService(vkRequest, regionsRepository, classesRepository,
-                        schoolsRepository, studentsRepository, homeworkRepository, privateKeysRepository);
+                        schoolsRepository, studentsRepository, homeworkRepository, privateKeysRepository,
+                        schoolScheduleRepository);
                 ms.workMethod();
             }
         }).start();

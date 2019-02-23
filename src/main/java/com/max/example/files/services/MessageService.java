@@ -43,6 +43,7 @@ public class MessageService {
     private StudentsRepository studentsRepository;
     private HomeworkRepository homeworkRepository;
     private PrivateKeysRepository privateKeysRepository;
+    private SchoolScheduleRepository schoolScheduleRepository;
 
 
 //    public MessageService(VKRequest vkRequest){
@@ -59,7 +60,7 @@ public class MessageService {
     public MessageService(VKRequest vkRequest, RegionsRepository regionsRepository,
                           ClassesRepository classesRepository, SchoolsRepository schoolsRepository,
                           StudentsRepository studentsRepository, HomeworkRepository homeworkRepository,
-                          PrivateKeysRepository privateKeysRepository) {
+                          PrivateKeysRepository privateKeysRepository, SchoolScheduleRepository schoolScheduleRepository) {
 
         this.vkRequest = vkRequest;
         this.regionsRepository = regionsRepository;
@@ -68,6 +69,7 @@ public class MessageService {
         this.studentsRepository = studentsRepository;
         this.homeworkRepository = homeworkRepository;
         this.privateKeysRepository=privateKeysRepository;
+        this.schoolScheduleRepository= schoolScheduleRepository;
 
         vkGroupMessage = vkRequest.getObject();
 
@@ -212,6 +214,14 @@ public class MessageService {
                     studentsRepository.save(student);
                     queryBrancher();
                     break;
+
+                case STUDENT_CHOSED_SCHEDULE_NODE:
+                    studentAddScheduleNode();
+
+                    student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
+                    studentsRepository.save(student);
+                    queryBrancher();
+                    break;
             }
 //            if (student.getRegionId() == null) {
 //                studentRegionRegistration();
@@ -326,6 +336,36 @@ public class MessageService {
                 }
                 break;
 
+            case 7:
+                if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
+                        student.getRole().equals(StudentsRoles.ADMIN.name()) ||
+                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
+
+                    sendMessage("Введите расписание следующего формата:\n" +
+                            "имя_класса;\n" +
+                            "день недели:" +
+                            "   предмет1, предмет2, предмет3, предмет4\n" +
+                            "Например:\n" +
+
+                            "10Б;\n" +
+                            "Понедельник: Алгебра, Геометрия," +
+                            " Русский, Литература,"+
+                            " Физика, Английский язык\n"+
+
+                            "Вторник: Алгебра, Геометрия," +
+                            " Русский, Литература,"+
+                            " Физика, Английский язык\n" +
+                            "\nДля отмены отравьте 0");
+
+                    student.setStatus(StudentStatus.STUDENT_CHOSED_SCHEDULE_NODE.name());
+
+                }else{
+                    sendMessage("Извините, такой команды нет");
+                    student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                    studentsRepository.save(student);
+                }
+                break;
+
             case 101:
                 if(student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
                     sendMessage("Ключ доступа для учителя(действителен 1 раз): "+studentGetKey(StudentsRoles.ADMIN));
@@ -367,7 +407,8 @@ public class MessageService {
                     "\uD83D\uDCDA1. Записать ДЗ\n" +
                     "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
                     "\uD83D\uDCC83. Калькулятор оценок\n" +
-                    "⚠4. Отправить объявление\n");
+                    "⚠4. Отправить объявление\n" +
+                    "7. Добавить/Редактировать расписание\n");
 
         } else if(
                 student.getRole().equals(StudentsRoles.ADMIN.name())){
@@ -376,14 +417,16 @@ public class MessageService {
                     "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
                     "\uD83D\uDCC83. Калькулятор оценок\n" +
                     "⚠4. Отправить объявление\n" +
-                    "\uD83D\uDD135. Сгенерировать ключ доверенного ученика\n");
+                    "\uD83D\uDD135. Сгенерировать ключ доверенного ученика\n" +
+                    "7. Добавить/Редактировать расписание\n");
         }else if(student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
                     "\uD83D\uDCDA1. Записать ДЗ\n" +
                     "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
                     "\uD83D\uDCC83. Калькулятор оценок\n" +
                     "⚠4. Отправить объявление\n" +
-                    "\uD83D\uDD135. Сгенерировать ключ доверенного ученика\n"+
+                    "\uD83D\uDD135. Сгенерировать ключ доверенного ученика\n" +
+                    "7. Добавить/Редактировать расписание\n"+
                     "\uD83D\uDD13101. Сгенерировать ключ учителя\n");
         }else {
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
@@ -393,6 +436,18 @@ public class MessageService {
         }
         student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
         studentsRepository.save(student);
+    }
+
+    private void studentAddScheduleNode(){
+        Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
+        String text = vkGroupMessage.getText().replace("\n", "");
+
+        ArrayList<SchoolScheduleNode> schoolScheduleNodes = ScheduleCreatorService.stringToScheduleConverter(text);
+        for(SchoolScheduleNode sn: schoolScheduleNodes){
+            sn.setClassName(sn.getClassName().replace(" ","").replace("-","").toUpperCase());
+            schoolScheduleRepository.save(sn);
+        }
+
     }
 
     private void activateKey(Student student){
