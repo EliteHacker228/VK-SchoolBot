@@ -358,6 +358,7 @@ public class MessageService {
                             "\nДля отмены отравьте 0");
 
                     student.setStatus(StudentStatus.STUDENT_CHOSED_SCHEDULE_NODE.name());
+                    studentsRepository.save(student);
 
                 }else{
                     sendMessage("Извините, такой команды нет");
