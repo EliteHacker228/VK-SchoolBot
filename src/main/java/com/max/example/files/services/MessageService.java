@@ -450,7 +450,13 @@ public class MessageService {
         ArrayList<SchoolScheduleNode> schoolScheduleNodes = ScheduleCreatorService.stringToScheduleConverter(text);
         for(SchoolScheduleNode sn: schoolScheduleNodes){
             sn.setClassName(sn.getClassName().replace(" ","").replace("-","").toUpperCase());
-            sn.setClassId(student.getClassId());
+            ArrayList<SClass> sClasses = new ArrayList<>(classesRepository.findBySchoolId(student.getSchoolId()));
+            for(SClass sClass: sClasses){
+                if(sClass.getLetter().equals(sn.getClassLetter()) &&
+                    sClass.getNumber()==sn.getClassNumber()){
+                    sn.setClassId(sClass.getId());
+                }
+            }
             schoolScheduleRepository.save(sn);
         }
 

@@ -87,4 +87,12 @@ public class SchoolScheduleNode{
     public void setClassId(Integer classId) {
         this.classId = classId;
     }
+
+    public String getClassLetter(){
+        return className.substring(className.length()-1);
+    }
+
+    public Integer getClassNumber(){
+        return Integer.parseInt(className.substring(0,className.length()-1));
+    }
 }
