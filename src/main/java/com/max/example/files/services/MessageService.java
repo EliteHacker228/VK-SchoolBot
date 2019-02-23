@@ -450,8 +450,11 @@ public class MessageService {
         ArrayList<SchoolScheduleNode> schoolScheduleNodes = ScheduleCreatorService.stringToScheduleConverter(text);
         for(SchoolScheduleNode sn: schoolScheduleNodes){
             sn.setClassName(sn.getClassName().replace(" ","").replace("-","").toUpperCase());
+            sn.setClassId(student.getClassId());
             schoolScheduleRepository.save(sn);
         }
+
+        sendMessage("Расписание сохранено!");
 
     }
 
