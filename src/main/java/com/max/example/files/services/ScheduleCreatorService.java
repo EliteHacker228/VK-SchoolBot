@@ -12,6 +12,8 @@ public class ScheduleCreatorService {
 
         String[] days = {"понедельник","вторник","среда","четверг","пятница","суббота","воскресенье"};
 
+        source=source.replace(", ", ",");
+        source=source.replace(",", ", ");
         source=source.replace("понедельник", "%#&!понедельник");
         source=source.replace("вторник", "%#&!вторник");
         source=source.replace("среда", "%#&!среда");
