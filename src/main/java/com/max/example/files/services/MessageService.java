@@ -521,7 +521,7 @@ public class MessageService {
             return;
         }
 
-        ArrayList<SchoolScheduleNode> schoolScheduleNodes = ScheduleCreatorService.stringToScheduleConverter(text);
+        ArrayList<SchoolScheduleNode> schoolScheduleNodes = ScheduleCreatorService.stringToScheduleConverter(text.replace(", ", ",").replace(",", ", "));
         for(SchoolScheduleNode sn: schoolScheduleNodes){
             sn.setClassName(sn.getClassName().replace(" ","").replace("-","").toUpperCase());
             ArrayList<SClass> sClasses = new ArrayList<>(classesRepository.findBySchoolId(student.getSchoolId()));
