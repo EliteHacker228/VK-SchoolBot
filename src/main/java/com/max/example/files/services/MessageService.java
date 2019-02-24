@@ -404,6 +404,7 @@ public class MessageService {
 
             case 9:
                 showScheduleNodes(true);
+                queryBrancher();
                 break;
 
             case 101:

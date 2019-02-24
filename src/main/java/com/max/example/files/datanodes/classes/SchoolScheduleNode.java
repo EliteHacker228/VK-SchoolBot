@@ -43,10 +43,10 @@ public class SchoolScheduleNode{
 
     public String toString(){
         String result = "";
-        result+="День: "+day+"\n";
+        result+="День: "+day.substring(0,1).toUpperCase()+day.substring(1)+"\n";
         int i = 1;
         for(String lesson: lessons.split(",")){
-            result+=i+". "+lesson.trim()+"\n";
+            result+=i+". "+lesson.substring(1,2).toUpperCase()+lesson.substring(2)+"\n";
             i++;
         }
         return result;
