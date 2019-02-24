@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/SchoolScheduleNode.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/SchoolScheduleNode.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -20,8 +19,8 @@
       <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="455" column="49" lean-forward="false" selection-start-line="455" selection-start-column="49" selection-end-line="455" selection-end-column="49" />
+            <state relative-caret-position="520">
+              <caret line="457" column="47" lean-forward="false" selection-start-line="457" selection-start-column="47" selection-end-line="457" selection-end-column="47" />
               <folding>
                 <element signature="e#1935#1984#0" expanded="false" />
                 <element signature="e#3515#3576#0" expanded="false" />
@@ -581,13 +580,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00051" summary="added key gen">
-      <created>1549634753816</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1549634753816</updated>
-    </task>
     <task id="LOCAL-00052" summary="added key gen // try to fix calculator">
       <created>1549636798430</created>
       <option name="number" value="00052" />
@@ -924,7 +916,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550959876772</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="Schedule node system added, reworked schedule node identification system">
+      <created>1551017396867</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1551017396868</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1463,8 +1462,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="455" column="49" lean-forward="false" selection-start-line="455" selection-start-column="49" selection-end-line="455" selection-end-column="49" />
+        <state relative-caret-position="520">
+          <caret line="457" column="47" lean-forward="false" selection-start-line="457" selection-start-column="47" selection-end-line="457" selection-end-column="47" />
           <folding>
             <element signature="e#1935#1984#0" expanded="false" />
             <element signature="e#3515#3576#0" expanded="false" />

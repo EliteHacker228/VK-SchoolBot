@@ -455,7 +455,7 @@ public class MessageService {
                 if(sClass.getLetter().equals(sn.getClassLetter()) &&
                     sClass.getNumber()==sn.getClassNumber()){
                     sn.setClassId(sClass.getId());
-                    sn.setId(sClass.getId()+"" +sn.getClassName()+" "+sn.getDay());
+                    sn.setId(sClass.getId()+" "+sn.getClassName()+" "+sn.getDay());
                 }
             }
             /*TODO Переделать систему id, привести её к виду "id_класса+класс+день"*/
