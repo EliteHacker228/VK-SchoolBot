@@ -42,11 +42,13 @@ public class SchoolScheduleNode{
     }
 
     public String toString(){
-        String result = "Имя класса: "+className+"\n";
-        result+="День: "+day+"\n"+"Уроки: \n"+lessons;
-//        for(String lesson: lessons.split(",")){
-//            result+="\t"+lesson.trim()+"\n";
-//        }
+        String result = "";
+        result+="День: "+day+"\n";
+        int i = 1;
+        for(String lesson: lessons.split(",")){
+            result+=i+". "+lesson.trim()+"\n";
+            i++;
+        }
         return result;
     }
 

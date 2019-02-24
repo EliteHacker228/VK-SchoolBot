@@ -367,6 +367,45 @@ public class MessageService {
                 }
                 break;
 
+                /* case 7:
+                if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
+                        student.getRole().equals(StudentsRoles.ADMIN.name()) ||
+                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
+
+                    sendMessage("Введите расписание следующего формата:\n" +
+                            "имя_класса;\n" +
+                            "день недели:" +
+                            "   предмет1, предмет2, предмет3, предмет4\n" +
+                            "Например:\n" +
+
+                            "10Б;\n" +
+                            "Понедельник: Алгебра, Геометрия," +
+                            " Русский, Литература,"+
+                            " Физика, Английский язык\n"+
+
+                            "Вторник: Алгебра, Геометрия," +
+                            " Русский, Литература,"+
+                            " Физика, Английский язык\n" +
+                            "\nДля отмены отравьте 0");
+
+                    student.setStatus(StudentStatus.STUDENT_CHOSED_SCHEDULE_NODE.name());
+                    studentsRepository.save(student);
+
+                }else{
+                    sendMessage("Извините, такой команды нет");
+                    student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                    studentsRepository.save(student);
+                }
+                break;*/
+
+            case 8:
+                showScheduleNodes(false);
+                break;
+
+            case 9:
+                sendMessage("Данная функция пока недоступна");
+                break;
+
             case 101:
                 if(student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
                     sendMessage("Ключ доступа для учителя(действителен 1 раз): "+studentGetKey(StudentsRoles.ADMIN));
@@ -409,7 +448,9 @@ public class MessageService {
                     "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
                     "\uD83D\uDCC83. Калькулятор оценок\n" +
                     "⚠4. Отправить объявление\n" +
-                    "7. Добавить/Редактировать расписание\n");
+                    "7. Добавить/Редактировать расписание\n"+
+                    "8. просмотреть расписание на завтра\n"+
+                    "9. Просмотреть расписание на неделю\n");
 
         } else if(
                 student.getRole().equals(StudentsRoles.ADMIN.name())){
@@ -419,7 +460,9 @@ public class MessageService {
                     "\uD83D\uDCC83. Калькулятор оценок\n" +
                     "⚠4. Отправить объявление\n" +
                     "\uD83D\uDD135. Сгенерировать ключ доверенного ученика\n" +
-                    "7. Добавить/Редактировать расписание\n");
+                    "7. Добавить/Редактировать расписание\n"+
+                    "8. просмотреть расписание на завтра\n"+
+                    "9. Просмотреть расписание на неделю\n");
         }else if(student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
                     "\uD83D\uDCDA1. Записать ДЗ\n" +
@@ -428,15 +471,45 @@ public class MessageService {
                     "⚠4. Отправить объявление\n" +
                     "\uD83D\uDD135. Сгенерировать ключ доверенного ученика\n" +
                     "7. Добавить/Редактировать расписание\n"+
+                    "8. просмотреть расписание на завтра\n"+
+                    "9. Просмотреть расписание на неделю\n"+
                     "\uD83D\uDD13101. Сгенерировать ключ учителя\n");
         }else {
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
                     "\uD83D\uDCDA1. Записать ДЗ\n" +
                     "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
-                    "\uD83D\uDCC83. Калькулятор оценок\n");
+                    "\uD83D\uDCC83. Калькулятор оценок\n"+
+                    "8. просмотреть расписание на завтра\n"+
+                    "9. Просмотреть расписание на неделю\n");
         }
         student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
         studentsRepository.save(student);
+    }
+
+    private void showScheduleNodes(boolean showAllSchedule){
+        Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
+
+
+        if(showAllSchedule){
+            ArrayList<SchoolScheduleNode> scheduleNodes = new ArrayList<>(schoolScheduleRepository.findByClassId(student.getClassId()));
+            String answer = "";
+
+            scheduleNodes.sort((o1, o2) ->{
+            Locale localeRUS = new Locale("ru", "RU");
+            SimpleDateFormat sf = new SimpleDateFormat("EEEE", localeRUS);
+               try {
+                   return sf.parse(o1.getDay()).compareTo(sf.parse(o2.getDay()));
+               } catch (ParseException e) {
+                   return 0;
+               }
+           });
+
+           for(SchoolScheduleNode sn: scheduleNodes){
+               answer+=sn+"\n";
+           }
+
+           sendMessage(answer);
+        }
     }
 
     private void studentAddScheduleNode(){
@@ -458,7 +531,6 @@ public class MessageService {
                     sn.setId(sClass.getId()+" "+sn.getClassName()+" "+sn.getDay());
                 }
             }
-            /*TODO Переделать систему id, привести её к виду "id_класса+класс+день"*/
 
 
             schoolScheduleRepository.save(sn);
