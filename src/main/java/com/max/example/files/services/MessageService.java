@@ -399,11 +399,11 @@ public class MessageService {
                 break;*/
 
             case 8:
-                showScheduleNodes(false);
+                sendMessage("Данная функция пока недоступна");
                 break;
 
             case 9:
-                sendMessage("Данная функция пока недоступна");
+                showScheduleNodes(true);
                 break;
 
             case 101:
