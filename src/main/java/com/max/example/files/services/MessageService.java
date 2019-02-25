@@ -116,6 +116,43 @@ public class MessageService {
             /**
              * TODO: Fix this
              */
+            if((student.getRegionId()==null || student.getSchoolId()==null || student.getClassId()==null) &&
+                    !student.getStatus().contains("REGISTRATION")){
+                //Условие соблюдено => произошла ошибка при первой регистрации
+                if(student.getRegionId()==null){
+                    sendMessage("Вы не указали свой регион. Пожалуйста, выберите его: \n");
+                    int counter = 1;
+
+                    String regions = "";
+                    for (Region region : regionsRepository.findAll()) {
+                        regions += String.format("%d. " + region.getName(), counter) + "\n";
+                        counter++;
+                    }
+                    sendMessage(regions);
+
+                    student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
+                    studentsRepository.save(student);
+                }else if(student.getSchoolId()==null){
+                    sendMessage("Вы не указали свою школу. Пожалуйста, укажите её номер. \n Если не видите в списке вашу школу - отправьте её официальное название" +
+                            "(например, МАОУ СОШ №67 с УИОП), и она зарегистрируется в системе.");
+
+                    String schools = "";
+                    int counter = 1;
+                    for (School school : schoolsRepository.findAll()) {
+                        schools += String.format("%d. " + school.getName(), counter) + "\n";
+                        counter++;
+                    }
+                    sendMessage(schools);
+
+                    student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
+                    studentsRepository.save(student);
+
+                }else if(student.getClassId()==null){
+                    sendMessage("Вы не указали свой класс. Пожалуйста, укажите его (например, 7Б, 10А и т.д)");
+                    student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
+                    studentsRepository.save(student);
+                }
+            }
 //            if(student.getRegionId()==null
 //                    && !student.getStatus().equals(StudentStatus.STUDENT_REGION_REGISTRATION.name())){
 //
