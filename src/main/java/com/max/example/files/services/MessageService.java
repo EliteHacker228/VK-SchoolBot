@@ -833,8 +833,10 @@ public class MessageService {
         String schools = "";
         int counter = 1;
         for (School school : schoolsRepository.findAll()) {
-            schools += String.format("%d. " + school.getName(), counter) + "\n";
-            counter++;
+            if(school.isVisible()) {
+                schools += String.format("%d. " + school.getName(), counter) + "\n";
+                counter++;
+            }
         }
         sendMessage(schools);
     }
@@ -854,6 +856,8 @@ public class MessageService {
                 School school = new School();
                 school.setName(vkGroupMessage.getText().trim());
                 school.setRegionId(student.getRegionId());
+                school.setVisible(false);
+
                 if(schoolsRepository.findByName(school.getName()).size()>0){
                     student.setSchoolId(schoolsRepository.findByName(school.getName()).get(0).getId());
                     sendMessage("Школа зарегистрирована! Вы - ученик/учитель " + school.getName());

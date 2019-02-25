@@ -19,6 +19,9 @@ public class School {
     @Column(name = "region_id")
     private Integer regionId;
 
+    @Column(name="visible")
+    private boolean visible;
+
     public School(){}
 
     public Integer getId() {
@@ -43,6 +46,14 @@ public class School {
 
     public void setRegionId(Integer regionId) {
         this.regionId = regionId;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 
     @Override
