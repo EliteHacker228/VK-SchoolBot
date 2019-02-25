@@ -132,6 +132,9 @@ public class MessageService {
 
                     student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
                     studentsRepository.save(student);
+
+                    return;
+
                 }else if(student.getSchoolId()==null){
                     sendMessage("Вы не указали свою школу. Пожалуйста, укажите её номер. \n Если не видите в списке вашу школу - отправьте её официальное название" +
                             "(например, МАОУ СОШ №67 с УИОП), и она зарегистрируется в системе.");
@@ -153,10 +156,14 @@ public class MessageService {
                     student.setStatus(StudentStatus.STUDENT_SCHOOL_REGISTRATION.name());
                     studentsRepository.save(student);
 
+                    return;
+
                 }else if(student.getClassId()==null){
                     sendMessage("Вы не указали свой класс. Пожалуйста, укажите его (например, 7Б, 10А и т.д)");
                     student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
                     studentsRepository.save(student);
+
+                    return;
                 }
             }
 //            if(student.getRegionId()==null
