@@ -139,8 +139,14 @@ public class MessageService {
                     String schools = "";
                     int counter = 1;
                     for (School school : schoolsRepository.findAll()) {
-                        schools += String.format("%d. " + school.getName(), counter) + "\n";
-                        counter++;
+                        System.out.println(school.getName()+" : "+school.isVisible());
+                        if(school.isVisible()) {
+                            System.out.println(school.getName()+" - "+"видима");
+                            schools += String.format("%d. " + school.getName(), counter) + "\n";
+                            counter++;
+                        }else{
+                            System.out.println(school.getName()+" - "+"невидима");
+                        }
                     }
                     sendMessage(schools);
 
