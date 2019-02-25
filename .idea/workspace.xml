@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/School.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/School.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,8 +18,8 @@
       <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="639">
-              <caret line="840" column="29" lean-forward="true" selection-start-line="840" selection-start-column="29" selection-end-line="840" selection-end-column="29" />
+            <state relative-caret-position="379">
+              <caret line="838" column="13" lean-forward="true" selection-start-line="838" selection-start-column="13" selection-end-line="838" selection-end-column="13" />
               <folding>
                 <element signature="e#1935#1984#0" expanded="false" />
                 <element signature="e#3515#3576#0" expanded="false" />
@@ -177,7 +175,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Записать ДЗ</find>
       <find>Объявление</find>
       <find>Send_atte</find>
       <find>STUDENT_CHOSED_SEND_ATTENTION</find>
@@ -207,6 +204,7 @@
       <find>Регион записан!</find>
       <find>creator</find>
       <find>schoolReg</find>
+      <find>isVisi</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Max\Documents\GitHub\Test-Server\src\main\java\com\max\example\files</dir>
@@ -583,13 +581,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00061" summary="experimental admin key system">
-      <created>1550336029109</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1550336029109</updated>
-    </task>
     <task id="LOCAL-00062" summary="experimental reworked key system">
       <created>1550347361917</created>
       <option name="number" value="00062" />
@@ -926,7 +917,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551111789609</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="School visibility system">
+      <created>1551112689926</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1551112689927</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -991,7 +989,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Test version 2" />
     <MESSAGE value="Test version 2+" />
     <MESSAGE value="Key gen v1" />
     <MESSAGE value="added key gen" />
@@ -1016,7 +1013,8 @@
     <MESSAGE value="Schedule node system added, reworked schedule node identification system" />
     <MESSAGE value="Schedule node getting system" />
     <MESSAGE value="Experimental secondary registration system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Experimental secondary registration system" />
+    <MESSAGE value="School visibility system" />
+    <option name="LAST_COMMIT_MESSAGE" value="School visibility system" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1465,8 +1463,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="639">
-          <caret line="840" column="29" lean-forward="true" selection-start-line="840" selection-start-column="29" selection-end-line="840" selection-end-column="29" />
+        <state relative-caret-position="379">
+          <caret line="838" column="13" lean-forward="true" selection-start-line="838" selection-start-column="13" selection-end-line="838" selection-end-column="13" />
           <folding>
             <element signature="e#1935#1984#0" expanded="false" />
             <element signature="e#3515#3576#0" expanded="false" />
