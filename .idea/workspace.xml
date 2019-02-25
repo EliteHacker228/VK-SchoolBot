@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/School.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/School.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -15,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="838" column="13" lean-forward="true" selection-start-line="838" selection-start-column="13" selection-end-line="838" selection-end-column="13" />
+            <state relative-caret-position="457">
+              <caret line="847" column="66" lean-forward="false" selection-start-line="847" selection-start-column="66" selection-end-line="847" selection-end-column="66" />
               <folding>
                 <element signature="e#1935#1984#0" expanded="false" />
                 <element signature="e#3515#3576#0" expanded="false" />
@@ -41,16 +42,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="School.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="School.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/School.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+            <state relative-caret-position="95">
+              <caret line="11" column="52" lean-forward="true" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
               <folding>
-                <element signature="e#944#945#0" expanded="true" />
-                <element signature="e#974#975#0" expanded="true" />
-                <element signature="e#1021#1022#0" expanded="true" />
-                <element signature="e#1059#1060#0" expanded="true" />
+                <element signature="e#948#949#0" expanded="true" />
+                <element signature="e#978#979#0" expanded="true" />
+                <element signature="e#1025#1026#0" expanded="true" />
+                <element signature="e#1063#1064#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -261,8 +262,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/repositories/SchoolScheduleRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/SchoolScheduleNode.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/services/ScheduleCreatorService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/School.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/School.java" />
       </list>
     </option>
   </component>
@@ -580,13 +581,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
-    </task>
-    <task id="LOCAL-00062" summary="experimental reworked key system">
-      <created>1550347361917</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1550347361918</updated>
     </task>
     <task id="LOCAL-00063" summary="experimental reworked key system">
       <created>1550347952790</created>
@@ -924,7 +918,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551112689927</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="School visibility system">
+      <created>1551112940486</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1551112940486</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1448,23 +1449,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/School.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding>
-            <element signature="e#944#945#0" expanded="true" />
-            <element signature="e#974#975#0" expanded="true" />
-            <element signature="e#1021#1022#0" expanded="true" />
-            <element signature="e#1059#1060#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="838" column="13" lean-forward="true" selection-start-line="838" selection-start-column="13" selection-end-line="838" selection-end-column="13" />
+        <state relative-caret-position="457">
+          <caret line="847" column="66" lean-forward="false" selection-start-line="847" selection-start-column="66" selection-end-line="847" selection-end-column="66" />
           <folding>
             <element signature="e#1935#1984#0" expanded="false" />
             <element signature="e#3515#3576#0" expanded="false" />
@@ -1481,6 +1469,19 @@
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/School.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="11" column="52" lean-forward="true" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+          <folding>
+            <element signature="e#948#949#0" expanded="true" />
+            <element signature="e#978#979#0" expanded="true" />
+            <element signature="e#1025#1026#0" expanded="true" />
+            <element signature="e#1063#1064#0" expanded="true" />
           </folding>
         </state>
       </provider>
