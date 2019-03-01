@@ -9,7 +9,8 @@ import javax.persistence.*;
 @Table(name = "classes")
 public class SClass {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name="classes_sequence",sequenceName="classes_id_seq", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="classes_sequence")
     @Column(name = "id")
     private Integer id;
 

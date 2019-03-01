@@ -10,7 +10,8 @@ import javax.persistence.*;
 public class Region {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name="regions_sequence",sequenceName="regions_id_seq", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="regions_sequence")
     @Column(name = "id")
     private Integer id;
 

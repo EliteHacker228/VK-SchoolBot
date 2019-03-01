@@ -7,7 +7,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/PrivateKey.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/PrivateKey.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Region.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Region.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/SClass.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/SClass.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/SchoolScheduleNode.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/SchoolScheduleNode.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/School.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/School.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Student.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Student.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,29 +21,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
+      <file leaf-file-name="Homework.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Homework.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2314">
-              <caret line="226" column="31" lean-forward="false" selection-start-line="226" selection-start-column="31" selection-end-line="226" selection-end-column="31" />
-              <folding>
-                <element signature="e#1935#1984#0" expanded="false" />
-                <element signature="e#3515#3576#0" expanded="false" />
-                <element signature="e#4103#4266#0" expanded="false" />
-                <element signature="e#7400#7444#0" expanded="false" />
-                <element signature="e#12006#12056#0" expanded="false" />
-                <element signature="method#activateKey#0;class#MessageService#0" expanded="false" />
-                <element signature="method#studentGetKey#0;class#MessageService#0" expanded="false" />
-                <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
-                <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
-                <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
-                <element signature="e#30205#30231#0" expanded="false" />
-                <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
-                <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
-                <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
-                <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
-                <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="286">
+              <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -51,23 +34,23 @@
       <file leaf-file-name="School.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/School.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
+            <state relative-caret-position="156">
               <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
               <folding>
-                <element signature="e#948#949#0" expanded="true" />
-                <element signature="e#978#979#0" expanded="true" />
-                <element signature="e#1025#1026#0" expanded="true" />
-                <element signature="e#1063#1064#0" expanded="true" />
+                <element signature="e#1071#1072#0" expanded="true" />
+                <element signature="e#1101#1102#0" expanded="true" />
+                <element signature="e#1148#1149#0" expanded="true" />
+                <element signature="e#1186#1187#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SchoolScheduleNode.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SchoolScheduleNode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/SchoolScheduleNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+            <state relative-caret-position="416">
+              <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
               <folding>
                 <element signature="e#1447#1448#0" expanded="true" />
                 <element signature="e#1479#1480#0" expanded="true" />
@@ -102,7 +85,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/SClass.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="208">
-              <caret line="11" column="55" lean-forward="true" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+              <caret line="11" column="54" lean-forward="false" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -111,18 +94,8 @@
       <file leaf-file-name="Student.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Student.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Homework.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Homework.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="8" column="54" lean-forward="true" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="54" />
+            <state relative-caret-position="0">
+              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -131,41 +104,21 @@
       <file leaf-file-name="PrivateKey.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/PrivateKey.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7">
-              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="234">
+              <caret line="11" column="4" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="12" selection-end-column="86" />
               <folding>
-                <element signature="e#750#751#0" expanded="true" />
-                <element signature="e#777#778#0" expanded="true" />
+                <element signature="e#885#886#0" expanded="true" />
+                <element signature="e#912#913#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Region.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Region.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Region.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/MainController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1196">
-              <caret line="64" column="5" lean-forward="false" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StudentStatus.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/entities/StudentStatus.java">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="312">
-              <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+              <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -263,14 +216,14 @@
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/entities/StudentStatus.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/repositories/SchoolScheduleRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/services/ScheduleCreatorService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/School.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/SchoolScheduleNode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Homework.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/School.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/SClass.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Student.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Homework.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/PrivateKey.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Region.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/SchoolScheduleNode.java" />
       </list>
     </option>
   </component>
@@ -588,13 +541,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
-    </task>
-    <task id="LOCAL-00067" summary="attention sign system">
-      <created>1550401562055</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1550401562055</updated>
     </task>
     <task id="LOCAL-00068" summary="attention sign system">
       <created>1550401897480</created>
@@ -932,7 +878,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551114076849</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="added autogeneration">
+      <created>1551461063614</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1551461063615</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1372,22 +1325,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1196">
-          <caret line="64" column="5" lean-forward="false" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/entities/StudentStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2314">
@@ -1413,66 +1350,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/SClass.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="11" column="55" lean-forward="true" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+        <state relative-caret-position="771">
+          <caret line="64" column="5" lean-forward="false" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Student.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/entities/StudentStatus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        <state relative-caret-position="312">
+          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Homework.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="54" lean-forward="true" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/PrivateKey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#750#751#0" expanded="true" />
-            <element signature="e#777#778#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Region.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+        <state relative-caret-position="286">
+          <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/School.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
+        <state relative-caret-position="156">
           <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
           <folding>
-            <element signature="e#948#949#0" expanded="true" />
-            <element signature="e#978#979#0" expanded="true" />
-            <element signature="e#1025#1026#0" expanded="true" />
-            <element signature="e#1063#1064#0" expanded="true" />
+            <element signature="e#1071#1072#0" expanded="true" />
+            <element signature="e#1101#1102#0" expanded="true" />
+            <element signature="e#1148#1149#0" expanded="true" />
+            <element signature="e#1186#1187#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/SchoolScheduleNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+        <state relative-caret-position="416">
+          <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
           <folding>
             <element signature="e#1447#1448#0" expanded="true" />
             <element signature="e#1479#1480#0" expanded="true" />
@@ -1499,6 +1417,41 @@
             <element signature="e#2250#2251#0" expanded="true" />
             <element signature="e#2334#2335#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/SClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="11" column="54" lean-forward="false" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/PrivateKey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="11" column="4" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="12" selection-end-column="86" />
+          <folding>
+            <element signature="e#885#886#0" expanded="true" />
+            <element signature="e#912#913#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Region.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>

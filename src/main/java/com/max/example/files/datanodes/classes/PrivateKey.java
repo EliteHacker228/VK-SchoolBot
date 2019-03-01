@@ -9,7 +9,8 @@ import javax.persistence.*;
 public class PrivateKey {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name="privatekeys_sequence",sequenceName="privatekeys_id_seq", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="privatekeys_sequence")
     @Column(name="id")
     Integer id;
 
