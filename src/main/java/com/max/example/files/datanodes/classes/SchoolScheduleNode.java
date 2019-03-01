@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class SchoolScheduleNode{
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private String id;
 

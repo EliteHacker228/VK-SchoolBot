@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class PrivateKey {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="id")
     Integer id;
 
