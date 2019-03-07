@@ -52,8 +52,8 @@ public class AttentionService {
                     }
                 }
             } else if (text.substring(text.lastIndexOf("(")).split("[()]")[1].contains("-")) {
-                String[] splittedText = text.split("[()]");
-                String neededText = splittedText[1];
+                String[] splittedText = text.substring(text.lastIndexOf("(")).split("[()]")[1].split("[()]");
+                String neededText = splittedText[1];//классы через -
                 String[] sndt = neededText.split("-");
                 int val1 = Integer.parseInt(sndt[0]);
                 int val2 = Integer.parseInt(sndt[1]);
@@ -65,13 +65,13 @@ public class AttentionService {
                     for (int i = Math.min(val1, val2); i <= Math.max(val1, val2); i++) {
                         if (sClass.getNumber() == i) {
                             for (Student s : studentsRepository.findByClassId(sClass.getId())) {
-                                sendMessage(text.split("[()]")[0].replace("[", "(").replace("]", ")").replace("^", "*"), s.getVkId());
+                                sendMessage(text.substring(0,text.lastIndexOf("(")).replace("[", "(").replace("]", ")").replace("^", "*"), s.getVkId());
                             }
                         }
                     }
                 }
 
-            } else if (text.substring(text.lastIndexOf("(")).split("[()]")[1].contains("!")) {
+            } else if (text.substring(text.lastIndexOf("(")).split("[()]")[1].contains("!")) { //работает
                 //String[] splittedText = text.split("[()]");
                 String neededText = text.substring(text.lastIndexOf("(")).split("[()]")[1]; //
                 String sndt = neededText.split("!")[0];
