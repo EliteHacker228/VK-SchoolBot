@@ -118,8 +118,8 @@ public class AttentionService {
                 //System.out.println(" классам");
 
             } else if (messageOneClassValidator(text)) {
-                String[] splittedText = text.split("[()]");
-                String s = text.substring(text.lastIndexOf("(")).split("[()]")[1];
+                String[] splittedText = text.substring(text.lastIndexOf("(")).split("[()]");
+                String s = splittedText[1];
 
                 int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
                 String letter = s.substring(s.length() - 1, s.length());//Буква
@@ -130,7 +130,7 @@ public class AttentionService {
                     if (sClass.getLetter().equals(letter) && sClass.getNumber() == Integer.parseInt(number)) {
                         ArrayList<Student> students = new ArrayList<>(studentsRepository.findByClassId(sClass.getId()));
                         for (Student student : students) {
-                            sendMessage(text.split("[()]")[0].replace("[", "(").replace("]", ")").replace("^", "*"), student.getVkId());
+                            sendMessage(splittedText[0].replace("[", "(").replace("]", ")").replace("^", "*"), student.getVkId());
                         }
                     }
                 }

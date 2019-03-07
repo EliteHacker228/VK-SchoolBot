@@ -69,8 +69,8 @@
       <file leaf-file-name="AttentionService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AttentionService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="121" column="23" lean-forward="true" selection-start-line="121" selection-start-column="23" selection-end-line="121" selection-end-column="23" />
+            <state relative-caret-position="571">
+              <caret line="135" column="17" lean-forward="true" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -564,13 +564,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00075" summary="school reg system + fields validator v2">
-      <created>1550680343807</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1550680343807</updated>
-    </task>
     <task id="LOCAL-00076" summary="school reg system + fields validator v2">
       <created>1550681175224</created>
       <option name="number" value="00076" />
@@ -907,7 +900,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551981920445</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="reworked attention validator(for target class)">
+      <created>1551982303170</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1551982303170</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -972,7 +972,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="attention sign system" />
     <MESSAGE value="attention sign system 2" />
     <MESSAGE value="attention sign system fixed" />
     <MESSAGE value="school reg systemj" />
@@ -997,7 +996,8 @@
     <MESSAGE value="some service 0 exit added" />
     <MESSAGE value="some service 0 exit added v2" />
     <MESSAGE value="reworked attention validator" />
-    <option name="LAST_COMMIT_MESSAGE" value="reworked attention validator" />
+    <MESSAGE value="reworked attention validator(for target class)" />
+    <option name="LAST_COMMIT_MESSAGE" value="reworked attention validator(for target class)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1472,8 +1472,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AttentionService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="121" column="23" lean-forward="true" selection-start-line="121" selection-start-column="23" selection-end-line="121" selection-end-column="23" />
+        <state relative-caret-position="571">
+          <caret line="135" column="17" lean-forward="true" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="17" />
           <folding />
         </state>
       </provider>
