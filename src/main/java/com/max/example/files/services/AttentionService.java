@@ -53,7 +53,7 @@ public class AttentionService {
                 }
             } else if (text.substring(text.lastIndexOf("(")).split("[()]")[1].contains("-")) {
                 String[] splittedText = text.substring(text.lastIndexOf("(")).split("[()]")[1].split("[()]");
-                String neededText = splittedText[1];//классы через -
+                String neededText = splittedText[0];//классы через -
                 String[] sndt = neededText.split("-");
                 int val1 = Integer.parseInt(sndt[0]);
                 int val2 = Integer.parseInt(sndt[1]);
