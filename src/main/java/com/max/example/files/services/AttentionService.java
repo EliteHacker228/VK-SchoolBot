@@ -43,7 +43,7 @@ public class AttentionService {
                 sendMessage("Отправка отменена", vkRequest.getObject().getFrom_id());
                 return;
             }
-            if (text.split("[()]")[1].contains("*")) {
+            if (text.substring(text.lastIndexOf("(")).split("[()]")[1].contains("*")) {
 
                 int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
                 for (SClass sClass : classesRepository.findBySchoolId(schoolId)) {
@@ -51,7 +51,7 @@ public class AttentionService {
                         sendMessage(text.split("[()]")[0].replace("[", "(").replace("]", ")").replace("^", "*"), s.getVkId());
                     }
                 }
-            } else if (text.split("[()]")[1].contains("-")) {
+            } else if (text.substring(text.lastIndexOf("(")).split("[()]")[1].contains("-")) {
                 String[] splittedText = text.split("[()]");
                 String neededText = splittedText[1];
                 String[] sndt = neededText.split("-");
@@ -71,7 +71,7 @@ public class AttentionService {
                     }
                 }
 
-            } else if (text.split("[()]")[1].contains("!")) {
+            } else if (text.substring(text.lastIndexOf("(")).split("[()]")[1].contains("!")) {
                 String[] splittedText = text.split("[()]");
                 String neededText = splittedText[1];
                 String sndt = neededText.split("!")[0];
@@ -85,7 +85,7 @@ public class AttentionService {
                     }
                 }
 
-            } else if (text.split("[()]")[1].contains(",")) {
+            } else if (text.substring(text.lastIndexOf("(")).split("[()]")[1].contains(",")) {
                 String[] splittedText = text.split("[()]");
                 String neededText = splittedText[1];
                 String[] sndt = neededText.split(",");
@@ -146,7 +146,7 @@ public class AttentionService {
 
     private boolean messageOneClassValidator(String text){
         try {
-            String splittedText = text.split("[()]")[1];
+            String splittedText = text.substring(text.lastIndexOf("(")).split("[()]")[1];
             String substring = splittedText.substring(splittedText.length() - 1);
             try {
                 Integer.parseInt(substring);
