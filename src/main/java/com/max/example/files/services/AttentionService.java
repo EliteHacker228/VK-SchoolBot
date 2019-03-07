@@ -113,7 +113,7 @@ public class AttentionService {
                 for (SClass sClass : sClassArrayList) {
                     ArrayList<Student> students = new ArrayList<>(studentsRepository.findByClassId(sClass.getId()));
                     for (Student student : students) {
-                        sendMessage(text.substring(0, text.lastIndexOf("(")), student.getVkId());
+                        sendMessage(text.substring(0, text.lastIndexOf("(")).replace("[", "(").replace("]", ")").replace("^", "*"), student.getVkId());
                     }
                 }
                 //System.out.println(" классам");
