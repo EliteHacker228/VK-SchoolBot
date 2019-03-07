@@ -691,7 +691,7 @@ public class MessageService {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
 
         if(vkGroupMessage.getText().trim().equals("0")){
-            sendMessage("отправка отменена");
+            sendMessage("Отправка отменена");
             student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
             studentsRepository.save(student);
             return;
@@ -937,8 +937,9 @@ public class MessageService {
                 school.setName(vkGroupMessage.getText().trim());
                 school.setRegionId(student.getRegionId());
                 school.setVisible(false);
+                school.setLowerCaseName();
 
-                if(schoolsRepository.findByName(school.getName()).size()>0){
+                if(schoolsRepository.findByLowerCaseName(school.getName().toLowerCase()).size()>0){
                     student.setSchoolId(schoolsRepository.findByName(school.getName()).get(0).getId());
                     sendMessage("Школа зарегистрирована! Вы - ученик/учитель " + school.getName());
                 }else {

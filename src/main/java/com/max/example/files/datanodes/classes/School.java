@@ -17,6 +17,9 @@ public class School {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "lower_case_name")
+    private String lowerCaseName;
+
     @Column(name = "region_id")
     private Integer regionId;
 
@@ -55,6 +58,14 @@ public class School {
 
     public void setVisible(boolean visible) {
         this.visible = visible;
+    }
+
+    public String getLowerCaseName() {
+        return lowerCaseName;
+    }
+
+    public void setLowerCaseName() {
+        this.lowerCaseName = name.toLowerCase();
     }
 
     @Override

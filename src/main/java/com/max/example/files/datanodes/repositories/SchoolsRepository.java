@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface SchoolsRepository extends CrudRepository<School, Integer>{
     List<School> findByName(String name);
+    List<School> findByLowerCaseName(String lowerCaseName);
 
 }
