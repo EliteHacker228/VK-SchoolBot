@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/AttentionService.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/AttentionService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -69,8 +68,8 @@
       <file leaf-file-name="AttentionService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AttentionService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="84" column="21" lean-forward="true" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
+            <state relative-caret-position="497">
+              <caret line="77" column="52" lean-forward="false" selection-start-line="77" selection-start-column="52" selection-end-line="77" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -564,13 +563,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00082" summary="school reg system + fields validator x">
-      <created>1550683247610</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1550683247610</updated>
-    </task>
     <task id="LOCAL-00083" summary="school reg system + fields validator x">
       <created>1550683831804</created>
       <option name="number" value="00083" />
@@ -907,7 +899,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551984513735</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="reworked attention validator(for class!)">
+      <created>1551985262184</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1551985262184</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -972,7 +971,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="attention sign system fixed" />
     <MESSAGE value="school reg systemj" />
     <MESSAGE value="school reg system" />
     <MESSAGE value="school reg system + fields validator" />
@@ -997,7 +995,8 @@
     <MESSAGE value="reworked attention validator" />
     <MESSAGE value="reworked attention validator(for target class)" />
     <MESSAGE value="reworked attention validator(for class, class)" />
-    <option name="LAST_COMMIT_MESSAGE" value="reworked attention validator(for class, class)" />
+    <MESSAGE value="reworked attention validator(for class!)" />
+    <option name="LAST_COMMIT_MESSAGE" value="reworked attention validator(for class!)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1472,8 +1471,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AttentionService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="84" column="21" lean-forward="true" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
+        <state relative-caret-position="497">
+          <caret line="77" column="52" lean-forward="false" selection-start-line="77" selection-start-column="52" selection-end-line="77" selection-end-column="52" />
           <folding />
         </state>
       </provider>
