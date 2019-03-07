@@ -86,9 +86,9 @@ public class AttentionService {
                 }
 
             } else if (text.substring(text.lastIndexOf("(")).split("[()]")[1].contains(",")) {
-                String[] splittedText = text.split("[()]");
-                String neededText = splittedText[1];
-                String[] sndt = neededText.split(",");
+                String[] splittedText = text.split("[()]");//делим на части (текст)+(классы)
+                String neededText = text.substring(text.lastIndexOf("(")).split("[()]")[1];//классы
+                String[] sndt = neededText.split(",");//массив классов
 
                 int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
                 //System.out.print("Отправим объявление: ");
@@ -112,14 +112,14 @@ public class AttentionService {
                 for (SClass sClass : sClassArrayList) {
                     ArrayList<Student> students = new ArrayList<>(studentsRepository.findByClassId(sClass.getId()));
                     for (Student student : students) {
-                        sendMessage(text.split("[()]")[0].replace("[", "(").replace("]", ")").replace("^", "*"), student.getVkId());
+                        sendMessage(text.substring(0, text.lastIndexOf("(")), student.getVkId());
                     }
                 }
                 //System.out.println(" классам");
 
             } else if (messageOneClassValidator(text)) {
                 String[] splittedText = text.split("[()]");
-                String s = text.substring(text.lastIndexOf("(")).split("[()]")[1];
+                String s = text.substring(text.lastIndexOf("(")).split("[()]")[1]; //класс
 
                 int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
                 String letter = s.substring(s.length() - 1, s.length());//Буква
