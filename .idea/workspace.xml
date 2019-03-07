@@ -39,8 +39,8 @@
                     <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
                     <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
                     <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
-                    <marker date="1551975838110" expanded="false" signature="13613:14345" ph="..." />
-                    <marker date="1551975838110" expanded="false" signature="20057:21460" ph="..." />
+                    <marker date="1551975904404" expanded="false" signature="13613:14345" ph="..." />
+                    <marker date="1551975904404" expanded="false" signature="20057:21460" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -156,8 +156,8 @@
           <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="818" column="19" lean-forward="true" selection-start-line="818" selection-start-column="19" selection-end-line="818" selection-end-column="19" />
+                <state relative-caret-position="339">
+                  <caret line="766" column="45" lean-forward="false" selection-start-line="766" selection-start-column="45" selection-end-line="766" selection-end-column="45" />
                   <folding>
                     <element signature="e#2786#2835#0" expanded="false" />
                     <element signature="e#4366#4427#0" expanded="false" />
@@ -173,8 +173,8 @@
                     <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
                     <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
                     <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
-                    <marker date="1551975838110" expanded="false" signature="13613:14345" ph="..." />
-                    <marker date="1551975838110" expanded="false" signature="20057:21460" ph="..." />
+                    <marker date="1551975904404" expanded="false" signature="13613:14345" ph="..." />
+                    <marker date="1551975904404" expanded="false" signature="20057:21460" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -600,13 +600,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00070" summary="attention sign system 2">
-      <created>1550412967077</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1550412967077</updated>
-    </task>
     <task id="LOCAL-00071" summary="attention sign system fixed">
       <created>1550413399959</created>
       <option name="number" value="00071" />
@@ -943,7 +936,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551974933930</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="some service 0 exit added">
+      <created>1551975856684</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1551975856684</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1008,7 +1008,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="stable version + logger added" />
     <MESSAGE value="experimental admin key system" />
     <MESSAGE value="experimental reworked key system" />
     <MESSAGE value="attention sign system" />
@@ -1033,7 +1032,8 @@
     <MESSAGE value="added autogeneration" />
     <MESSAGE value="added autogeneration v2" />
     <MESSAGE value="some refractoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="some refractoring" />
+    <MESSAGE value="some service 0 exit added" />
+    <option name="LAST_COMMIT_MESSAGE" value="some service 0 exit added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1107,13 +1107,12 @@
             <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
             <element signature="e#31850#31876#0" expanded="false" />
-            <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
-            <marker date="1551975838110" expanded="false" signature="13613:14345" ph="..." />
-            <marker date="1551975838110" expanded="false" signature="20057:21460" ph="..." />
+            <marker date="1551975904404" expanded="false" signature="13613:14345" ph="..." />
+            <marker date="1551975904404" expanded="false" signature="20057:21460" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1183,13 +1182,12 @@
             <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
             <element signature="e#31850#31876#0" expanded="false" />
-            <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
-            <marker date="1551975838110" expanded="false" signature="13613:14345" ph="..." />
-            <marker date="1551975838110" expanded="false" signature="20057:21460" ph="..." />
+            <marker date="1551975904404" expanded="false" signature="13613:14345" ph="..." />
+            <marker date="1551975904404" expanded="false" signature="20057:21460" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1480,8 +1478,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="505" column="53" lean-forward="true" selection-start-line="505" selection-start-column="53" selection-end-line="505" selection-end-column="53" />
+        <state relative-caret-position="339">
+          <caret line="766" column="45" lean-forward="false" selection-start-line="766" selection-start-column="45" selection-end-line="766" selection-end-column="45" />
           <folding>
             <element signature="e#2786#2835#0" expanded="false" />
             <element signature="e#4366#4427#0" expanded="false" />
@@ -1493,13 +1491,12 @@
             <element signature="method#studentSendAttention#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentShowAllHomework#0;class#MessageService#0" expanded="false" />
             <element signature="e#31850#31876#0" expanded="false" />
-            <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
-            <marker date="1551975838110" expanded="false" signature="13613:14345" ph="..." />
-            <marker date="1551975838110" expanded="false" signature="20057:21460" ph="..." />
+            <marker date="1551975904404" expanded="false" signature="13613:14345" ph="..." />
+            <marker date="1551975904404" expanded="false" signature="20057:21460" ph="..." />
           </folding>
         </state>
       </provider>

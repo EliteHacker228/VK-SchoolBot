@@ -763,6 +763,8 @@ public class MessageService {
 //        sendMessage("Задание записано!");
         if(text.trim().equals("0")){
             sendMessage("Запись отменена!");
+            student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+            studentsRepository.save(student);
             return;
         }
         Pattern pattern = Pattern.compile("[(]\\d\\d[.]\\d\\d[)]");
@@ -816,6 +818,8 @@ public class MessageService {
         String result = "";
         if(vkGroupMessage.getText().trim().equals("0")){
             sendMessage("Отмена.");
+            student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+            studentsRepository.save(student);
             return;
         }
         MarkCalculator mk = new MarkCalculator(vkGroupMessage.getText());
