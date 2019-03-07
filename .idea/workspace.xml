@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="some service 0 exit added v2">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java" />
+    <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/AttentionService.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/AttentionService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/max/example/files/datanodes/repositories/SchoolsRepository.class" afterPath="$PROJECT_DIR$/target/classes/com/max/example/files/datanodes/repositories/SchoolsRepository.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/max/example/files/services/MessageService$1.class" afterPath="$PROJECT_DIR$/target/classes/com/max/example/files/services/MessageService$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/max/example/files/services/MessageService.class" afterPath="$PROJECT_DIR$/target/classes/com/max/example/files/services/MessageService.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -74,8 +69,8 @@
       <file leaf-file-name="AttentionService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AttentionService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="151" column="44" lean-forward="true" selection-start-line="151" selection-start-column="44" selection-end-line="151" selection-end-column="44" />
+            <state relative-caret-position="363">
+              <caret line="121" column="23" lean-forward="true" selection-start-line="121" selection-start-column="23" selection-end-line="121" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -569,13 +564,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00074" summary="school reg system + fields validator">
-      <created>1550680022583</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1550680022583</updated>
-    </task>
     <task id="LOCAL-00075" summary="school reg system + fields validator v2">
       <created>1550680343807</created>
       <option name="number" value="00075" />
@@ -912,7 +900,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551977618071</updated>
     </task>
-    <option name="localTasksCounter" value="123" />
+    <task id="LOCAL-00123" summary="reworked attention validator">
+      <created>1551981920445</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1551981920445</updated>
+    </task>
+    <option name="localTasksCounter" value="124" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -977,7 +972,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="experimental reworked key system" />
     <MESSAGE value="attention sign system" />
     <MESSAGE value="attention sign system 2" />
     <MESSAGE value="attention sign system fixed" />
@@ -1002,7 +996,8 @@
     <MESSAGE value="some refractoring" />
     <MESSAGE value="some service 0 exit added" />
     <MESSAGE value="some service 0 exit added v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="some service 0 exit added v2" />
+    <MESSAGE value="reworked attention validator" />
+    <option name="LAST_COMMIT_MESSAGE" value="reworked attention validator" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1477,8 +1472,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AttentionService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="151" column="44" lean-forward="true" selection-start-line="151" selection-start-column="44" selection-end-line="151" selection-end-column="44" />
+        <state relative-caret-position="363">
+          <caret line="121" column="23" lean-forward="true" selection-start-line="121" selection-start-column="23" selection-end-line="121" selection-end-column="23" />
           <folding />
         </state>
       </provider>

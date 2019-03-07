@@ -119,7 +119,7 @@ public class AttentionService {
 
             } else if (messageOneClassValidator(text)) {
                 String[] splittedText = text.split("[()]");
-                String s = splittedText[1];
+                String s = text.substring(text.lastIndexOf("(")).split("[()]")[1];
 
                 int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
                 String letter = s.substring(s.length() - 1, s.length());//Буква
