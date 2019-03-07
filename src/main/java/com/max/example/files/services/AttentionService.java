@@ -86,7 +86,7 @@ public class AttentionService {
                 }
 
             } else if (text.substring(text.lastIndexOf("(")).split("[()]")[1].contains(",")) {
-                String[] splittedText = text.split("[()]");//делим на части (текст)+(классы)
+                //String[] splittedText = text.split("[()]");//делим на части (текст)+(классы)
                 String neededText = text.substring(text.lastIndexOf("(")).split("[()]")[1];//классы
                 String[] sndt = neededText.split(",");//массив классов
 
@@ -117,7 +117,7 @@ public class AttentionService {
                 }
                 //System.out.println(" классам");
 
-            } else if (messageOneClassValidator(text)) {
+            } else if (messageOneClassValidator(text)) { //Работает
                 String[] splittedText = text.split("[()]");
                 String s = text.substring(text.lastIndexOf("(")).split("[()]")[1]; //класс
 
