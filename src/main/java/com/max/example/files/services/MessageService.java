@@ -357,7 +357,9 @@ public class MessageService {
                         "Пример:\n" +
                         "Литература(05.02)\n" +
                         "Алгебра(06.02)\n" +
-                        "2. Бот напомнит о задании за сутки до указанного вами срока");
+                        "2. Бот напомнит о задании за сутки до указанного вами срока\n" +
+                        "\n" +
+                        "Для отмены записи отправьте 0.");
                 student.setStatus(StudentStatus.STUDENT_CHOSED_ADD_HOMEWORK.name());
                 studentsRepository.save(student);
                 break;
@@ -374,7 +376,9 @@ public class MessageService {
                         "Инструкция: \n" +
                         "1. Введите ваши оценки в одну строку без пробелов и других символов(например: 554354445)\n" +
                         "2. Получите результат.\n" +
-                        "Примечание: калькулятор действует только для пятибалльной шкалы оценивания");
+                        "Примечание: калькулятор действует только для пятибалльной шкалы оценивания" +
+                        "\n" +
+                        "Для отмены записи отправьте 0.");
                 break;
 
             case SHOW_SCHEDULE: //4
@@ -757,6 +761,10 @@ public class MessageService {
 //        studentsRepository.save(student);
 //
 //        sendMessage("Задание записано!");
+        if(text.trim().equals("0")){
+            sendMessage("Запись отменена!");
+            return;
+        }
         Pattern pattern = Pattern.compile("[(]\\d\\d[.]\\d\\d[)]");
         Matcher m = pattern.matcher(text);
 
@@ -806,6 +814,10 @@ public class MessageService {
     private void studentServiceClac() {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         String result = "";
+        if(vkGroupMessage.getText().trim().equals("0")){
+            sendMessage("Отмена.");
+            return;
+        }
         MarkCalculator mk = new MarkCalculator(vkGroupMessage.getText());
         ArrayList<String> marklist = mk.workMethod();
         for (String mstr : marklist) {
