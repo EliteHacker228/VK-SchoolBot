@@ -72,20 +72,20 @@ public class AttentionService {
                 }
 
             } else if (text.substring(text.lastIndexOf("(")).split("[()]")[1].contains("!")) {
-                String[] splittedText = text.split("[()]");
-                String neededText = splittedText[1];
+                //String[] splittedText = text.split("[()]");
+                String neededText = text.substring(text.lastIndexOf("(")).split("[()]")[1]; //
                 String sndt = neededText.split("!")[0];
                 Integer number = Integer.parseInt(sndt);
                 int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
                 for (SClass sClass : classesRepository.findBySchoolId(schoolId)) {
                     for (Student s : studentsRepository.findByClassId(sClass.getId())) {
                         if (classesRepository.findByid(s.getClassId()).get(0).getNumber() == number) {
-                            sendMessage(text.split("[()]")[0].replace("[", "(").replace("]", ")").replace("^", "*"), s.getVkId());
+                            sendMessage(text.substring(0,text.lastIndexOf("(")).replace("[", "(").replace("]", ")").replace("^", "*"), s.getVkId());
                         }
                     }
                 }
 
-            } else if (text.substring(text.lastIndexOf("(")).split("[()]")[1].contains(",")) {
+            } else if (text.substring(text.lastIndexOf("(")).split("[()]")[1].contains(",")) { //работает
                 //String[] splittedText = text.split("[()]");//делим на части (текст)+(классы)
                 String neededText = text.substring(text.lastIndexOf("(")).split("[()]")[1];//классы
                 String[] sndt = neededText.split(",");//массив классов(работает)
