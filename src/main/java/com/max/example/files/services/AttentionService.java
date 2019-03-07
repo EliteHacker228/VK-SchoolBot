@@ -48,10 +48,10 @@ public class AttentionService {
                 int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
                 for (SClass sClass : classesRepository.findBySchoolId(schoolId)) {
                     for (Student s : studentsRepository.findByClassId(sClass.getId())) {
-                        sendMessage(text.split("[()]")[0].replace("[", "(").replace("]", ")").replace("^", "*"), s.getVkId());
+                        sendMessage(text.substring(0,text.lastIndexOf("(")).replace("[", "(").replace("]", ")").replace("^", "*"), s.getVkId());
                     }
                 }
-            } else if (text.substring(text.lastIndexOf("(")).split("[()]")[1].contains("-")) {
+            } else if (text.substring(text.lastIndexOf("(")).split("[()]")[1].contains("-")) {//работает
                 String[] splittedText = text.substring(text.lastIndexOf("(")).split("[()]")[1].split("[()]");
                 String neededText = splittedText[0];//классы через -
                 String[] sndt = neededText.split("-");
