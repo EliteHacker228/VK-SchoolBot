@@ -176,6 +176,30 @@ public class AddHomeworkSystem {
                 System.out.println();
                 System.out.println("Задание должно быть выполнено к " + inBrackets.split(";")[1]);
 
+                String className = inBrackets.split(";")[0];
+                int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
+
+                int classNumber = Integer.parseInt(className.substring(0,className.length()));
+                String classLetter = className.substring(className.length());
+                for(SClass sClass: classesRepository.findBySchoolId(schoolId)){
+                    if(sClass.getNumber()==classNumber && sClass.getLetter().toLowerCase().equals(classLetter.toLowerCase())){
+                        for (Student s : studentsRepository.findByClassId(sClass.getId())) {
+                            Homework homework = new Homework();
+                            homework.setOwnerId(s.getVkId());
+                            homework.setTaskText(outOfBrackets);
+
+                            SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+                            String date = inBrackets.split(";")[1] + "." + new GregorianCalendar().get(Calendar.YEAR);
+                            Date dDate = df.parse(date);
+
+                            homework.setDate(dDate.getTime());//
+                            homework.setRemindDate(dDate.getTime()  - 86400000L);//date-сутки
+                            homeworkRepository.save(homework);
+                            sendMessage("Вам поступило новое домашнее задание: \n" + outOfBrackets, s.getVkId());
+                        }
+                        break;
+                    }
+                }
 
             } else {
                 sendMessage("Неверный формат команды", vkRequest.getObject().getFrom_id());
