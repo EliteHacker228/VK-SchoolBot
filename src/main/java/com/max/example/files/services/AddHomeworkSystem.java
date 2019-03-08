@@ -137,6 +137,35 @@ public class AddHomeworkSystem {
                 System.out.println();
                 System.out.println("Задание должно быть выполнено к " + inBrackets.split(";")[1]);
 
+                String[] classes = inBrackets.split(";")[0].split(",");
+                //int val1 = Integer.parseInt(inBrackets.split(";")[0].split("-")[0]);
+                //int val2 = Integer.parseInt(inBrackets.split(";")[0].split("-")[1]);
+
+                int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
+                for (SClass sClass : classesRepository.findBySchoolId(schoolId)) {
+
+                    for (String classLiteral: classes) {
+                        if (Integer.parseInt(classLiteral.substring(0,classes.length-1))==sClass.getNumber() &&
+                                classLiteral.substring(classes.length-1).equals(sClass.getLetter())) {
+
+                            for (Student s : studentsRepository.findByClassId(sClass.getId())) {
+                                Homework homework = new Homework();
+                                homework.setOwnerId(s.getVkId());
+                                homework.setTaskText(outOfBrackets);
+
+                                SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+                                String date = inBrackets.split(";")[1] + "." + new GregorianCalendar().get(Calendar.YEAR);
+                                Date dDate = df.parse(date);
+
+                                homework.setDate(dDate.getTime());//
+                                homework.setRemindDate(dDate.getTime()  - 86400000L);//date-сутки
+                                homeworkRepository.save(homework);
+                                sendMessage("Вам поступило новое домашнее задание: \n" + outOfBrackets, s.getVkId());
+                            }
+                        }
+                    }
+                }
+
 
             } else if (messageOneClassValidator(text)) { //для одного класса
                 //System.out.println(text);
