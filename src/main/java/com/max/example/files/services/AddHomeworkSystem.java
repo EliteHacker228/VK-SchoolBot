@@ -179,8 +179,9 @@ public class AddHomeworkSystem {
                 String className = inBrackets.split(";")[0];
                 int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
 
-                int classNumber = Integer.parseInt(className.substring(0,className.length()));
-                String classLetter = className.substring(className.length());
+                int classNumber = Integer.parseInt(className.substring(0, inBrackets.split(";")[0].length() - 1));
+                String classLetter = className.substring(className.length()-1);
+
                 for(SClass sClass: classesRepository.findBySchoolId(schoolId)){
                     if(sClass.getNumber()==classNumber && sClass.getLetter().toLowerCase().equals(classLetter.toLowerCase())){
                         for (Student s : studentsRepository.findByClassId(sClass.getId())) {
