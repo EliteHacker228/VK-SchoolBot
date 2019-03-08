@@ -89,7 +89,7 @@ public class AddHomeworkSystem {
                                 homework.setDate(dDate.getTime());//
                                 homework.setRemindDate(dDate.getTime()  - 86400000L);//date-сутки
                                 homeworkRepository.save(homework);
-                                sendMessage("Вам поступило новое домашнее задание: \n" + outOfBrackets, s.getVkId());
+                                sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n" + outOfBrackets, s.getVkId());
                             }
                         }
                     }
@@ -121,7 +121,7 @@ public class AddHomeworkSystem {
                                 homework.setDate(dDate.getTime());//
                                 homework.setRemindDate(dDate.getTime()  - 86400000L);//date-сутки
                                 homeworkRepository.save(homework);
-                                sendMessage("Вам поступило новое домашнее задание: \n" + outOfBrackets, s.getVkId());
+                                sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n" + outOfBrackets, s.getVkId());
                             }
                         }
 
@@ -162,7 +162,7 @@ public class AddHomeworkSystem {
                                 homework.setDate(dDate.getTime());//
                                 homework.setRemindDate(dDate.getTime()  - 86400000L);//date-сутки
                                 homeworkRepository.save(homework);
-                                sendMessage("Вам поступило новое домашнее задание: \n" + outOfBrackets, s.getVkId());
+                                sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n" + outOfBrackets, s.getVkId());
                             }
                         }
                     }
@@ -197,7 +197,7 @@ public class AddHomeworkSystem {
                             homework.setDate(dDate.getTime());//
                             homework.setRemindDate(dDate.getTime()  - 86400000L);//date-сутки
                             homeworkRepository.save(homework);
-                            sendMessage("Вам поступило новое домашнее задание: \n" + outOfBrackets, s.getVkId());
+                            sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n" + outOfBrackets, s.getVkId());
                         }
                         break;
                     }
