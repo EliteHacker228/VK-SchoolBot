@@ -53,7 +53,7 @@ public class AddHomeworkSystem {
                 return;
             }
 
-            String inBrackets = text.substring(text.lastIndexOf("(")).split("[()]")[1];//содержимое скобок
+            String inBrackets = text.substring(text.lastIndexOf("(")).split("[()]")[1].replace(" ", "");//содержимое скобок
             String outOfBrackets = text.substring(0, text.lastIndexOf("(")); //текст за скобками
             //System.out.println("MS:"+inBrackets);
 
@@ -145,8 +145,9 @@ public class AddHomeworkSystem {
                 for (SClass sClass : classesRepository.findBySchoolId(schoolId)) {
 
                     for (String classLiteral: classes) {
+                        classLiteral=classLiteral.replace("-", "");
                         if (Integer.parseInt(classLiteral.substring(0,classes.length-1))==sClass.getNumber() &&
-                                classLiteral.substring(classes.length-1).equals(sClass.getLetter())) {
+                                classLiteral.substring(classes.length-1).toLowerCase().equals(sClass.getLetter().toLowerCase())) {
 
                             for (Student s : studentsRepository.findByClassId(sClass.getId())) {
                                 Homework homework = new Homework();
