@@ -49,12 +49,16 @@ public class AddHomeworkSystem {
 
         try {
             if (text.equals("0")) {
+                sendMessage("Отправка отменена", vkRequest.getObject().getFrom_id());
                 return;
             }
 
             String inBrackets = text.substring(text.lastIndexOf("(")).split("[()]")[1];//содержимое скобок
             String outOfBrackets = text.substring(0, text.lastIndexOf("(")); //текст за скобками
             //System.out.println("MS:"+inBrackets);
+
+            System.out.println("IN BRACKETS: "+inBrackets);
+            System.out.println("OUT OF BRACKETS: "+outOfBrackets);
 
             if (inBrackets.contains("-")) {
                 //System.out.println(text);
@@ -117,12 +121,12 @@ public class AddHomeworkSystem {
                 System.out.println();
                 System.out.println("Задание должно быть выполнено к " + inBrackets.split(";")[1]);
             } else {
-                sendMessage("неверный формат команды", vkRequest.getObject().getFrom_id());
+                sendMessage("Неверный формат команды", vkRequest.getObject().getFrom_id());
                 return;
                 //sendMessage("Отправлено", vkRequest.getObject().getFrom_id());
             }
         } catch (Exception e) {
-            sendMessage("неверный формат команды", vkRequest.getObject().getFrom_id());
+            sendMessage("Неверный формат команды", vkRequest.getObject().getFrom_id());
             return;
         }
 
