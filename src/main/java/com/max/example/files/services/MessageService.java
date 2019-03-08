@@ -715,7 +715,7 @@ public class MessageService {
 //        String attention = "\uD83D\uDCAC Вам потсупило новое домашнее задание от ^id"+student.getVkId()+"["+userXtrCounters.getFirstName()+" "+userXtrCounters.getLastName()+"] "+":\n"+vkGroupMessage.getText();
 //        AttentionService as = new AttentionService(attention, vkRequest, studentsRepository, classesRepository);
 //        as.workMethod();
-        AddHomeworkSystem as = new AddHomeworkSystem("", vkRequest, studentsRepository, classesRepository, homeworkRepository);
+        AddHomeworkSystem as = new AddHomeworkSystem(vkGroupMessage.getText(), vkRequest, studentsRepository, classesRepository, homeworkRepository);
         as.workMethod();
         student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
         studentsRepository.save(student);
