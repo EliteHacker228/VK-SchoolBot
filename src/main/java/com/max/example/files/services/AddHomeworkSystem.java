@@ -137,7 +137,7 @@ public class AddHomeworkSystem {
                 System.out.println();
                 System.out.println("Задание должно быть выполнено к " + inBrackets.split(";")[1]);
 
-                String[] classes = inBrackets.split(";")[0].split(",");
+                String[] classes = inBrackets.split(";")[0].split(","); //список классов через запятую
                 //int val1 = Integer.parseInt(inBrackets.split(";")[0].split("-")[0]);
                 //int val2 = Integer.parseInt(inBrackets.split(";")[0].split("-")[1]);
 
@@ -145,9 +145,10 @@ public class AddHomeworkSystem {
                 for (SClass sClass : classesRepository.findBySchoolId(schoolId)) {
 
                     for (String classLiteral: classes) {
-                        classLiteral=classLiteral.replace("-", "");
-                        if (Integer.parseInt(classLiteral.substring(0,classes.length))==sClass.getNumber() &&
-                                classLiteral.substring(classes.length).toLowerCase().equals(sClass.getLetter().toLowerCase())) {
+                        classLiteral=classLiteral.replace("-", "").trim();
+
+                        if (Integer.parseInt(classLiteral.substring(0,classLiteral.length()-1))==sClass.getNumber() &&
+                                classLiteral.substring(classLiteral.length()-1).toLowerCase().equals(sClass.getLetter().toLowerCase())) {
 
                             for (Student s : studentsRepository.findByClassId(sClass.getId())) {
                                 Homework homework = new Homework();
