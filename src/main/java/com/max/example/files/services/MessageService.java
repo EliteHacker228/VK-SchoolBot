@@ -762,7 +762,12 @@ public class MessageService {
             count++;
 
         }
-        sendMessage(message);
+        if(message.isEmpty()) {
+            sendMessage("нет записанных ДЗ");
+        }else{
+            sendMessage(message);
+
+        }
 //        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
 //        studentsRepository.save(student);
 

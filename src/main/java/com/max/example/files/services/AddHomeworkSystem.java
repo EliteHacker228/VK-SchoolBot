@@ -117,12 +117,16 @@ public class AddHomeworkSystem {
                 System.out.println();
                 System.out.println("Задание должно быть выполнено к " + inBrackets.split(";")[1]);
             } else {
-                System.out.println("Неверный формат команды");
+                sendMessage("неверный формат команды", vkRequest.getObject().getFrom_id());
+                return;
                 //sendMessage("Отправлено", vkRequest.getObject().getFrom_id());
             }
         } catch (Exception e) {
-            System.out.println("Неверный формат команды");
+            sendMessage("неверный формат команды", vkRequest.getObject().getFrom_id());
+            return;
         }
+
+        sendMessage("Отправлено", vkRequest.getObject().getFrom_id());
     }
 
     private boolean messageOneClassValidator(String text) {
