@@ -146,8 +146,8 @@ public class AddHomeworkSystem {
 
                     for (String classLiteral: classes) {
                         classLiteral=classLiteral.replace("-", "");
-                        if (Integer.parseInt(classLiteral.substring(0,classes.length-1))==sClass.getNumber() &&
-                                classLiteral.substring(classes.length-1).toLowerCase().equals(sClass.getLetter().toLowerCase())) {
+                        if (Integer.parseInt(classLiteral.substring(0,classes.length))==sClass.getNumber() &&
+                                classLiteral.substring(classes.length).toLowerCase().equals(sClass.getLetter().toLowerCase())) {
 
                             for (Student s : studentsRepository.findByClassId(sClass.getId())) {
                                 Homework homework = new Homework();

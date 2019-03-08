@@ -65,8 +65,8 @@
       <file leaf-file-name="AddHomeworkSystem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="147" column="67" lean-forward="false" selection-start-line="147" selection-start-column="67" selection-end-line="147" selection-end-column="67" />
+            <state relative-caret-position="343">
+              <caret line="149" column="128" lean-forward="true" selection-start-line="149" selection-start-column="128" selection-end-line="149" selection-end-column="128" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -562,13 +562,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00094" summary="Schedule node system added, little fix">
-      <created>1550956645933</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1550956645933</updated>
-    </task>
     <task id="LOCAL-00095" summary="Schedule node system added, little fix">
       <created>1550956773838</created>
       <option name="number" value="00095" />
@@ -905,7 +898,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552040503441</updated>
     </task>
-    <option name="localTasksCounter" value="143" />
+    <task id="LOCAL-00143" summary="homework attention system (,)">
+      <created>1552041291195</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1552041291195</updated>
+    </task>
+    <option name="localTasksCounter" value="144" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1435,8 +1435,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="147" column="67" lean-forward="false" selection-start-line="147" selection-start-column="67" selection-end-line="147" selection-end-column="67" />
+        <state relative-caret-position="343">
+          <caret line="149" column="128" lean-forward="true" selection-start-line="149" selection-start-column="128" selection-end-line="149" selection-end-column="128" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
