@@ -216,8 +216,8 @@ public class AddHomeworkSystem {
 
     private boolean messageOneClassValidator(String text) {
         try {
-            String splittedText = text.substring(text.lastIndexOf("(")).split("[()]")[1];
-            String substring = splittedText.substring(splittedText.length() - 1);
+            String splittedText = text.substring(text.lastIndexOf("(")).split("[()]")[1]; //содержимое скобок
+            String substring = splittedText.split(";")[0].substring(0, splittedText.length());
             try {
                 Integer.parseInt(substring);
             } catch (NumberFormatException e) {

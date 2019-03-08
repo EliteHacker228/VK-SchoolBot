@@ -65,8 +65,8 @@
       <file leaf-file-name="AddHomeworkSystem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="194" column="55" lean-forward="true" selection-start-line="194" selection-start-column="55" selection-end-line="194" selection-end-column="55" />
+            <state relative-caret-position="523">
+              <caret line="221" column="44" lean-forward="true" selection-start-line="221" selection-start-column="44" selection-end-line="221" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -562,13 +562,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00096" summary="Schedule node system added, little fix">
-      <created>1550956986401</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1550956986401</updated>
-    </task>
     <task id="LOCAL-00097" summary="Schedule node system added, choosing system fixed">
       <created>1550957763587</created>
       <option name="number" value="00097" />
@@ -905,7 +898,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552041926656</updated>
     </task>
-    <option name="localTasksCounter" value="145" />
+    <task id="LOCAL-00145" summary="homework attention system ( )">
+      <created>1552044013467</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1552044013467</updated>
+    </task>
+    <option name="localTasksCounter" value="146" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -970,7 +970,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="school reg system + fields validator advanced" />
     <MESSAGE value="Schedule node system added" />
     <MESSAGE value="Schedule node system added, little fix(class Id)" />
     <MESSAGE value="Schedule node system added, little fix" />
@@ -995,7 +994,8 @@
     <MESSAGE value="homework attention system" />
     <MESSAGE value="homework attention system (!)" />
     <MESSAGE value="homework attention system (,)" />
-    <option name="LAST_COMMIT_MESSAGE" value="homework attention system (,)" />
+    <MESSAGE value="homework attention system ( )" />
+    <option name="LAST_COMMIT_MESSAGE" value="homework attention system ( )" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1436,8 +1436,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="194" column="55" lean-forward="true" selection-start-line="194" selection-start-column="55" selection-end-line="194" selection-end-column="55" />
+        <state relative-caret-position="523">
+          <caret line="221" column="44" lean-forward="true" selection-start-line="221" selection-start-column="44" selection-end-line="221" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
