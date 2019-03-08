@@ -428,6 +428,8 @@ public class MessageService {
                 sendMessage("Для отправки ДЗ используйте следующие команды: \n" +
                         "1. Предмет: задание(9-10; 12.05) - отправит задание, которое нужно сделать к 12.05 всем классам с 9 до 10 параллели. ");
                 //sendHomework();
+                student.setStatus(StudentStatus.STUDENT_CHOSED_SEND_HOMEWORK_ATTENTION.name());
+                studentsRepository.save(student);
                 break;
 
             case ADD_OR_EDIT_SCHEDULE: //8
@@ -762,12 +764,10 @@ public class MessageService {
             count++;
 
         }
-        if(message.isEmpty()) {
-            sendMessage("нет записанных ДЗ");
-        }else{
-            sendMessage(message);
 
-        }
+        sendMessage(message);
+
+
 //        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
 //        studentsRepository.save(student);
 
