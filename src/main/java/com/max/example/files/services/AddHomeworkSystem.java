@@ -89,7 +89,7 @@ public class AddHomeworkSystem {
                                 homework.setDate(dDate.getTime());//
                                 homework.setRemindDate(dDate.getTime()  - 86400000L);//date-сутки
                                 homeworkRepository.save(homework);
-                                sendMessage("Вам поступило новое домашнее задание: " + outOfBrackets, s.getVkId());
+                                sendMessage("Вам поступило новое домашнее задание: \n" + outOfBrackets, s.getVkId());
                             }
                         }
                     }
@@ -104,6 +104,29 @@ public class AddHomeworkSystem {
                 System.out.println();
                 System.out.println("Задание должно быть выполнено к " + inBrackets.split(";")[1]);
 
+                int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
+                int classNumber = Integer.parseInt(inBrackets.split("!")[0]);
+
+                for (SClass sClass : classesRepository.findBySchoolId(schoolId)) {
+                        if (sClass.getNumber() ==  classNumber) {
+                            for (Student s : studentsRepository.findByClassId(sClass.getId())) {
+                                Homework homework = new Homework();
+                                homework.setOwnerId(s.getVkId());
+                                homework.setTaskText(outOfBrackets);
+
+                                SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+                                String date = inBrackets.split(";")[1] + "." + new GregorianCalendar().get(Calendar.YEAR);
+                                Date dDate = df.parse(date);
+
+                                homework.setDate(dDate.getTime());//
+                                homework.setRemindDate(dDate.getTime()  - 86400000L);//date-сутки
+                                homeworkRepository.save(homework);
+                                sendMessage("Вам поступило новое домашнее задание: \n" + outOfBrackets, s.getVkId());
+                            }
+                        }
+
+                }
+
             } else if (inBrackets.split(";")[0].contains(",")) { //работает
                 //System.out.println(text);
                 System.out.println("Задание: " + outOfBrackets);
@@ -113,6 +136,8 @@ public class AddHomeworkSystem {
                 }
                 System.out.println();
                 System.out.println("Задание должно быть выполнено к " + inBrackets.split(";")[1]);
+
+
             } else if (messageOneClassValidator(text)) { //для одного класса
                 //System.out.println(text);
                 System.out.println("Задание: " + outOfBrackets);
@@ -120,6 +145,8 @@ public class AddHomeworkSystem {
                 System.out.println(inBrackets.split(";")[0]);
                 System.out.println();
                 System.out.println("Задание должно быть выполнено к " + inBrackets.split(";")[1]);
+
+
             } else {
                 sendMessage("Неверный формат команды", vkRequest.getObject().getFrom_id());
                 return;
