@@ -287,6 +287,14 @@ public class MessageService {
                     queryBrancher();
                     break;
 
+                case STUDENT_CHOSED_SEND_HOMEWORK_ATTENTION:
+                    sendHomework();
+
+                    student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
+                    studentsRepository.save(student);
+                    queryBrancher();
+                    break;
+
                 case STUDENT_CHOSED_SEND_ATTENTION:
                     studentSendAttention();
 
@@ -416,7 +424,10 @@ public class MessageService {
                 break;
 
             case SEND_HOMEWORK_ATTENTION:
-                sendMessage("Потом будет готов");
+                //sendMessage("Потом будет готов");
+                sendMessage("Для отправки ДЗ используйте следующие команды: \n" +
+                        "1. Предмет: задание(9-10; 12.05) - отправит задание, которое нужно сделать к 12.05 всем классам с 9 до 10 параллели. ");
+                //sendHomework();
                 break;
 
             case ADD_OR_EDIT_SCHEDULE: //8
@@ -699,9 +710,11 @@ public class MessageService {
         }
 
         UserXtrCounters userXtrCounters = ugqMap.get(0);
-        String attention = "\uD83D\uDCAC Вам потсупило новое домашнее задание от ^id"+student.getVkId()+"["+userXtrCounters.getFirstName()+" "+userXtrCounters.getLastName()+"] "+":\n"+vkGroupMessage.getText();
+//        String attention = "\uD83D\uDCAC Вам потсупило новое домашнее задание от ^id"+student.getVkId()+"["+userXtrCounters.getFirstName()+" "+userXtrCounters.getLastName()+"] "+":\n"+vkGroupMessage.getText();
 //        AttentionService as = new AttentionService(attention, vkRequest, studentsRepository, classesRepository);
 //        as.workMethod();
+        AddHomeworkSystem as = new AddHomeworkSystem("", vkRequest, studentsRepository, classesRepository, homeworkRepository);
+        as.workMethod();
         student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
         studentsRepository.save(student);
     }
