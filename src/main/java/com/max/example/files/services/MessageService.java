@@ -671,7 +671,9 @@ public class MessageService {
                         if (scheduleNode.getDay().equals(sn.getDay())) {
                             scheduleNode.setChanges(sn.getLessons());
                             schoolScheduleRepository.save(scheduleNode);
-                            sClassHashSet.add(sClass);
+                            if(!sClassHashSet.contains(sClass)){
+                                sClassHashSet.add(sClass);
+                            }
 
                         }
                     }
@@ -685,9 +687,7 @@ public class MessageService {
             for (Student s : studentsRepository.findByClassId(sClass.getId())) {
                 try {
                     vk.messages().send(actor).userId(s.getVkId()).message("☀ Вам поступили новые изменения в расписании! Просмотрите расписание, чтобы увидеть их").execute();
-                } catch (ApiException e) {
-                    e.printStackTrace();
-                } catch (ClientException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
