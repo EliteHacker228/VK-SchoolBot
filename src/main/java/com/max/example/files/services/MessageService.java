@@ -674,19 +674,20 @@ public class MessageService {
                         }
                     }
 
-                }
-
-                if (setted) {
-                    for (Student s : studentsRepository.findByClassId(sClass.getId())) {
-                        try {
-                            vk.messages().send(actor).userId(s.getVkId()).message("☀ Вам поступили новые изменения в расписании! Просмотрите расписание, чтобы увидеь их\"").execute();
-                        } catch (ApiException e) {
-                            e.printStackTrace();
-                        } catch (ClientException e) {
-                            e.printStackTrace();
+                    if (setted) {
+                        for (Student s : studentsRepository.findByClassId(sClass.getId())) {
+                            try {
+                                vk.messages().send(actor).userId(s.getVkId()).message("☀ Вам поступили новые изменения в расписании! Просмотрите расписание, чтобы увидеть их").execute();
+                            } catch (ApiException e) {
+                                e.printStackTrace();
+                            } catch (ClientException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
+
                 }
+
             }
         }
         sendMessage("Оповещение об изменениях отправлено.");
