@@ -60,6 +60,9 @@ public class AddHomeworkSystem {
             System.out.println("IN BRACKETS: " + inBrackets);
             System.out.println("OUT OF BRACKETS: " + outOfBrackets);
 
+            SimpleDateFormat sf = new SimpleDateFormat("dd.MM");
+
+
             if (inBrackets.contains("-")) {
                 //System.out.println(text);
                 System.out.println("Задание: " + outOfBrackets);
@@ -89,7 +92,7 @@ public class AddHomeworkSystem {
                                 homework.setDate(dDate.getTime());//
                                 homework.setRemindDate(dDate.getTime() - 86400000L);//date-сутки
                                 homeworkRepository.save(homework);
-                                sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n" + outOfBrackets + " (" + df.format(homework.getDate()) + ") ", s.getVkId());
+                                sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n" + outOfBrackets + " (" + sf.format(homework.getDate()) + ") ", s.getVkId());
                             }
                         }
                     }
@@ -121,7 +124,7 @@ public class AddHomeworkSystem {
                             homework.setDate(dDate.getTime());//
                             homework.setRemindDate(dDate.getTime() - 86400000L);//date-сутки
                             homeworkRepository.save(homework);
-                            sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n" + outOfBrackets + " (" + df.format(homework.getDate()) + ") ", s.getVkId());
+                            sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n" + outOfBrackets + " (" + sf.format(homework.getDate()) + ") ", s.getVkId());
                         }
                     }
 
@@ -162,7 +165,7 @@ public class AddHomeworkSystem {
                                 homework.setDate(dDate.getTime());//
                                 homework.setRemindDate(dDate.getTime() - 86400000L);//date-сутки
                                 homeworkRepository.save(homework);
-                                sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n"  + outOfBrackets + " (" + df.format(homework.getDate()) + ") ", s.getVkId());
+                                sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n"  + outOfBrackets + " (" + sf.format(homework.getDate()) + ") ", s.getVkId());
                             }
                         }
                     }
@@ -197,7 +200,7 @@ public class AddHomeworkSystem {
                             homework.setDate(dDate.getTime());//
                             homework.setRemindDate(dDate.getTime() - 86400000L);//date-сутки
                             homeworkRepository.save(homework);
-                            sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n"  + outOfBrackets + " (" + df.format(homework.getDate()) + ") ", s.getVkId());
+                            sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n"  + outOfBrackets + " (" + sf.format(homework.getDate()) + ") ", s.getVkId());
                         }
                         break;
                     }
