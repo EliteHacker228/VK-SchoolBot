@@ -655,7 +655,7 @@ public class MessageService {
         }
 
 
-        HashSet<SClass> sClassHashSet = new HashSet<>();
+        HashSet<Integer> sClassHashSet = new HashSet<>();
         ArrayList<SchoolScheduleNode> schoolScheduleNodes = ScheduleCreatorService.stringToScheduleConverter(text.replace(", ", ",").replace(",", ", "));
         for (SchoolScheduleNode sn : schoolScheduleNodes) {
             sn.setClassName(sn.getClassName().replace(" ", "").replace("-", "").toUpperCase());
@@ -671,8 +671,9 @@ public class MessageService {
                         if (scheduleNode.getDay().equals(sn.getDay())) {
                             scheduleNode.setChanges(sn.getLessons());
                             schoolScheduleRepository.save(scheduleNode);
-                            if(!sClassHashSet.contains(sClass)){
-                                sClassHashSet.add(sClass);
+
+                            if(!sClassHashSet.contains(sClass.getId())){
+                                sClassHashSet.add(sClass.getId());
                             }
 
                         }
@@ -684,13 +685,13 @@ public class MessageService {
         }
 
         System.out.println("SCLASS CONTIAMENT:"+sClassHashSet.size());
-        for(SClass sClass1: sClassHashSet){
-            System.out.println(sClass1.getNumber()+sClass1.getLetter());
+        for(Integer sClass1: sClassHashSet){
+            System.out.println(sClass1);
         }
 
-        for (SClass sClass : sClassHashSet) {
-            System.out.println("SCLASS: "+sClass.getNumber()+sClass.getLetter());
-            for (Student student1 : studentsRepository.findByClassId(sClass.getId())) {
+        for (Integer sClass : sClassHashSet) {
+            System.out.println("SCLASS: "+sClass);
+            for (Student student1 : studentsRepository.findByClassId(sClass)) {
                 System.out.println("Student: "+student1.getVkId());
                 try {
                     vk.messages().send(actor).userId(student1.getVkId()).message("☀ Вам поступили новые изменения в расписании!").execute();
