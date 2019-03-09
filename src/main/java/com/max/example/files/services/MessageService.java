@@ -654,12 +654,13 @@ public class MessageService {
             return;
         }
 
-        boolean setted = false;
 
+        TreeSet<SClass> sClassTreeSet = new TreeSet<>();
         ArrayList<SchoolScheduleNode> schoolScheduleNodes = ScheduleCreatorService.stringToScheduleConverter(text.replace(", ", ",").replace(",", ", "));
         for (SchoolScheduleNode sn : schoolScheduleNodes) {
             sn.setClassName(sn.getClassName().replace(" ", "").replace("-", "").toUpperCase());
             ArrayList<SClass> sClasses = new ArrayList<>(classesRepository.findBySchoolId(student.getSchoolId()));
+
 
             for (SClass sClass : sClasses) {
                 if (sClass.getLetter().equals(sn.getClassLetter()) &&
@@ -670,19 +671,8 @@ public class MessageService {
                         if (scheduleNode.getDay().equals(sn.getDay())) {
                             scheduleNode.setChanges(sn.getLessons());
                             schoolScheduleRepository.save(scheduleNode);
-                            setted = true;
-                        }
-                    }
+                            sClassTreeSet.add(sClass);
 
-                    if (setted) {
-                        for (Student s : studentsRepository.findByClassId(sClass.getId())) {
-                            try {
-                                vk.messages().send(actor).userId(s.getVkId()).message("☀ Вам поступили новые изменения в расписании! Просмотрите расписание, чтобы увидеть их").execute();
-                            } catch (ApiException e) {
-                                e.printStackTrace();
-                            } catch (ClientException e) {
-                                e.printStackTrace();
-                            }
                         }
                     }
 
@@ -690,6 +680,20 @@ public class MessageService {
 
             }
         }
+
+        for (SClass sClass : sClassTreeSet) {
+            for (Student s : studentsRepository.findByClassId(sClass.getId())) {
+                try {
+                    vk.messages().send(actor).userId(s.getVkId()).message("☀ Вам поступили новые изменения в расписании! Просмотрите расписание, чтобы увидеть их").execute();
+                } catch (ApiException e) {
+                    e.printStackTrace();
+                } catch (ClientException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
         sendMessage("Оповещение об изменениях отправлено.");
 
     }
