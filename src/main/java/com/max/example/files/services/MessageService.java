@@ -488,7 +488,7 @@ public class MessageService {
                         student.getRole().equals(StudentsRoles.ADMIN.name()) ||
                         student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
 
-                    sendMessage("ДЛя создания или изменения постоянного расписания используйте эту функцию. \n" +
+                    sendMessage("Для создания или изменения постоянного расписания используйте эту функцию. \n" +
                             "Введите расписание следующего формата:\n" +
                             "имя_класса;\n" +
                             "день недели:" +
@@ -656,9 +656,41 @@ public class MessageService {
             return;
         }
 
-        ArrayList<SchoolScheduleNode> schoolScheduleNodes = new ArrayList<>(schoolScheduleRepository.findByClassId(student.getClassId()));
+        boolean setted = false;
+
+        ArrayList<SchoolScheduleNode> schoolScheduleNodes = ScheduleCreatorService.stringToScheduleConverter(text.replace(", ", ",").replace(",", ", "));
+        for(SchoolScheduleNode sn: schoolScheduleNodes){
+            sn.setClassName(sn.getClassName().replace(" ","").replace("-","").toUpperCase());
+            ArrayList<SClass> sClasses = new ArrayList<>(classesRepository.findBySchoolId(student.getSchoolId()));
+
+            for(SClass sClass: sClasses){
+                if(sClass.getLetter().equals(sn.getClassLetter()) &&
+                    sClass.getNumber()==sn.getClassNumber()){
 
 
+                    for(SchoolScheduleNode scheduleNode: schoolScheduleRepository.findByClassId(sClass.getId())){
+                        if(scheduleNode.getDay().equals(sn.getDay())) {
+                            scheduleNode.setChanges(sn.getLessons());
+                            schoolScheduleRepository.save(scheduleNode);
+                            setted=true;
+                        }
+                    }
+
+                    if(setted) {
+                        for (Student s : studentsRepository.findByClassId(sClass.getId())) {
+                            try {
+                                vk.messages().send(actor).userId(s.getVkId()).message("☀ Вам поступили новые изменения в расписании! Просмотрите расписание, чтобы увидеь их\"").execute();
+                            } catch (ApiException e) {
+                                e.printStackTrace();
+                            } catch (ClientException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        sendMessage("Оповещение об изменениях отправлено.");
 
     }
 
@@ -669,6 +701,9 @@ public class MessageService {
         if(showAllSchedule){
             ArrayList<SchoolScheduleNode> scheduleNodes = new ArrayList<>(schoolScheduleRepository.findByClassId(student.getClassId()));
             String answer = "";
+            String answerWithChanges = "----------\n" +
+                                        "☀Есть изменения на следующие дни:\n";
+            boolean changed = false;
 
             scheduleNodes.sort((o1, o2) ->{
             Locale localeRUS = new Locale("ru", "RU");
@@ -681,10 +716,19 @@ public class MessageService {
            });
 
            for(SchoolScheduleNode sn: scheduleNodes){
+               if(sn.getChanges()!=null){
+                   answerWithChanges+=sn.getFormattedChanges()+"\n";
+                   changed=true;
+               }
                answer+=sn+"\n";
            }
 
-           sendMessage(answer);
+           if(changed) {
+               answerWithChanges+= "----------\n" ;
+               answer = answer + answerWithChanges;
+           }
+
+            sendMessage(answer);
         }
     }
 

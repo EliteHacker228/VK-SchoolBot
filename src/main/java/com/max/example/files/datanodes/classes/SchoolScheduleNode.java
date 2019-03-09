@@ -110,4 +110,15 @@ public class SchoolScheduleNode{
     public void setChanges(String changes) {
         this.changes = changes;
     }
+
+    public String getFormattedChanges(){
+        String result = "";
+        result+="День: "+day.substring(0,1).toUpperCase()+day.substring(1)+"\n";
+        int i = 1;
+        for(String change: changes.split(",")){
+            result+=i+". "+change.substring(1,2).toUpperCase()+change.substring(2)+"\n";
+            i++;
+        }
+        return result;
+    }
 }
