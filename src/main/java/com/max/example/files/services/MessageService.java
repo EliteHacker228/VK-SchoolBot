@@ -656,6 +656,9 @@ public class MessageService {
             return;
         }
 
+        ArrayList<SchoolScheduleNode> schoolScheduleNodes = new ArrayList<>(schoolScheduleRepository.findByClassId(student.getClassId()));
+
+
 
     }
 

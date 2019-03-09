@@ -20,6 +20,9 @@ public class SchoolScheduleNode{
     @Column(name = "lessons")
     private String lessons;
 
+    @Column(name = "changes")
+    private String changes;
+
     @Column(name = "day")
     private String day;
 
@@ -98,5 +101,13 @@ public class SchoolScheduleNode{
 
     public Integer getClassNumber(){
         return Integer.parseInt(className.substring(0,className.length()-1));
+    }
+
+    public String getChanges() {
+        return changes;
+    }
+
+    public void setChanges(String changes) {
+        this.changes = changes;
     }
 }

@@ -57,8 +57,8 @@ public class AddHomeworkSystem {
             String outOfBrackets = text.substring(0, text.lastIndexOf("(")); //текст за скобками
             //System.out.println("MS:"+inBrackets);
 
-            System.out.println("IN BRACKETS: "+inBrackets);
-            System.out.println("OUT OF BRACKETS: "+outOfBrackets);
+            System.out.println("IN BRACKETS: " + inBrackets);
+            System.out.println("OUT OF BRACKETS: " + outOfBrackets);
 
             if (inBrackets.contains("-")) {
                 //System.out.println(text);
@@ -87,9 +87,9 @@ public class AddHomeworkSystem {
                                 Date dDate = df.parse(date);
 
                                 homework.setDate(dDate.getTime());//
-                                homework.setRemindDate(dDate.getTime()  - 86400000L);//date-сутки
+                                homework.setRemindDate(dDate.getTime() - 86400000L);//date-сутки
                                 homeworkRepository.save(homework);
-                                sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n" + outOfBrackets, s.getVkId());
+                                sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n" + outOfBrackets + " (" + df.format(homework.getDate()) + ") ", s.getVkId());
                             }
                         }
                     }
@@ -108,22 +108,22 @@ public class AddHomeworkSystem {
                 int classNumber = Integer.parseInt(inBrackets.split("!")[0]);
 
                 for (SClass sClass : classesRepository.findBySchoolId(schoolId)) {
-                        if (sClass.getNumber() ==  classNumber) {
-                            for (Student s : studentsRepository.findByClassId(sClass.getId())) {
-                                Homework homework = new Homework();
-                                homework.setOwnerId(s.getVkId());
-                                homework.setTaskText(outOfBrackets);
+                    if (sClass.getNumber() == classNumber) {
+                        for (Student s : studentsRepository.findByClassId(sClass.getId())) {
+                            Homework homework = new Homework();
+                            homework.setOwnerId(s.getVkId());
+                            homework.setTaskText(outOfBrackets);
 
-                                SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-                                String date = inBrackets.split(";")[1] + "." + new GregorianCalendar().get(Calendar.YEAR);
-                                Date dDate = df.parse(date);
+                            SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+                            String date = inBrackets.split(";")[1] + "." + new GregorianCalendar().get(Calendar.YEAR);
+                            Date dDate = df.parse(date);
 
-                                homework.setDate(dDate.getTime());//
-                                homework.setRemindDate(dDate.getTime()  - 86400000L);//date-сутки
-                                homeworkRepository.save(homework);
-                                sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n" + outOfBrackets, s.getVkId());
-                            }
+                            homework.setDate(dDate.getTime());//
+                            homework.setRemindDate(dDate.getTime() - 86400000L);//date-сутки
+                            homeworkRepository.save(homework);
+                            sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n" + outOfBrackets + " (" + df.format(homework.getDate()) + ") ", s.getVkId());
                         }
+                    }
 
                 }
 
@@ -144,11 +144,11 @@ public class AddHomeworkSystem {
                 int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
                 for (SClass sClass : classesRepository.findBySchoolId(schoolId)) {
 
-                    for (String classLiteral: classes) {
-                        classLiteral=classLiteral.replace("-", "").trim();
+                    for (String classLiteral : classes) {
+                        classLiteral = classLiteral.replace("-", "").trim();
 
-                        if (Integer.parseInt(classLiteral.substring(0,classLiteral.length()-1))==sClass.getNumber() &&
-                                classLiteral.substring(classLiteral.length()-1).toLowerCase().equals(sClass.getLetter().toLowerCase())) {
+                        if (Integer.parseInt(classLiteral.substring(0, classLiteral.length() - 1)) == sClass.getNumber() &&
+                                classLiteral.substring(classLiteral.length() - 1).toLowerCase().equals(sClass.getLetter().toLowerCase())) {
 
                             for (Student s : studentsRepository.findByClassId(sClass.getId())) {
                                 Homework homework = new Homework();
@@ -160,9 +160,9 @@ public class AddHomeworkSystem {
                                 Date dDate = df.parse(date);
 
                                 homework.setDate(dDate.getTime());//
-                                homework.setRemindDate(dDate.getTime()  - 86400000L);//date-сутки
+                                homework.setRemindDate(dDate.getTime() - 86400000L);//date-сутки
                                 homeworkRepository.save(homework);
-                                sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n" + outOfBrackets, s.getVkId());
+                                sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n"  + outOfBrackets + " (" + df.format(homework.getDate()) + ") ", s.getVkId());
                             }
                         }
                     }
@@ -181,10 +181,10 @@ public class AddHomeworkSystem {
                 int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
 
                 int classNumber = Integer.parseInt(className.substring(0, inBrackets.split(";")[0].length() - 1));
-                String classLetter = className.substring(className.length()-1);
+                String classLetter = className.substring(className.length() - 1);
 
-                for(SClass sClass: classesRepository.findBySchoolId(schoolId)){
-                    if(sClass.getNumber()==classNumber && sClass.getLetter().toLowerCase().equals(classLetter.toLowerCase())){
+                for (SClass sClass : classesRepository.findBySchoolId(schoolId)) {
+                    if (sClass.getNumber() == classNumber && sClass.getLetter().toLowerCase().equals(classLetter.toLowerCase())) {
                         for (Student s : studentsRepository.findByClassId(sClass.getId())) {
                             Homework homework = new Homework();
                             homework.setOwnerId(s.getVkId());
@@ -195,9 +195,9 @@ public class AddHomeworkSystem {
                             Date dDate = df.parse(date);
 
                             homework.setDate(dDate.getTime());//
-                            homework.setRemindDate(dDate.getTime()  - 86400000L);//date-сутки
+                            homework.setRemindDate(dDate.getTime() - 86400000L);//date-сутки
                             homeworkRepository.save(homework);
-                            sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n" + outOfBrackets, s.getVkId());
+                            sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n"  + outOfBrackets + " (" + df.format(homework.getDate()) + ") ", s.getVkId());
                         }
                         break;
                     }
