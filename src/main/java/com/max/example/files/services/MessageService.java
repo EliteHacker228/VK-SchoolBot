@@ -295,6 +295,14 @@ public class MessageService {
                     queryBrancher();
                     break;
 
+                case STUDENT_CHOOSED_SEND_SCHEDULE_CHANGES_ATTENTION:
+                    studentAddScheduleChanges();
+
+                    student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
+                    studentsRepository.save(student);
+                    queryBrancher();
+                 break;
+
                 case STUDENT_CHOSED_SEND_ATTENTION:
                     studentSendAttention();
 
@@ -392,6 +400,7 @@ public class MessageService {
 
             case SHOW_SCHEDULE: //4
                 showScheduleNodes(true);
+
                 queryBrancher();
                 break;
 
@@ -420,21 +429,58 @@ public class MessageService {
                 break;
 
             case ADD_EDIT_SCHEDULE_CHANGES: //6
-                sendMessage("Сделаем");
+                if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
+                        student.getRole().equals(StudentsRoles.ADMIN.name()) ||
+                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
+
+                    sendMessage("Для отправки ученикам уведомленеия о временном изменении расписания используйте эту функцию.\n" +
+                            "" +
+                            "Введите расписание следующего формата:\n" +
+                            "имя_класса;\n" +
+                            "день недели:" +
+                            "   предмет1, предмет2, предмет3, предмет4\n" +
+                            "Например:\n" +
+
+                            "10Б;\n" +
+                            "Понедельник: Алгебра, Геометрия," +
+                            " Русский, Литература,"+
+                            " Физика, Английский язык\n"+
+
+                            "Вторник: Алгебра, Геометрия," +
+                            " Русский, Литература,"+
+                            " Физика, Английский язык\n" +
+                            "\nДля отмены отравьте 0");
+
+                    student.setStatus(StudentStatus.STUDENT_CHOOSED_SEND_SCHEDULE_CHANGES_ATTENTION.name());
+                    studentsRepository.save(student);
+                }else{
+                    sendMessage("Извините, такой команды нет");
+                    student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                    studentsRepository.save(student);
+                }
                 break;
 
             case SEND_HOMEWORK_ATTENTION:
                 //sendMessage("Потом будет готов");
-                sendMessage("Для отправки ДЗ используйте команды, на примере следующих: \n" +
-                        "\n1. Предмет: задание(9-10; 12.05) - отправит задание, которое нужно сделать к 12.05 всем классам с 9 до 10 параллели. \n" +
-                        "\n2. Предмет: задание(10!; 12.05) - отправит задание, которое нужно сделать к 12.05 всей параллели 10х классов. \n" +
-                        "\n3. Предмет: задание(10Б; 12.05) - отправит задание, которое нужно сделать к 12.05 10Б классу. \n" +
-                        "\n4. Предмет: задание(10Б, 9А, 8Г, 11Д; 12.05) - отправит задание, которое нужно сделать к 12.05 всем классам, перечисленным через запятую. \n" +
-                        "\n" +
-                        "Для отмены отправьте боту 0.");
-                //sendHomework();
-                student.setStatus(StudentStatus.STUDENT_CHOSED_SEND_HOMEWORK_ATTENTION.name());
-                studentsRepository.save(student);
+                if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
+                        student.getRole().equals(StudentsRoles.ADMIN.name()) ||
+                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
+
+                    sendMessage("Для отправки ДЗ используйте команды, на примере следующих: \n" +
+                            "\n1. Предмет: задание(9-10; 12.05) - отправит задание, которое нужно сделать к 12.05 всем классам с 9 до 10 параллели. \n" +
+                            "\n2. Предмет: задание(10!; 12.05) - отправит задание, которое нужно сделать к 12.05 всей параллели 10х классов. \n" +
+                            "\n3. Предмет: задание(10Б; 12.05) - отправит задание, которое нужно сделать к 12.05 10Б классу. \n" +
+                            "\n4. Предмет: задание(10Б, 9А, 8Г, 11Д; 12.05) - отправит задание, которое нужно сделать к 12.05 всем классам, перечисленным через запятую. \n" +
+                            "\n" +
+                            "Для отмены отправьте боту 0.");
+                    //sendHomework();
+                    student.setStatus(StudentStatus.STUDENT_CHOSED_SEND_HOMEWORK_ATTENTION.name());
+                    studentsRepository.save(student);
+                }else{
+                    sendMessage("Извините, такой команды нет");
+                    student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                    studentsRepository.save(student);
+                }
                 break;
 
             case ADD_OR_EDIT_SCHEDULE: //8
@@ -442,7 +488,8 @@ public class MessageService {
                         student.getRole().equals(StudentsRoles.ADMIN.name()) ||
                         student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
 
-                    sendMessage("Введите расписание следующего формата:\n" +
+                    sendMessage("ДЛя создания или изменения постоянного расписания используйте эту функцию. \n" +
+                            "Введите расписание следующего формата:\n" +
                             "имя_класса;\n" +
                             "день недели:" +
                             "   предмет1, предмет2, предмет3, предмет4\n" +
@@ -599,6 +646,17 @@ public class MessageService {
 
         student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
         studentsRepository.save(student);
+    }
+
+    private void studentAddScheduleChanges(){
+        Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
+        String text = vkGroupMessage.getText().replace("\n", "");
+        if(text.replace(" ","").equals("0")){
+            sendMessage("Отправка отменена");
+            return;
+        }
+
+
     }
 
     private void showScheduleNodes(boolean showAllSchedule){
@@ -979,7 +1037,7 @@ public class MessageService {
         if (student.getSchoolId() == null) {
             if (vkGroupMessage.getText().matches("[-+]?\\d+")
                     && Integer.parseInt(vkGroupMessage.getText()) <=
-                    makeCollection(regionsRepository.findAll()).size()) {
+                    makeCollection(schoolsRepository.findAll()).size()) {
                 student.setSchoolId(Integer.parseInt(vkGroupMessage.getText()));
                 studentsRepository.save(student);
                 sendMessage("Школа записана!");
