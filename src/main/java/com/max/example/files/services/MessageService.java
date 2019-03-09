@@ -46,16 +46,16 @@ public class MessageService {
     private SchoolScheduleRepository schoolScheduleRepository;
 
     /**
-     📚1. Записать ДЗ
-     📗2. Просмотреть записанное ДЗ
-     📈3. Калькулятор оценок
-     📊4. Просмотреть расписание на неделю
-     ⚠5. Отправить объявление
-     ☀6. Сообщить об изменениях в расписании
-     💬7. Сообщить о домашнем задании
-     📝8. Добавить/Редактировать расписание
-     🔓9. Сгенерировать ключ доверенного ученика
-     🔓10. Сгенерировать ключ учителя
+     * 📚1. Записать ДЗ
+     * 📗2. Просмотреть записанное ДЗ
+     * 📈3. Калькулятор оценок
+     * 📊4. Просмотреть расписание на неделю
+     * ⚠5. Отправить объявление
+     * ☀6. Сообщить об изменениях в расписании
+     * 💬7. Сообщить о домашнем задании
+     * 📝8. Добавить/Редактировать расписание
+     * 🔓9. Сгенерировать ключ доверенного ученика
+     * 🔓10. Сгенерировать ключ учителя
      **/
 
     private final int ADD_HOMEWORK = 1;
@@ -93,8 +93,8 @@ public class MessageService {
         this.schoolsRepository = schoolsRepository;
         this.studentsRepository = studentsRepository;
         this.homeworkRepository = homeworkRepository;
-        this.privateKeysRepository=privateKeysRepository;
-        this.schoolScheduleRepository= schoolScheduleRepository;
+        this.privateKeysRepository = privateKeysRepository;
+        this.schoolScheduleRepository = schoolScheduleRepository;
 
         vkGroupMessage = vkRequest.getObject();
 
@@ -142,10 +142,10 @@ public class MessageService {
              * TODO: Fix this
              * Fixed
              */
-            if((student.getRegionId()==null || student.getSchoolId()==null || student.getClassId()==null) &&
-                    !student.getStatus().contains("REGISTRATION")){
+            if ((student.getRegionId() == null || student.getSchoolId() == null || student.getClassId() == null) &&
+                    !student.getStatus().contains("REGISTRATION")) {
                 //Условие соблюдено => произошла ошибка при первой регистрации
-                if(student.getRegionId()==null){
+                if (student.getRegionId() == null) {
                     sendMessage("Вы не указали свой регион. Пожалуйста, выберите его: \n");
                     int counter = 1;
 
@@ -161,20 +161,20 @@ public class MessageService {
 
                     return;
 
-                }else if(student.getSchoolId()==null){
+                } else if (student.getSchoolId() == null) {
                     sendMessage("Вы не указали свою школу. Пожалуйста, укажите её номер. \n Если не видите в списке вашу школу - отправьте её официальное название" +
                             "(например, МАОУ СОШ №67 с УИОП), и она зарегистрируется в системе.");
 
                     String schools = "";
                     int counter = 1;
                     for (School school : schoolsRepository.findAll()) {
-                        System.out.println(school.getName()+" : "+school.isVisible());
-                        if(school.isVisible()) {
-                            System.out.println(school.getName()+" - "+"видима");
+                        System.out.println(school.getName() + " : " + school.isVisible());
+                        if (school.isVisible()) {
+                            System.out.println(school.getName() + " - " + "видима");
                             schools += String.format("%d. " + school.getName(), counter) + "\n";
                             counter++;
-                        }else{
-                            System.out.println(school.getName()+" - "+"невидима");
+                        } else {
+                            System.out.println(school.getName() + " - " + "невидима");
                         }
                     }
                     sendMessage(schools);
@@ -184,7 +184,7 @@ public class MessageService {
 
                     return;
 
-                }else if(student.getClassId()==null){
+                } else if (student.getClassId() == null) {
                     sendMessage("Вы не указали свой класс. Пожалуйста, укажите его (например, 7Б, 10А и т.д)");
                     student.setStatus(StudentStatus.STUDENT_CLASS_REGISTRATION.name());
                     studentsRepository.save(student);
@@ -237,10 +237,9 @@ public class MessageService {
 //            }
 
 
-
             switch (StudentStatus.valueOf(student.getStatus())) {
                 case STUDENT_REGION_REGISTRATION:
-                    if(privateKeysRepository.findByKey(vkGroupMessage.getText()).size()>0){
+                    if (privateKeysRepository.findByKey(vkGroupMessage.getText()).size() > 0) {
                         activateKey(student);
                         return;
                     }
@@ -248,7 +247,7 @@ public class MessageService {
                     break;
 
                 case STUDENT_SCHOOL_REGISTRATION:
-                    if(privateKeysRepository.findByKey(vkGroupMessage.getText()).size()>0){
+                    if (privateKeysRepository.findByKey(vkGroupMessage.getText()).size() > 0) {
                         activateKey(student);
                         return;
                     }
@@ -256,7 +255,7 @@ public class MessageService {
                     break;
 
                 case STUDENT_CLASS_REGISTRATION:
-                    if(privateKeysRepository.findByKey(vkGroupMessage.getText()).size()>0){
+                    if (privateKeysRepository.findByKey(vkGroupMessage.getText()).size() > 0) {
                         activateKey(student);
                         return;
                     }
@@ -301,7 +300,7 @@ public class MessageService {
                     student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
                     studentsRepository.save(student);
                     queryBrancher();
-                 break;
+                    break;
 
                 case STUDENT_CHOSED_SEND_ATTENTION:
                     studentSendAttention();
@@ -365,7 +364,6 @@ public class MessageService {
         } //Проверка команды на валидность
 
 
-
         switch (Integer.parseInt(query)) {
             case ADD_HOMEWORK: //1
                 sendMessage("Записать ДЗ.\n" +
@@ -405,9 +403,9 @@ public class MessageService {
                 break;
 
             case SEND_ATTENTION: //5
-                if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
+                if (student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
                         student.getRole().equals(StudentsRoles.ADMIN.name()) ||
-                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
+                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
 
                     sendMessage("Напишите текст обяъвления здесь.\n" +
                             "Текст должен быть вида:\n" +
@@ -420,7 +418,7 @@ public class MessageService {
                     student.setStatus(StudentStatus.STUDENT_CHOSED_SEND_ATTENTION.name());
                     studentsRepository.save(student);
 
-                }else{
+                } else {
                     sendMessage("Извините, такой команды нет");
                     student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
                     studentsRepository.save(student);
@@ -429,7 +427,7 @@ public class MessageService {
                 break;
 
             case ADD_EDIT_SCHEDULE_CHANGES: //6
-                if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
+                if (student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
                         student.getRole().equals(StudentsRoles.ADMIN.name()) ||
                         student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
 
@@ -443,17 +441,17 @@ public class MessageService {
 
                             "10Б;\n" +
                             "Понедельник: Алгебра, Геометрия," +
-                            " Русский, Литература,"+
-                            " Физика, Английский язык\n"+
+                            " Русский, Литература," +
+                            " Физика, Английский язык\n" +
 
                             "Вторник: Алгебра, Геометрия," +
-                            " Русский, Литература,"+
+                            " Русский, Литература," +
                             " Физика, Английский язык\n" +
                             "\nДля отмены отравьте 0");
 
                     student.setStatus(StudentStatus.STUDENT_CHOOSED_SEND_SCHEDULE_CHANGES_ATTENTION.name());
                     studentsRepository.save(student);
-                }else{
+                } else {
                     sendMessage("Извините, такой команды нет");
                     student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
                     studentsRepository.save(student);
@@ -462,7 +460,7 @@ public class MessageService {
 
             case SEND_HOMEWORK_ATTENTION:
                 //sendMessage("Потом будет готов");
-                if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
+                if (student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
                         student.getRole().equals(StudentsRoles.ADMIN.name()) ||
                         student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
 
@@ -476,7 +474,7 @@ public class MessageService {
                     //sendHomework();
                     student.setStatus(StudentStatus.STUDENT_CHOSED_SEND_HOMEWORK_ATTENTION.name());
                     studentsRepository.save(student);
-                }else{
+                } else {
                     sendMessage("Извините, такой команды нет");
                     student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
                     studentsRepository.save(student);
@@ -484,9 +482,9 @@ public class MessageService {
                 break;
 
             case ADD_OR_EDIT_SCHEDULE: //8
-                if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
+                if (student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
                         student.getRole().equals(StudentsRoles.ADMIN.name()) ||
-                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
+                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
 
                     sendMessage("Для создания или изменения постоянного расписания используйте эту функцию. \n" +
                             "Введите расписание следующего формата:\n" +
@@ -497,18 +495,18 @@ public class MessageService {
 
                             "10Б;\n" +
                             "Понедельник: Алгебра, Геометрия," +
-                            " Русский, Литература,"+
-                            " Физика, Английский язык\n"+
+                            " Русский, Литература," +
+                            " Физика, Английский язык\n" +
 
                             "Вторник: Алгебра, Геометрия," +
-                            " Русский, Литература,"+
+                            " Русский, Литература," +
                             " Физика, Английский язык\n" +
                             "\nДля отмены отравьте 0");
 
                     student.setStatus(StudentStatus.STUDENT_CHOSED_SCHEDULE_NODE.name());
                     studentsRepository.save(student);
 
-                }else{
+                } else {
                     sendMessage("Извините, такой команды нет");
                     student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
                     studentsRepository.save(student);
@@ -517,15 +515,15 @@ public class MessageService {
 
 
             case HEADMAN_KEY_GENERATE: //9
-                if(student.getRole().equals(StudentsRoles.ADMIN.name()) ||
-                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
-                    sendMessage("Ключ доступа для старосты(действителен 1 раз): "+studentGetKey(StudentsRoles.TRUSTED_STUDENT));
+                if (student.getRole().equals(StudentsRoles.ADMIN.name()) ||
+                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
+                    sendMessage("Ключ доступа для старосты(действителен 1 раз): " + studentGetKey(StudentsRoles.TRUSTED_STUDENT));
 
                     student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
                     studentsRepository.save(student);
 
                     queryBrancher();
-                }else{
+                } else {
                     sendMessage("Извините, такой команды нет");
                     student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
                     studentsRepository.save(student);
@@ -565,14 +563,14 @@ public class MessageService {
 
 
             case TEACHER_KEY_GENERATE: //10
-                if(student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
-                    sendMessage("Ключ доступа для учителя(действителен 1 раз): "+studentGetKey(StudentsRoles.ADMIN));
+                if (student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
+                    sendMessage("Ключ доступа для учителя(действителен 1 раз): " + studentGetKey(StudentsRoles.ADMIN));
 
                     student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
                     studentsRepository.save(student);
 
                     queryBrancher();
-                }else{
+                } else {
                     sendMessage("Извините, такой команды нет");
                     student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
                     studentsRepository.save(student);
@@ -599,7 +597,7 @@ public class MessageService {
             e.printStackTrace();
         }
         UserXtrCounters userXtrCounters = ugqMap.get(0);
-        if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name())){
+        if (student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name())) {
 
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
                     "\uD83D\uDCDA1. Записать ДЗ\n" +
@@ -611,8 +609,8 @@ public class MessageService {
                     "\uD83D\uDCAC7. Сообщить о домашнем задании\n" +
                     "\uD83D\uDCDD8. Добавить/Редактировать расписание\n");
 
-        } else if(
-                student.getRole().equals(StudentsRoles.ADMIN.name())){
+        } else if (
+                student.getRole().equals(StudentsRoles.ADMIN.name())) {
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
                     "\uD83D\uDCDA1. Записать ДЗ\n" +
                     "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
@@ -624,7 +622,7 @@ public class MessageService {
                     "\uD83D\uDCDD8. Добавить/Редактировать расписание\n" +
                     "\uD83D\uDD139. Сгенерировать ключ доверенного ученика\n" +
                     "\uD83D\uDD1310. Сгенерировать ключ учителя");
-        }else if(student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())){
+        } else if (student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
                     "\uD83D\uDCDA1. Записать ДЗ\n" +
                     "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
@@ -636,7 +634,7 @@ public class MessageService {
                     "\uD83D\uDCDD8. Добавить/Редактировать расписание\n" +
                     "\uD83D\uDD139. Сгенерировать ключ доверенного ученика\n" +
                     "\uD83D\uDD1310. Сгенерировать ключ учителя");
-        }else {
+        } else {
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
                     "\uD83D\uDCDA1. Записать ДЗ\n" +
                     "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
@@ -648,10 +646,10 @@ public class MessageService {
         studentsRepository.save(student);
     }
 
-    private void studentAddScheduleChanges(){
+    private void studentAddScheduleChanges() {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         String text = vkGroupMessage.getText().replace("\n", "");
-        if(text.replace(" ","").equals("0")){
+        if (text.replace(" ", "").equals("0")) {
             sendMessage("Отправка отменена");
             return;
         }
@@ -659,32 +657,33 @@ public class MessageService {
         boolean setted = false;
 
         ArrayList<SchoolScheduleNode> schoolScheduleNodes = ScheduleCreatorService.stringToScheduleConverter(text.replace(", ", ",").replace(",", ", "));
-        for(SchoolScheduleNode sn: schoolScheduleNodes){
-            sn.setClassName(sn.getClassName().replace(" ","").replace("-","").toUpperCase());
+        for (SchoolScheduleNode sn : schoolScheduleNodes) {
+            sn.setClassName(sn.getClassName().replace(" ", "").replace("-", "").toUpperCase());
             ArrayList<SClass> sClasses = new ArrayList<>(classesRepository.findBySchoolId(student.getSchoolId()));
 
-            for(SClass sClass: sClasses){
-                if(sClass.getLetter().equals(sn.getClassLetter()) &&
-                    sClass.getNumber()==sn.getClassNumber()){
+            for (SClass sClass : sClasses) {
+                if (sClass.getLetter().equals(sn.getClassLetter()) &&
+                        sClass.getNumber() == sn.getClassNumber()) {
 
 
-                    for(SchoolScheduleNode scheduleNode: schoolScheduleRepository.findByClassId(sClass.getId())){
-                        if(scheduleNode.getDay().equals(sn.getDay())) {
+                    for (SchoolScheduleNode scheduleNode : schoolScheduleRepository.findByClassId(sClass.getId())) {
+                        if (scheduleNode.getDay().equals(sn.getDay())) {
                             scheduleNode.setChanges(sn.getLessons());
                             schoolScheduleRepository.save(scheduleNode);
-                            setted=true;
+                            setted = true;
                         }
                     }
 
-                    if(setted) {
-                        for (Student s : studentsRepository.findByClassId(sClass.getId())) {
-                            try {
-                                vk.messages().send(actor).userId(s.getVkId()).message("☀ Вам поступили новые изменения в расписании! Просмотрите расписание, чтобы увидеь их\"").execute();
-                            } catch (ApiException e) {
-                                e.printStackTrace();
-                            } catch (ClientException e) {
-                                e.printStackTrace();
-                            }
+                }
+
+                if (setted) {
+                    for (Student s : studentsRepository.findByClassId(sClass.getId())) {
+                        try {
+                            vk.messages().send(actor).userId(s.getVkId()).message("☀ Вам поступили новые изменения в расписании! Просмотрите расписание, чтобы увидеь их\"").execute();
+                        } catch (ApiException e) {
+                            e.printStackTrace();
+                        } catch (ClientException e) {
+                            e.printStackTrace();
                         }
                     }
                 }
@@ -694,61 +693,61 @@ public class MessageService {
 
     }
 
-    private void showScheduleNodes(boolean showAllSchedule){
+    private void showScheduleNodes(boolean showAllSchedule) {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
 
 
-        if(showAllSchedule){
+        if (showAllSchedule) {
             ArrayList<SchoolScheduleNode> scheduleNodes = new ArrayList<>(schoolScheduleRepository.findByClassId(student.getClassId()));
             String answer = "";
-            String answerWithChanges = "----------\n" +
-                                        "☀Есть изменения на следующие дни:\n";
+            String answerWithChanges = "--------------------------------------------------\n" +
+                    "☀Есть изменения на следующие дни:\n";
             boolean changed = false;
 
-            scheduleNodes.sort((o1, o2) ->{
-            Locale localeRUS = new Locale("ru", "RU");
-            SimpleDateFormat sf = new SimpleDateFormat("EEEE", localeRUS);
-               try {
-                   return sf.parse(o1.getDay()).compareTo(sf.parse(o2.getDay()));
-               } catch (ParseException e) {
-                   return 0;
-               }
-           });
+            scheduleNodes.sort((o1, o2) -> {
+                Locale localeRUS = new Locale("ru", "RU");
+                SimpleDateFormat sf = new SimpleDateFormat("EEEE", localeRUS);
+                try {
+                    return sf.parse(o1.getDay()).compareTo(sf.parse(o2.getDay()));
+                } catch (ParseException e) {
+                    return 0;
+                }
+            });
 
-           for(SchoolScheduleNode sn: scheduleNodes){
-               if(sn.getChanges()!=null){
-                   answerWithChanges+=sn.getFormattedChanges()+"\n";
-                   changed=true;
-               }
-               answer+=sn+"\n";
-           }
+            for (SchoolScheduleNode sn : scheduleNodes) {
+                if (sn.getChanges() != null) {
+                    answerWithChanges += sn.getFormattedChanges() + "\n";
+                    changed = true;
+                }
+                answer += sn + "\n";
+            }
 
-           if(changed) {
-               answerWithChanges+= "----------\n" ;
-               answer = answer + answerWithChanges;
-           }
+            if (changed) {
+                answerWithChanges += "--------------------------------------------------\n";
+                answer = answerWithChanges + answer;
+            }
 
             sendMessage(answer);
         }
     }
 
-    private void studentAddScheduleNode(){
+    private void studentAddScheduleNode() {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         String text = vkGroupMessage.getText().replace("\n", "");
-        if(text.replace(" ","").equals("0")){
+        if (text.replace(" ", "").equals("0")) {
             sendMessage("Отправка отменена");
             return;
         }
 
         ArrayList<SchoolScheduleNode> schoolScheduleNodes = ScheduleCreatorService.stringToScheduleConverter(text.replace(", ", ",").replace(",", ", "));
-        for(SchoolScheduleNode sn: schoolScheduleNodes){
-            sn.setClassName(sn.getClassName().replace(" ","").replace("-","").toUpperCase());
+        for (SchoolScheduleNode sn : schoolScheduleNodes) {
+            sn.setClassName(sn.getClassName().replace(" ", "").replace("-", "").toUpperCase());
             ArrayList<SClass> sClasses = new ArrayList<>(classesRepository.findBySchoolId(student.getSchoolId()));
-            for(SClass sClass: sClasses){
-                if(sClass.getLetter().equals(sn.getClassLetter()) &&
-                    sClass.getNumber()==sn.getClassNumber()){
+            for (SClass sClass : sClasses) {
+                if (sClass.getLetter().equals(sn.getClassLetter()) &&
+                        sClass.getNumber() == sn.getClassNumber()) {
                     sn.setClassId(sClass.getId());
-                    sn.setId(sClass.getId()+" "+sn.getClassName()+" "+sn.getDay());
+                    sn.setId(sClass.getId() + " " + sn.getClassName() + " " + sn.getDay());
                 }
             }
 
@@ -760,29 +759,29 @@ public class MessageService {
 
     }
 
-    private void activateKey(Student student){
+    private void activateKey(Student student) {
         String text = vkGroupMessage.getText();
-        if(privateKeysRepository.findByKey(text).size()>0){
-            if(student.getRole().equals(StudentsRoles.STUDENT.name())){
+        if (privateKeysRepository.findByKey(text).size() > 0) {
+            if (student.getRole().equals(StudentsRoles.STUDENT.name())) {
                 student.setRole(privateKeysRepository.findByKey(text).get(0).getRole());
                 studentsRepository.save(student);
                 String msg = "Ключ активирован. Вам выданы дополнительные разрешения уровня ";
                 student.setRole(privateKeysRepository.findByKey(text).get(0).getRole());
 
-                switch(privateKeysRepository.findByKey(text).get(0).getRole()){
+                switch (privateKeysRepository.findByKey(text).get(0).getRole()) {
                     case "ADMIN": {
-                        msg+="учитель.";
+                        msg += "учитель.";
                         break;
                     }
 
                     case "TRUSTED_STUDENT": {
-                        msg+="староста.";
+                        msg += "староста.";
                         break;
                     }
                 }
                 sendMessage(msg);
                 privateKeysRepository.delete(privateKeysRepository.findByKey(text).get(0));
-            }else{
+            } else {
                 sendMessage("У вас уже есть дополнительные разрешения");
             }
 
@@ -792,7 +791,7 @@ public class MessageService {
         }
     }
 
-    private String studentGetKey(StudentsRoles studentsRole){
+    private String studentGetKey(StudentsRoles studentsRole) {
         PrivateKey privateKey = new PrivateKey();
         privateKey.setKey(String.valueOf(System.nanoTime()));
         privateKey.setRole(studentsRole.name());
@@ -800,7 +799,7 @@ public class MessageService {
         return privateKey.getKey();
     }
 
-    private void sendHomework(){
+    private void sendHomework() {
         UsersGetQuery ugq = vk.users().get(new UserActor(vkGroupMessage.getFrom_id(), "6afde058b95ce78f27ce1ee66fabc3d66adf81e66d154879c8b57a919e8697580989a30fe9f165896244e"));
         ArrayList<UserXtrCounters> ugqMap = null;
 
@@ -814,7 +813,7 @@ public class MessageService {
 
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
 
-        if(vkGroupMessage.getText().trim().equals("0")){
+        if (vkGroupMessage.getText().trim().equals("0")) {
             sendMessage("Отправка отменена");
             student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
             studentsRepository.save(student);
@@ -831,7 +830,7 @@ public class MessageService {
         studentsRepository.save(student);
     }
 
-    private void studentSendAttention(){
+    private void studentSendAttention() {
         UsersGetQuery ugq = vk.users().get(new UserActor(vkGroupMessage.getFrom_id(), "6afde058b95ce78f27ce1ee66fabc3d66adf81e66d154879c8b57a919e8697580989a30fe9f165896244e"));
         ArrayList<UserXtrCounters> ugqMap = null;
 
@@ -845,7 +844,7 @@ public class MessageService {
 
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
 
-        if(vkGroupMessage.getText().trim().equals("0")){
+        if (vkGroupMessage.getText().trim().equals("0")) {
             sendMessage("Отправка отменена");
             student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
             studentsRepository.save(student);
@@ -853,7 +852,7 @@ public class MessageService {
         }
 
         UserXtrCounters userXtrCounters = ugqMap.get(0);
-        String attention = "⚠ Вам поступило объявление от ^id"+student.getVkId()+"["+userXtrCounters.getFirstName()+" "+userXtrCounters.getLastName()+"] "+":\n"+vkGroupMessage.getText();
+        String attention = "⚠ Вам поступило объявление от ^id" + student.getVkId() + "[" + userXtrCounters.getFirstName() + " " + userXtrCounters.getLastName() + "] " + ":\n" + vkGroupMessage.getText();
         AttentionService as = new AttentionService(attention, vkRequest, studentsRepository, classesRepository);
         as.workMethod();
         student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
@@ -929,7 +928,7 @@ public class MessageService {
 //        studentsRepository.save(student);
 //
 //        sendMessage("Задание записано!");
-        if(text.trim().equals("0")){
+        if (text.trim().equals("0")) {
             sendMessage("Запись отменена!");
             student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
             studentsRepository.save(student);
@@ -984,7 +983,7 @@ public class MessageService {
     private void studentServiceClac() {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         String result = "";
-        if(vkGroupMessage.getText().trim().equals("0")){
+        if (vkGroupMessage.getText().trim().equals("0")) {
             sendMessage("Отмена.");
             student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
             studentsRepository.save(student);
@@ -1040,23 +1039,23 @@ public class MessageService {
                     regions += String.format("%d. " + region.getName(), counter) + "\n";
                     counter++;
                 }
-                sendMessage(msg+regions);
+                sendMessage(msg + regions);
                 System.out.println();
                 return;
             }
 
         }
 
-        if(student.getSchoolId()!=null){
+        if (student.getSchoolId() != null) {
             queryBrancher();
             student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
             studentsRepository.save(student);
             return;
         }
 
-        if(student.getRole().equals(StudentsRoles.STUDENT)) {
+        if (student.getRole().equals(StudentsRoles.STUDENT)) {
             sendMessage("Укажи номер своей школы.");
-        }else{
+        } else {
             sendMessage("Укажи номер своей школы. \n Если не видишь в списке свою школу - отправь её официальное название" +
                     "(например, МАОУ СОШ №67 с УИОП), и она зарегистрируется в системе.");
         }
@@ -1067,13 +1066,13 @@ public class MessageService {
         String schools = "";
         int counter = 1;
         for (School school : schoolsRepository.findAll()) {
-            System.out.println(school.getName()+" : "+school.isVisible());
-            if(school.isVisible()) {
-                System.out.println(school.getName()+" - "+"видима");
+            System.out.println(school.getName() + " : " + school.isVisible());
+            if (school.isVisible()) {
+                System.out.println(school.getName() + " - " + "видима");
                 schools += String.format("%d. " + school.getName(), counter) + "\n";
                 counter++;
-            }else{
-                System.out.println(school.getName()+" - "+"невидима");
+            } else {
+                System.out.println(school.getName() + " - " + "невидима");
             }
         }
         sendMessage(schools);
@@ -1090,17 +1089,17 @@ public class MessageService {
                 sendMessage("Школа записана!");
 
 
-            }else if(!student.getRole().equals(StudentsRoles.STUDENT) && vkGroupMessage.getText().contains("№")){
+            } else if (!student.getRole().equals(StudentsRoles.STUDENT) && vkGroupMessage.getText().contains("№")) {
                 School school = new School();
                 school.setName(vkGroupMessage.getText().trim());
                 school.setRegionId(student.getRegionId());
                 school.setVisible(false);
                 school.setLowerCaseName();
 
-                if(schoolsRepository.findByLowerCaseName(school.getName().toLowerCase()).size()>0){
+                if (schoolsRepository.findByLowerCaseName(school.getName().toLowerCase()).size() > 0) {
                     student.setSchoolId(schoolsRepository.findByName(school.getName()).get(0).getId());
                     sendMessage("Школа зарегистрирована! Вы - ученик/учитель " + school.getName());
-                }else {
+                } else {
                     schoolsRepository.save(school);
 
                     int schoolId = school.getId();
@@ -1123,14 +1122,14 @@ public class MessageService {
 
                 }
 
-            }else {
+            } else {
                 sendMessage("Ошибка! Неверно указана школа.");
                 return;
             }
 
         }
 
-        if(student.getClassId()!=null){
+        if (student.getClassId() != null) {
             queryBrancher();
             student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
             studentsRepository.save(student);
@@ -1201,8 +1200,8 @@ public class MessageService {
     public String[] stringToClass(String str) throws Exception {
 
         str = str.toUpperCase();
-        str=str.replace(" ", "");
-        str=str.replace("-", "");
+        str = str.replace(" ", "");
+        str = str.replace("-", "");
 
         if (str.matches("[-+]?\\d+")) {
             throw new Exception("Wrong class");
