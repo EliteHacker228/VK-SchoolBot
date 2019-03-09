@@ -19,8 +19,8 @@
       <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="681" column="9" lean-forward="true" selection-start-line="681" selection-start-column="9" selection-end-line="681" selection-end-column="9" />
+            <state relative-caret-position="441">
+              <caret line="680" column="13" lean-forward="true" selection-start-line="680" selection-start-column="13" selection-end-line="680" selection-end-column="13" />
               <folding>
                 <element signature="e#2806#2855#0" expanded="false" />
                 <element signature="e#4389#4450#0" expanded="false" />
@@ -36,8 +36,8 @@
                 <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
-                <marker date="1552148301473" expanded="false" signature="14313:15045" ph="..." />
-                <marker date="1552148301473" expanded="false" signature="23884:25287" ph="..." />
+                <marker date="1552148462200" expanded="false" signature="14313:15045" ph="..." />
+                <marker date="1552148462200" expanded="false" signature="23884:25287" ph="..." />
               </folding>
             </state>
           </provider>
@@ -487,13 +487,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00112" summary="School visibility system">
-      <created>1551113254128</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1551113254128</updated>
-    </task>
     <task id="LOCAL-00113" summary="School visibility system + logger">
       <created>1551113374470</created>
       <option name="number" value="00113" />
@@ -830,7 +823,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552147840028</updated>
     </task>
-    <option name="localTasksCounter" value="161" />
+    <task id="LOCAL-00161" summary="schedule changes attention fixed (TreeSet added)">
+      <created>1552148318453</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
+      <option name="project" value="LOCAL" />
+      <updated>1552148318453</updated>
+    </task>
+    <option name="localTasksCounter" value="162" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -895,7 +895,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Schedule node system added, reworked schedule node identification system" />
     <MESSAGE value="Schedule node getting system" />
     <MESSAGE value="Experimental secondary registration system" />
     <MESSAGE value="School visibility system" />
@@ -920,7 +919,8 @@
     <MESSAGE value="first version of schedule changes" />
     <MESSAGE value="first version of schedule changes 2" />
     <MESSAGE value="schedule changes attention fixe" />
-    <option name="LAST_COMMIT_MESSAGE" value="schedule changes attention fixe" />
+    <MESSAGE value="schedule changes attention fixed (TreeSet added)" />
+    <option name="LAST_COMMIT_MESSAGE" value="schedule changes attention fixed (TreeSet added)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -991,8 +991,8 @@
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
-            <marker date="1552148301473" expanded="false" signature="14313:15045" ph="..." />
-            <marker date="1552148301473" expanded="false" signature="23884:25287" ph="..." />
+            <marker date="1552148462200" expanded="false" signature="14313:15045" ph="..." />
+            <marker date="1552148462200" expanded="false" signature="23884:25287" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1066,8 +1066,8 @@
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
-            <marker date="1552148301473" expanded="false" signature="14313:15045" ph="..." />
-            <marker date="1552148301473" expanded="false" signature="23884:25287" ph="..." />
+            <marker date="1552148462200" expanded="false" signature="14313:15045" ph="..." />
+            <marker date="1552148462200" expanded="false" signature="23884:25287" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1350,8 +1350,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="681" column="9" lean-forward="true" selection-start-line="681" selection-start-column="9" selection-end-line="681" selection-end-column="9" />
+        <state relative-caret-position="441">
+          <caret line="680" column="13" lean-forward="true" selection-start-line="680" selection-start-column="13" selection-end-line="680" selection-end-column="13" />
           <folding>
             <element signature="e#2806#2855#0" expanded="false" />
             <element signature="e#4389#4450#0" expanded="false" />
@@ -1367,8 +1367,8 @@
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
-            <marker date="1552148301473" expanded="false" signature="14313:15045" ph="..." />
-            <marker date="1552148301473" expanded="false" signature="23884:25287" ph="..." />
+            <marker date="1552148462200" expanded="false" signature="14313:15045" ph="..." />
+            <marker date="1552148462200" expanded="false" signature="23884:25287" ph="..." />
           </folding>
         </state>
       </provider>

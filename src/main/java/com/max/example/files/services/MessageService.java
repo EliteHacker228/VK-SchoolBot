@@ -655,7 +655,7 @@ public class MessageService {
         }
 
 
-        TreeSet<SClass> sClassTreeSet = new TreeSet<>();
+        HashSet<SClass> sClassHashSet = new HashSet<>();
         ArrayList<SchoolScheduleNode> schoolScheduleNodes = ScheduleCreatorService.stringToScheduleConverter(text.replace(", ", ",").replace(",", ", "));
         for (SchoolScheduleNode sn : schoolScheduleNodes) {
             sn.setClassName(sn.getClassName().replace(" ", "").replace("-", "").toUpperCase());
@@ -671,7 +671,7 @@ public class MessageService {
                         if (scheduleNode.getDay().equals(sn.getDay())) {
                             scheduleNode.setChanges(sn.getLessons());
                             schoolScheduleRepository.save(scheduleNode);
-                            sClassTreeSet.add(sClass);
+                            sClassHashSet.add(sClass);
 
                         }
                     }
@@ -681,7 +681,7 @@ public class MessageService {
             }
         }
 
-        for (SClass sClass : sClassTreeSet) {
+        for (SClass sClass : sClassHashSet) {
             for (Student s : studentsRepository.findByClassId(sClass.getId())) {
                 try {
                     vk.messages().send(actor).userId(s.getVkId()).message("☀ Вам поступили новые изменения в расписании! Просмотрите расписание, чтобы увидеть их").execute();
