@@ -683,12 +683,17 @@ public class MessageService {
             }
         }
 
+        System.out.println("SCLASS CONTIAMENT:"+sClassHashSet.size());
+        for(SClass sClass1: sClassHashSet){
+            System.out.println(sClass1.getNumber()+sClass1.getLetter());
+        }
+
         for (SClass sClass : sClassHashSet) {
             System.out.println("SCLASS: "+sClass.getNumber()+sClass.getLetter());
-            for (Student s : studentsRepository.findByClassId(sClass.getId())) {
-                System.out.println("Student: "+s.getVkId());
+            for (Student student1 : studentsRepository.findByClassId(sClass.getId())) {
+                System.out.println("Student: "+student1.getVkId());
                 try {
-                    vk.messages().send(actor).userId(s.getVkId()).message("☀ Вам поступили новые изменения в расписании! Просмотрите расписание, чтобы увидеть их");
+                    vk.messages().send(actor).userId(student1.getVkId()).message("☀ Вам поступили новые изменения в расписании!").execute();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
