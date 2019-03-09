@@ -684,9 +684,11 @@ public class MessageService {
         }
 
         for (SClass sClass : sClassHashSet) {
+            System.out.println("SCLASS: "+sClass.getNumber()+sClass.getLetter());
             for (Student s : studentsRepository.findByClassId(sClass.getId())) {
+                System.out.println("Student: "+s.getVkId());
                 try {
-                    vk.messages().send(actor).userId(s.getVkId()).message("☀ Вам поступили новые изменения в расписании! Просмотрите расписание, чтобы увидеть их").execute();
+                    vk.messages().send(actor).userId(s.getVkId()).message("☀ Вам поступили новые изменения в расписании! Просмотрите расписание, чтобы увидеть их");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
