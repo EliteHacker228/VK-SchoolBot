@@ -719,9 +719,9 @@ public class MessageService {
 
             scheduleNodes.sort((o1, o2) -> {
                 Locale localeRUS = new Locale("ru", "RU");
-                SimpleDateFormat sf = new SimpleDateFormat("dd.MM", localeRUS);
+                SimpleDateFormat sf = new SimpleDateFormat("EEEE", localeRUS);
                 try {
-                    return sf.parse(o1.getDay()).compareTo(sf.parse(o2.getDay()));
+                    return sf.parse(o1.getDay().toLowerCase()).compareTo(sf.parse(o2.getDay().toLowerCase()));
                 } catch (ParseException e) {
                     return 0;
                 }
