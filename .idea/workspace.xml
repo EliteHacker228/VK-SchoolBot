@@ -4,6 +4,10 @@
     <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/max/example/files/entities/StudentStatus.class" afterPath="$PROJECT_DIR$/target/classes/com/max/example/files/entities/StudentStatus.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/max/example/files/services/AttentionService.class" afterPath="$PROJECT_DIR$/target/classes/com/max/example/files/services/AttentionService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/max/example/files/services/MessageService$1.class" afterPath="$PROJECT_DIR$/target/classes/com/max/example/files/services/MessageService$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/max/example/files/services/MessageService.class" afterPath="$PROJECT_DIR$/target/classes/com/max/example/files/services/MessageService.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -19,8 +23,8 @@
       <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="725" column="29" lean-forward="true" selection-start-line="725" selection-start-column="29" selection-end-line="725" selection-end-column="29" />
+            <state relative-caret-position="521">
+              <caret line="730" column="56" lean-forward="false" selection-start-line="730" selection-start-column="56" selection-end-line="730" selection-end-column="56" />
               <folding>
                 <element signature="e#2806#2855#0" expanded="false" />
                 <element signature="e#4389#4450#0" expanded="false" />
@@ -30,14 +34,14 @@
                 <element signature="method#queryBrancher#0;class#MessageService#0" expanded="false" />
                 <element signature="method#activateKey#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentGetKey#0;class#MessageService#0" expanded="false" />
-                <element signature="e#40758#40784#0" expanded="false" />
+                <element signature="e#40800#40826#0" expanded="false" />
                 <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
-                <marker date="1552758380236" expanded="false" signature="14313:15045" ph="..." />
-                <marker date="1552758380236" expanded="false" signature="23884:25287" ph="..." />
+                <marker date="1552762241215" expanded="false" signature="14313:15045" ph="..." />
+                <marker date="1552762241215" expanded="false" signature="23884:25287" ph="..." />
               </folding>
             </state>
           </provider>
@@ -497,13 +501,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00122" summary="some service 0 exit added v2">
-      <created>1551977618071</created>
-      <option name="number" value="00122" />
-      <option name="presentableId" value="LOCAL-00122" />
-      <option name="project" value="LOCAL" />
-      <updated>1551977618071</updated>
-    </task>
     <task id="LOCAL-00123" summary="reworked attention validator">
       <created>1551981920445</created>
       <option name="number" value="00123" />
@@ -840,7 +837,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552758069704</updated>
     </task>
-    <option name="localTasksCounter" value="171" />
+    <task id="LOCAL-00171" summary="schedule name (percent-eraser 2.1) + fixed schedule output 2.0">
+      <created>1552758393813</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1552758393813</updated>
+    </task>
+    <option name="localTasksCounter" value="172" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -849,6 +853,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291714" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -870,7 +875,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291714" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291714" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -905,8 +909,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="some refractoring" />
-    <MESSAGE value="some service 0 exit added" />
     <MESSAGE value="some service 0 exit added v2" />
     <MESSAGE value="reworked attention validator" />
     <MESSAGE value="reworked attention validator(for target class)" />
@@ -930,7 +932,9 @@
     <MESSAGE value="schedule name (percent-eraser 2)" />
     <MESSAGE value="schedule name (percent-eraser 2.1)" />
     <MESSAGE value="schedule name (percent-eraser 2.1) + fixed schedule output" />
-    <option name="LAST_COMMIT_MESSAGE" value="schedule name (percent-eraser 2.1) + fixed schedule output" />
+    <MESSAGE value="schedule name (percent-eraser 2.1) + fixed schedule output 2.0" />
+    <MESSAGE value="schedule name (percent-eraser 2.1) + fixed schedule output 2.1 (comparator)" />
+    <option name="LAST_COMMIT_MESSAGE" value="schedule name (percent-eraser 2.1) + fixed schedule output 2.1 (comparator)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -994,14 +998,14 @@
             <element signature="method#queryBrancher#0;class#MessageService#0" expanded="false" />
             <element signature="method#activateKey#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentGetKey#0;class#MessageService#0" expanded="false" />
-            <element signature="e#40758#40784#0" expanded="false" />
+            <element signature="e#40800#40826#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
-            <marker date="1552758380236" expanded="false" signature="14313:15045" ph="..." />
-            <marker date="1552758380236" expanded="false" signature="23884:25287" ph="..." />
+            <marker date="1552762241215" expanded="false" signature="14313:15045" ph="..." />
+            <marker date="1552762241215" expanded="false" signature="23884:25287" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1068,14 +1072,14 @@
             <element signature="method#queryBrancher#0;class#MessageService#0" expanded="false" />
             <element signature="method#activateKey#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentGetKey#0;class#MessageService#0" expanded="false" />
-            <element signature="e#40758#40784#0" expanded="false" />
+            <element signature="e#40800#40826#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
-            <marker date="1552758380236" expanded="false" signature="14313:15045" ph="..." />
-            <marker date="1552758380236" expanded="false" signature="23884:25287" ph="..." />
+            <marker date="1552762241215" expanded="false" signature="14313:15045" ph="..." />
+            <marker date="1552762241215" expanded="false" signature="23884:25287" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1335,8 +1339,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="725" column="29" lean-forward="true" selection-start-line="725" selection-start-column="29" selection-end-line="725" selection-end-column="29" />
+        <state relative-caret-position="521">
+          <caret line="730" column="56" lean-forward="false" selection-start-line="730" selection-start-column="56" selection-end-line="730" selection-end-column="56" />
           <folding>
             <element signature="e#2806#2855#0" expanded="false" />
             <element signature="e#4389#4450#0" expanded="false" />
@@ -1346,14 +1350,14 @@
             <element signature="method#queryBrancher#0;class#MessageService#0" expanded="false" />
             <element signature="method#activateKey#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentGetKey#0;class#MessageService#0" expanded="false" />
-            <element signature="e#40758#40784#0" expanded="false" />
+            <element signature="e#40800#40826#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentClassRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
-            <marker date="1552758380236" expanded="false" signature="14313:15045" ph="..." />
-            <marker date="1552758380236" expanded="false" signature="23884:25287" ph="..." />
+            <marker date="1552762241215" expanded="false" signature="14313:15045" ph="..." />
+            <marker date="1552762241215" expanded="false" signature="23884:25287" ph="..." />
           </folding>
         </state>
       </provider>

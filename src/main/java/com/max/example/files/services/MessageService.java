@@ -709,6 +709,15 @@ public class MessageService {
     private void showScheduleNodes(boolean showAllSchedule) {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
 
+        TreeMap<String, Integer> daysOfTheWeek = new TreeMap<>();
+        daysOfTheWeek.put("понедельник", 0);
+        daysOfTheWeek.put("вторник", 1);
+        daysOfTheWeek.put("среда", 2);
+        daysOfTheWeek.put("четверг", 3);
+        daysOfTheWeek.put("пятница", 4);
+        daysOfTheWeek.put("суббота", 5);
+        daysOfTheWeek.put("воскресенье", 6);
+
 
         if (showAllSchedule) {
             ArrayList<SchoolScheduleNode> scheduleNodes = new ArrayList<>(schoolScheduleRepository.findByClassId(student.getClassId()));
@@ -717,15 +726,7 @@ public class MessageService {
                     "☀Есть изменения на следующие дни:\n";
             boolean changed = false;
 
-            scheduleNodes.sort((o1, o2) -> {
-                Locale localeRUS = new Locale("ru", "RU");
-                SimpleDateFormat sf = new SimpleDateFormat("EEEE", localeRUS);
-                try {
-                    return sf.parse(o1.getDay().toLowerCase()).compareTo(sf.parse(o2.getDay().toLowerCase()));
-                } catch (ParseException e) {
-                    return 0;
-                }
-            });
+            scheduleNodes.sort(Comparator.comparingInt(o -> daysOfTheWeek.get(o.getDay().toLowerCase())));
 
             for (SchoolScheduleNode sn : scheduleNodes) {
                 if (sn.getChanges() != null) {
