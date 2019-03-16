@@ -726,7 +726,7 @@ public class MessageService {
                     "☀Есть изменения на следующие дни:\n";
             boolean changed = false;
 
-            scheduleNodes.sort(Comparator.comparingInt(o -> daysOfTheWeek.get(o.getDay().toLowerCase())));
+            scheduleNodes.sort((o1, o2) -> daysOfTheWeek.get(o1.getDay().toLowerCase()) - daysOfTheWeek.get(o2.getDay().toLowerCase()));
 
             for (SchoolScheduleNode sn : scheduleNodes) {
                 if (sn.getChanges() != null) {
