@@ -34,6 +34,10 @@ public class ScheduleCreatorService {
 
         for (int i = 1; i < elements.length; i++) {
 
+            int borderIndex = elements[i].indexOf(":");
+            if(elements[i].charAt(borderIndex+1)!=' '){
+                elements[i]=elements[i].replace(":", ": ");
+            }
             String[] subelement = elements[i].split(":");
             String day = subelement[0].replace("%", "");
             String lessons = subelement[1]; //список уроков через запятую
