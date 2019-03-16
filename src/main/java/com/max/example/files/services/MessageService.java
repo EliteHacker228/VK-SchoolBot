@@ -338,7 +338,10 @@ public class MessageService {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         String query = "";
         String text = vkGroupMessage.getText();
-        activateKey(student);
+        if (privateKeysRepository.findByKey(vkGroupMessage.getText()).size() > 0) {
+            activateKey(student);
+            return;
+        }
 
         //student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
         //            queryBrancher();
@@ -753,7 +756,13 @@ public class MessageService {
             return;
         }
 
-        ArrayList<SchoolScheduleNode> schoolScheduleNodes = ScheduleCreatorService.stringToScheduleConverter(text.replace(", ", ",").replace(",", ", "));
+        ArrayList<SchoolScheduleNode> schoolScheduleNodes = null;
+        try {
+            schoolScheduleNodes = ScheduleCreatorService.stringToScheduleConverter(text.replace(", ", ",").replace(",", ", "));
+        }catch (IllegalArgumentException e){
+            sendMessage("Неверный формат команды!");
+            return;
+        }
         for (SchoolScheduleNode sn : schoolScheduleNodes) {
 
             //sn.setLessons(sn.getLessons().replace("%", ""));//
