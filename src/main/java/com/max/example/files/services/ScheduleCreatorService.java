@@ -27,7 +27,7 @@ public class ScheduleCreatorService {
         for(int i = 1; i<elements.length; i++){
 
             String[] subelement = elements[i].split(":");
-            String day = subelement[0];
+            String day = subelement[0].replace("%", "");
             String lessons = subelement[1]; //список уроков через запятую
             SchoolScheduleNode scheduleNode = new SchoolScheduleNode(elements[0].replace(";", ""), lessons, day);
 
