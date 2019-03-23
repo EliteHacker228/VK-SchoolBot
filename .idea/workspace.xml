@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="">
+    <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="DayChecker">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/SchedulechangesCleanerService.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/SchedulechangesCleanerService.java" />
     </list>
@@ -84,8 +84,8 @@
       <file leaf-file-name="SchedulechangesCleanerService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/SchedulechangesCleanerService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="52" column="45" lean-forward="true" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
+            <state relative-caret-position="355">
+              <caret line="49" column="47" lean-forward="false" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -513,13 +513,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00132" summary="reworked attention validator(for class!)">
-      <created>1551985888886</created>
-      <option name="number" value="00132" />
-      <option name="presentableId" value="LOCAL-00132" />
-      <option name="project" value="LOCAL" />
-      <updated>1551985888886</updated>
-    </task>
     <task id="LOCAL-00133" summary="reworked attention validator(for class-class)">
       <created>1551989855893</created>
       <option name="number" value="00133" />
@@ -856,7 +849,14 @@
       <option name="project" value="LOCAL" />
       <updated>1553444163859</updated>
     </task>
-    <option name="localTasksCounter" value="181" />
+    <task id="LOCAL-00181" summary="DayChecker">
+      <created>1553358077446</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1553358077446</updated>
+    </task>
+    <option name="localTasksCounter" value="182" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1288,8 +1288,8 @@
         <state relative-caret-position="182">
           <caret line="14" column="43" lean-forward="false" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
           <folding>
-            <element signature="e#617#618#0" expanded="true" />
-            <element signature="e#672#673#0" expanded="true" />
+            <element signature="e#617#618#0" expanded="false" />
+            <element signature="e#672#673#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1367,8 +1367,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/SchedulechangesCleanerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="52" column="45" lean-forward="true" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
+        <state relative-caret-position="355">
+          <caret line="49" column="47" lean-forward="false" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

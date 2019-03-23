@@ -14,8 +14,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 @Component
 public class SchedulechangesCleanerService implements CommandLineRunner {
@@ -43,15 +45,13 @@ public class SchedulechangesCleanerService implements CommandLineRunner {
             public void run() {
                 while (true){
 
-                    Locale locale = new Locale("ru", "RU");
-                    SimpleDateFormat sf = new SimpleDateFormat("hh EEEE", locale);
-
-                    String numberAndName = sf.format(new Date()); //1
-                    String name = numberAndName.split(" ")[1];
-                    String hour = numberAndName.split(" ")[0];
-
-                    System.out.println(name);
-                    System.out.println(hour);
+                    TimeZone timeZone = TimeZone.getTimeZone("Asia/Yekaterinburg");
+                    ZonedDateTime zdt = ZonedDateTime.now(timeZone.toZoneId());
+                    String daynameAndNumber = zdt.getDayOfWeek()+" "+zdt.getHour(); //2
+                    System.out.println(daynameAndNumber);
+                    if(daynameAndNumber.equals("SATURDAY 21")){
+                        System.out.println("equals");
+                    }
 
                     try {
                         Thread.sleep(10000);
