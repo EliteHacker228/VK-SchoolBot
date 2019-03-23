@@ -1,6 +1,7 @@
 package com.max.example.files.services;
 
 import com.max.example.files.datanodes.classes.Homework;
+import com.max.example.files.datanodes.classes.SchoolScheduleNode;
 import com.max.example.files.datanodes.repositories.HomeworkRepository;
 import com.max.example.files.datanodes.repositories.SchoolScheduleRepository;
 import com.vk.api.sdk.client.TransportClient;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -50,7 +52,10 @@ public class SchedulechangesCleanerService implements CommandLineRunner {
                     String daynameAndNumber = zdt.getDayOfWeek()+" "+zdt.getHour(); //2
                     System.out.println(daynameAndNumber);
                     if(daynameAndNumber.equals("SATURDAY 21")){
-
+                        for(SchoolScheduleNode sn: schoolScheduleRepository.findAll()){
+                            sn.setChanges(null);
+                            schoolScheduleRepository.save(sn);
+                        }
                     }
 
                     try {
