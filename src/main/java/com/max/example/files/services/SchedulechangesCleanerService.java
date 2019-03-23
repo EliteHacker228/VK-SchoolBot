@@ -51,7 +51,7 @@ public class SchedulechangesCleanerService implements CommandLineRunner {
                     ZonedDateTime zdt = ZonedDateTime.now(timeZone.toZoneId());
                     String daynameAndNumber = zdt.getDayOfWeek()+" "+zdt.getHour(); //2
                     System.out.println(daynameAndNumber);
-                    if(daynameAndNumber.equals("SATURDAY 21")){
+                    if(daynameAndNumber.equals("SATURDAY 20")){
                         for(SchoolScheduleNode sn: schoolScheduleRepository.findAll()){
                             sn.setChanges(null);
                             schoolScheduleRepository.save(sn);
