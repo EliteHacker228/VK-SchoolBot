@@ -45,12 +45,16 @@ public class SchedulechangesCleanerService implements CommandLineRunner {
 
                     Locale locale = new Locale("ru", "RU");
                     SimpleDateFormat sf = new SimpleDateFormat("hh EEEE", locale);
+
                     String numberAndName = sf.format(new Date()); //1
                     String name = numberAndName.split(" ")[1];
+                    String hour = numberAndName.split(" ")[0];
+
                     System.out.println(name);
+                    System.out.println(hour);
 
                     try {
-                        Thread.sleep(8000);
+                        Thread.sleep(10000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="ReRegistration system">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/SchedulechangesCleanerService.java" />
+    <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/SchedulechangesCleanerService.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/SchedulechangesCleanerService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -74,8 +74,8 @@
       <file leaf-file-name="HomeworkAttentionSystem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="28" column="29" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="28" selection-end-column="29" />
+            <state relative-caret-position="442">
+              <caret line="68" column="25" lean-forward="true" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -84,8 +84,8 @@
       <file leaf-file-name="SchedulechangesCleanerService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/SchedulechangesCleanerService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="52" column="43" lean-forward="true" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
+            <state relative-caret-position="485">
+              <caret line="52" column="45" lean-forward="true" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -513,13 +513,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00131" summary="reworked attention validator(for class!)">
-      <created>1551985262184</created>
-      <option name="number" value="00131" />
-      <option name="presentableId" value="LOCAL-00131" />
-      <option name="project" value="LOCAL" />
-      <updated>1551985262184</updated>
-    </task>
     <task id="LOCAL-00132" summary="reworked attention validator(for class!)">
       <created>1551985888886</created>
       <option name="number" value="00132" />
@@ -856,7 +849,14 @@
       <option name="project" value="LOCAL" />
       <updated>1553443014693</updated>
     </task>
-    <option name="localTasksCounter" value="180" />
+    <task id="LOCAL-00180" summary="DayChecker">
+      <created>1553444163859</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
+      <option name="project" value="LOCAL" />
+      <updated>1553444163859</updated>
+    </task>
+    <option name="localTasksCounter" value="181" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -921,7 +921,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="reworked attention validator(for class, class)" />
     <MESSAGE value="reworked attention validator(for class!)" />
     <MESSAGE value="reworked attention validator(for class-class)" />
     <MESSAGE value="reworked attention validator(for class*)" />
@@ -946,7 +945,8 @@
     <MESSAGE value="schedule days name validator" />
     <MESSAGE value="schedule days name validator 2.1" />
     <MESSAGE value="ReRegistration system" />
-    <option name="LAST_COMMIT_MESSAGE" value="ReRegistration system" />
+    <MESSAGE value="DayChecker" />
+    <option name="LAST_COMMIT_MESSAGE" value="DayChecker" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1359,16 +1359,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="28" column="29" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="28" selection-end-column="29" />
+        <state relative-caret-position="442">
+          <caret line="68" column="25" lean-forward="true" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/SchedulechangesCleanerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="52" column="43" lean-forward="true" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
+        <state relative-caret-position="485">
+          <caret line="52" column="45" lean-forward="true" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
