@@ -50,11 +50,11 @@ public class SchedulechangesCleanerService implements CommandLineRunner {
                     String daynameAndNumber = zdt.getDayOfWeek()+" "+zdt.getHour(); //2
                     System.out.println(daynameAndNumber);
                     if(daynameAndNumber.equals("SATURDAY 21")){
-                        System.out.println("equals");
+
                     }
 
                     try {
-                        Thread.sleep(10000);
+                        Thread.sleep(900000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
