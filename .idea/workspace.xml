@@ -85,7 +85,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/SchedulechangesCleanerService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="468">
-              <caret line="53" column="57" lean-forward="false" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
+              <caret line="53" column="59" lean-forward="false" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -513,13 +513,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00137" summary="homework attention system">
-      <created>1552037866223</created>
-      <option name="number" value="00137" />
-      <option name="presentableId" value="LOCAL-00137" />
-      <option name="project" value="LOCAL" />
-      <updated>1552037866223</updated>
-    </task>
     <task id="LOCAL-00138" summary="homework attention system">
       <created>1552038120874</created>
       <option name="number" value="00138" />
@@ -856,7 +849,14 @@
       <option name="project" value="LOCAL" />
       <updated>1553359114654</updated>
     </task>
-    <option name="localTasksCounter" value="186" />
+    <task id="LOCAL-00186" summary="DayChecker">
+      <created>1553359145851</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
+      <option name="project" value="LOCAL" />
+      <updated>1553359145851</updated>
+    </task>
+    <option name="localTasksCounter" value="187" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1368,7 +1368,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/SchedulechangesCleanerService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
-          <caret line="53" column="57" lean-forward="false" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
+          <caret line="53" column="59" lean-forward="false" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
