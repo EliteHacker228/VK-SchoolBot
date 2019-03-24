@@ -323,9 +323,7 @@ public class MessageService {
 
                 case STUDENT_CHOOSED_RE_REGISTRATION: //если 1 - перерегистрация, в противном случае - отмена.
                     studentReRegistration();
-                    student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
-                    studentsRepository.save(student);
-                    queryBrancher();
+
                     break;
             }
 //            if (student.getRegionId() == null) {
@@ -688,6 +686,9 @@ public class MessageService {
             sendMessage("Команда выполнена! Напишите боту для продолжения работы");
         }else{
             sendMessage("Команда отменена");
+            student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
+            studentsRepository.save(student);
+            queryBrancher();
         }
     }
 
