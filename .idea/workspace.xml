@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/entities/StudentStatus.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/entities/StudentStatus.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,8 +19,8 @@
       <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-16">
-              <caret line="324" column="44" lean-forward="true" selection-start-line="324" selection-start-column="44" selection-end-line="324" selection-end-column="44" />
+            <state relative-caret-position="443">
+              <caret line="666" column="73" lean-forward="true" selection-start-line="666" selection-start-column="73" selection-end-line="666" selection-end-column="73" />
               <folding>
                 <element signature="e#2894#2943#0" expanded="false" />
                 <element signature="e#4477#4538#0" expanded="false" />
@@ -30,9 +28,8 @@
                 <element signature="e#8420#8464#0" expanded="false" />
                 <element signature="e#13829#13879#0" expanded="false" />
                 <element signature="method#queryRouter#0;class#MessageService#0" expanded="false" />
-                <element signature="method#queryBrancher#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentGetKey#0;class#MessageService#0" expanded="false" />
-                <element signature="e#42961#42987#0" expanded="false" />
+                <element signature="e#42965#42991#0" expanded="false" />
                 <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
@@ -133,7 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>creator</find>
       <find>schoolReg</find>
       <find>isVisi</find>
       <find>неверно указана</find>
@@ -163,6 +159,7 @@
       <find>STUDENT_CHOOSED_SEND_SCHEDULE_CHANGES_ATTENTION</find>
       <find>THREAD</find>
       <find>субб</find>
+      <find>перерегистрировать</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Max\Documents\GitHub\Test-Server\src\main\java\com\max\example\files</dir>
@@ -540,13 +537,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00127" summary="reworked attention validator(for class, class)">
-      <created>1551983262737</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1551983262737</updated>
-    </task>
     <task id="LOCAL-00128" summary="reworked attention validator(for class, class)">
       <created>1551983709831</created>
       <option name="number" value="00128" />
@@ -883,7 +873,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552766320113</updated>
     </task>
-    <option name="localTasksCounter" value="176" />
+    <task id="LOCAL-00176" summary="ReRegistration system">
+      <created>1553442440766</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1553442440766</updated>
+    </task>
+    <option name="localTasksCounter" value="177" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -948,7 +945,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="reworked attention validator(for target class)" />
     <MESSAGE value="reworked attention validator(for class, class)" />
     <MESSAGE value="reworked attention validator(for class!)" />
     <MESSAGE value="reworked attention validator(for class-class)" />
@@ -973,7 +969,8 @@
     <MESSAGE value="schedule name (percent-eraser 2.1) + fixed schedule output 2.1 (comparator)" />
     <MESSAGE value="schedule days name validator" />
     <MESSAGE value="schedule days name validator 2.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="schedule days name validator 2.1" />
+    <MESSAGE value="ReRegistration system" />
+    <option name="LAST_COMMIT_MESSAGE" value="ReRegistration system" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1035,9 +1032,8 @@
             <element signature="e#8420#8464#0" expanded="false" />
             <element signature="e#13829#13879#0" expanded="false" />
             <element signature="method#queryRouter#0;class#MessageService#0" expanded="false" />
-            <element signature="method#queryBrancher#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentGetKey#0;class#MessageService#0" expanded="false" />
-            <element signature="e#42961#42987#0" expanded="false" />
+            <element signature="e#42965#42991#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
@@ -1107,9 +1103,8 @@
             <element signature="e#8420#8464#0" expanded="false" />
             <element signature="e#13829#13879#0" expanded="false" />
             <element signature="method#queryRouter#0;class#MessageService#0" expanded="false" />
-            <element signature="method#queryBrancher#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentGetKey#0;class#MessageService#0" expanded="false" />
-            <element signature="e#42961#42987#0" expanded="false" />
+            <element signature="e#42965#42991#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
@@ -1381,8 +1376,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-16">
-          <caret line="324" column="44" lean-forward="true" selection-start-line="324" selection-start-column="44" selection-end-line="324" selection-end-column="44" />
+        <state relative-caret-position="443">
+          <caret line="666" column="73" lean-forward="true" selection-start-line="666" selection-start-column="73" selection-end-line="666" selection-end-column="73" />
           <folding>
             <element signature="e#2894#2943#0" expanded="false" />
             <element signature="e#4477#4538#0" expanded="false" />
@@ -1390,9 +1385,8 @@
             <element signature="e#8420#8464#0" expanded="false" />
             <element signature="e#13829#13879#0" expanded="false" />
             <element signature="method#queryRouter#0;class#MessageService#0" expanded="false" />
-            <element signature="method#queryBrancher#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentGetKey#0;class#MessageService#0" expanded="false" />
-            <element signature="e#42961#42987#0" expanded="false" />
+            <element signature="e#42965#42991#0" expanded="false" />
             <element signature="method#studentServiceClac#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />

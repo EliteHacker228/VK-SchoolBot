@@ -644,7 +644,7 @@ public class MessageService {
                     "\uD83D\uDCAC7. Сообщить о домашнем задании\n" +
                     "\uD83D\uDCDD8. Добавить/Редактировать расписание\n" +
                     "\uD83D\uDD139. Сгенерировать ключ доверенного ученика\n" +
-                    "\uD83D\uDD1310. Сгенерировать ключ учителя" +
+                    "\uD83D\uDD1310. Сгенерировать ключ учителя\n" +
                     "\uD83D\uDEAB0. Перерегистрировать свой аккаунт\n");
         } else if (student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
@@ -657,7 +657,7 @@ public class MessageService {
                     "\uD83D\uDCAC7. Сообщить о домашнем задании\n" +
                     "\uD83D\uDCDD8. Добавить/Редактировать расписание\n" +
                     "\uD83D\uDD139. Сгенерировать ключ доверенного ученика\n" +
-                    "\uD83D\uDD1310. Сгенерировать ключ учителя" +
+                    "\uD83D\uDD1310. Сгенерировать ключ учителя\n" +
                     "\uD83D\uDEAB0. Перерегистрировать свой аккаунт\n");
         } else {
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
