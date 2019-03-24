@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 @Component
 public class HomeworkAttentionSystem implements CommandLineRunner {
@@ -38,6 +40,9 @@ public class HomeworkAttentionSystem implements CommandLineRunner {
 
         actor = new GroupActor(177305058, "6afde058b95ce78f27ce1ee66fabc3d66adf81e66d154879c8b57a919e8697580989a30fe9f165896244e");
 
+        //Locale locale = new Locale("ru", "RU");
+        //SimpleDateFormat sf = new SimpleDateFormat("hh EEEE");
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -59,6 +64,8 @@ public class HomeworkAttentionSystem implements CommandLineRunner {
                             }
                         }
                     }
+
+
                     try {
                         Thread.sleep(900000);
                     } catch (InterruptedException e) {

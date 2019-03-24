@@ -56,6 +56,7 @@ public class MessageService {
      * 📝8. Добавить/Редактировать расписание
      * 🔓9. Сгенерировать ключ доверенного ученика
      * 🔓10. Сгенерировать ключ учителя
+     * 🚫0. Перерегистрировать свой аккаунт
      **/
 
     private final int ADD_HOMEWORK = 1;
@@ -69,6 +70,8 @@ public class MessageService {
     private final int ADD_OR_EDIT_SCHEDULE = 8;
     private final int HEADMAN_KEY_GENERATE = 9;
     private final int TEACHER_KEY_GENERATE = 10;
+    private final int RE_REGISTRATION = 0;
+
 
 
 //    public MessageService(VKRequest vkRequest){
@@ -317,6 +320,10 @@ public class MessageService {
                     studentsRepository.save(student);
                     queryBrancher();
                     break;
+
+                case STUDENT_CHOOSED_RE_REGISTRATION: //если 1 - перерегистрация, в противном случае - отмена.
+                    studentReRegistration();
+                    break;
             }
 //            if (student.getRegionId() == null) {
 //                studentRegionRegistration();
@@ -434,7 +441,8 @@ public class MessageService {
                         student.getRole().equals(StudentsRoles.ADMIN.name()) ||
                         student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
 
-                    sendMessage("Для отправки ученикам уведомления о временном изменении расписания используйте эту функцию.\n\n" +
+                    sendMessage("Для отправки ученикам уведомления о временном изменении расписания используйте эту функцию." +
+                            "Изменения удаляются в субботу в 20:00 по времени Екатеринбурга\n\n" +
                             "" +
                             "Введите расписание следующего формата:\n" +
                             "имя_класса;\n" +
@@ -580,6 +588,17 @@ public class MessageService {
                 }
                 break;
 
+            case RE_REGISTRATION: //0
+                sendMessage("Данная функция удалит следующие данные вашей учётной записи:\n" +
+                        "-Регион\n" +
+                        "-Школа\n" +
+                        "-Класс\n" +
+                        "Если вы хотите продолжить, отправьте 1.\n" +
+                        "Для отмены отправьте 0.");
+                student.setStatus(StudentStatus.STUDENT_CHOOSED_RE_REGISTRATION.name());
+                studentsRepository.save(student);
+            break;
+
             default:
                 sendMessage("Извините, такой команды нет");
                 student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
@@ -610,7 +629,8 @@ public class MessageService {
                     "⚠5. Отправить объявление\n" +
                     "☀6. Сообщить об изменениях в расписании\n" +
                     "\uD83D\uDCAC7. Сообщить о домашнем задании\n" +
-                    "\uD83D\uDCDD8. Добавить/Редактировать расписание\n");
+                    "\uD83D\uDCDD8. Добавить/Редактировать расписание\n" +
+                    "\uD83D\uDEAB0. Перерегистрировать свой аккаунт\n");
 
         } else if (
                 student.getRole().equals(StudentsRoles.ADMIN.name())) {
@@ -624,7 +644,8 @@ public class MessageService {
                     "\uD83D\uDCAC7. Сообщить о домашнем задании\n" +
                     "\uD83D\uDCDD8. Добавить/Редактировать расписание\n" +
                     "\uD83D\uDD139. Сгенерировать ключ доверенного ученика\n" +
-                    "\uD83D\uDD1310. Сгенерировать ключ учителя");
+                    "\uD83D\uDD1310. Сгенерировать ключ учителя" +
+                    "\uD83D\uDEAB0. Перерегистрировать свой аккаунт\n");
         } else if (student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
                     "\uD83D\uDCDA1. Записать ДЗ\n" +
@@ -636,17 +657,35 @@ public class MessageService {
                     "\uD83D\uDCAC7. Сообщить о домашнем задании\n" +
                     "\uD83D\uDCDD8. Добавить/Редактировать расписание\n" +
                     "\uD83D\uDD139. Сгенерировать ключ доверенного ученика\n" +
-                    "\uD83D\uDD1310. Сгенерировать ключ учителя");
+                    "\uD83D\uDD1310. Сгенерировать ключ учителя" +
+                    "\uD83D\uDEAB0. Перерегистрировать свой аккаунт\n");
         } else {
             sendMessage("Здравствуйте, " + userXtrCounters.getFirstName() + "! Чего желаете?\n" +
                     "\uD83D\uDCDA1. Записать ДЗ\n" +
                     "\uD83D\uDCD72. Просмотреть записанное ДЗ\n" +
                     "\uD83D\uDCC83. Калькулятор оценок\n" +
-                    "\uD83D\uDCCA4. Просмотреть расписание на неделю\n");
+                    "\uD83D\uDCCA4. Просмотреть расписание на неделю\n" +
+                    "\uD83D\uDEAB0. Перерегистрировать свой аккаунт\n");
         }
 
         student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
         studentsRepository.save(student);
+    }
+
+    private void studentReRegistration(){
+        Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
+        String text = vkGroupMessage.getText().replace("\n", "");
+        if(text.trim().equals("1")){
+            student.setRegionId(null);
+            student.setSchoolId(null);
+            student.setClassId(null);
+
+            student.setStatus(StudentStatus.STUDENT_REGION_REGISTRATION.name());
+            studentsRepository.save(student);
+            sendMessage("Команда выполнена! Напишите боту для продолжения работы");
+        }else{
+            sendMessage("Команда отменена");
+        }
     }
 
     private void studentAddScheduleChanges() {
