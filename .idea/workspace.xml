@@ -19,8 +19,8 @@
       <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="1059" column="19" lean-forward="true" selection-start-line="1059" selection-start-column="19" selection-end-line="1059" selection-end-column="19" />
+            <state relative-caret-position="469">
+              <caret line="1064" column="19" lean-forward="true" selection-start-line="1064" selection-start-column="19" selection-end-line="1064" selection-end-column="19" />
               <folding>
                 <element signature="e#2894#2943#0" expanded="false" />
                 <element signature="e#4477#4538#0" expanded="false" />
@@ -512,13 +512,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00139" summary="homework attention system">
-      <created>1552038540348</created>
-      <option name="number" value="00139" />
-      <option name="presentableId" value="LOCAL-00139" />
-      <option name="project" value="LOCAL" />
-      <updated>1552038540348</updated>
-    </task>
     <task id="LOCAL-00140" summary="homework attention system">
       <created>1552038762864</created>
       <option name="number" value="00140" />
@@ -855,7 +848,14 @@
       <option name="project" value="LOCAL" />
       <updated>1553447895472</updated>
     </task>
-    <option name="localTasksCounter" value="188" />
+    <task id="LOCAL-00188" summary="Calculator exit smart system">
+      <created>1554110359160</created>
+      <option name="number" value="00188" />
+      <option name="presentableId" value="LOCAL-00188" />
+      <option name="project" value="LOCAL" />
+      <updated>1554110359161</updated>
+    </task>
+    <option name="localTasksCounter" value="189" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -920,7 +920,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="reworked attention validator(for class!)" />
     <MESSAGE value="reworked attention validator(for class-class)" />
     <MESSAGE value="reworked attention validator(for class*)" />
     <MESSAGE value="homework attention system (!)" />
@@ -945,7 +944,8 @@
     <MESSAGE value="schedule days name validator 2.1" />
     <MESSAGE value="ReRegistration system" />
     <MESSAGE value="DayChecker" />
-    <option name="LAST_COMMIT_MESSAGE" value="DayChecker" />
+    <MESSAGE value="Calculator exit smart system" />
+    <option name="LAST_COMMIT_MESSAGE" value="Calculator exit smart system" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1344,8 +1344,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="1059" column="19" lean-forward="true" selection-start-line="1059" selection-start-column="19" selection-end-line="1059" selection-end-column="19" />
+        <state relative-caret-position="469">
+          <caret line="1064" column="19" lean-forward="true" selection-start-line="1064" selection-start-column="19" selection-end-line="1064" selection-end-column="19" />
           <folding>
             <element signature="e#2894#2943#0" expanded="false" />
             <element signature="e#4477#4538#0" expanded="false" />
