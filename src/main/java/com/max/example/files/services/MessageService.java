@@ -709,7 +709,7 @@ public class MessageService {
 
 
             for (SClass sClass : sClasses) {
-                if (sClass.getLetter().equals(sn.getClassLetter()) &&
+                if (sClass.getLetter().equals(sn.getClassLetter().toUpperCase()) &&
                         sClass.getNumber() == sn.getClassNumber()) {
 
 
@@ -814,7 +814,7 @@ public class MessageService {
             sn.setClassName(sn.getClassName().replace(" ", "").replace("-", "").toUpperCase());
             ArrayList<SClass> sClasses = new ArrayList<>(classesRepository.findBySchoolId(student.getSchoolId()));
             for (SClass sClass : sClasses) {
-                if (sClass.getLetter().equals(sn.getClassLetter()) &&
+                if (sClass.getLetter().equals(sn.getClassLetter().toUpperCase()) &&
                         sClass.getNumber() == sn.getClassNumber()) {
                     sn.setClassId(sClass.getId());
                     sn.setId(sClass.getId() + " " + sn.getClassName() + " " + sn.getDay());

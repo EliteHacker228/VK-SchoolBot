@@ -123,7 +123,7 @@ public class AttentionService {
                 String s = text.substring(text.lastIndexOf("(")).split("[()]")[1]; //класс
 
                 int schoolId = studentsRepository.findByVkId(vkRequest.getObject().getFrom_id()).get(0).getSchoolId();
-                String letter = s.substring(s.length() - 1, s.length());//Буква
+                String letter = s.substring(s.length() - 1, s.length()).toUpperCase();//Буква
                 String number = s.substring(0, s.length() - 1);//Число
 
                 ArrayList<SClass> sClassArrayList = new ArrayList<SClass>(classesRepository.findBySchoolId(schoolId));
