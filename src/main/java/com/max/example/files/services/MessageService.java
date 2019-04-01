@@ -361,14 +361,14 @@ public class MessageService {
             } else if (text.matches("[-+]?\\d+")) {
                 query = text;
             } else {
-                sendMessage("Неверная команда");//STUDENT_IN_ACTION
+                sendMessage("Неверная команда. Отправьте боту любое сообщение, чтобы вызвать меню");//STUDENT_IN_ACTION
                 student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
                 studentsRepository.save(student);
                 return;
 
             }
         } catch (NumberFormatException e) {
-            sendMessage("Неверная команда");//STUDENT_IN_ACTION
+            sendMessage("Неверная команда.  Отправьте боту любое сообщение, чтобы вызвать меню");//STUDENT_IN_ACTION
             student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
             studentsRepository.save(student);
             return;
