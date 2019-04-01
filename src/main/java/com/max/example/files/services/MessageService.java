@@ -1053,7 +1053,7 @@ public class MessageService {
     private void studentServiceClac() {
         Student student = studentsRepository.findByVkId(vkGroupMessage.getFrom_id()).get(0);
         String result = "";
-        if (vkGroupMessage.getText().trim().equals("0")) {
+        if (vkGroupMessage.getText().trim().equals("0") || !(vkGroupMessage.getText().trim().matches("[-+]?\\d+"))) {
             sendMessage("Отмена.");
             student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
             studentsRepository.save(student);
