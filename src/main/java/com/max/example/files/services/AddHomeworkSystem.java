@@ -241,7 +241,7 @@ public class AddHomeworkSystem {
                             GregorianCalendar g = new GregorianCalendar();
                             g.add(GregorianCalendar.DAY_OF_MONTH, +1);
 
-                            if(sf.format(new Date()).equals(sf.format(dDate)) || sf.format(g.getTimeInMillis()).equals(homework.getRemindDate())){
+                            if(sf.format(new Date()).equals(sf.format(dDate)) || sf.format(g.getTimeInMillis()).equals(sf.format(homework.getRemindDate()))){
                                 homework.setReminded(true);
                             }
                             homeworkRepository.save(homework);
