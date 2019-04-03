@@ -81,6 +81,10 @@ public class AddHomeworkSystem {
                     for (int i = Math.min(val1, val2); i <= Math.max(val1, val2); i++) {
                         if (sClass.getNumber() == i) {
                             for (Student s : studentsRepository.findByClassId(sClass.getId())) {
+                                if(s.getRole().equals("ADMIN")){
+                                    continue;
+                                }
+
                                 Homework homework = new Homework();
                                 homework.setOwnerId(s.getVkId());
                                 homework.setTaskText(outOfBrackets);
@@ -113,6 +117,10 @@ public class AddHomeworkSystem {
                 for (SClass sClass : classesRepository.findBySchoolId(schoolId)) {
                     if (sClass.getNumber() == classNumber) {
                         for (Student s : studentsRepository.findByClassId(sClass.getId())) {
+                            if(s.getRole().equals("ADMIN")){
+                                continue;
+                            }
+
                             Homework homework = new Homework();
                             homework.setOwnerId(s.getVkId());
                             homework.setTaskText(outOfBrackets);
@@ -154,6 +162,10 @@ public class AddHomeworkSystem {
                                 classLiteral.substring(classLiteral.length() - 1).toLowerCase().equals(sClass.getLetter().toLowerCase())) {
 
                             for (Student s : studentsRepository.findByClassId(sClass.getId())) {
+                                if(s.getRole().equals("ADMIN")){
+                                    continue;
+                                }
+
                                 Homework homework = new Homework();
                                 homework.setOwnerId(s.getVkId());
                                 homework.setTaskText(outOfBrackets);
@@ -189,6 +201,10 @@ public class AddHomeworkSystem {
                 for (SClass sClass : classesRepository.findBySchoolId(schoolId)) {
                     if (sClass.getNumber() == classNumber && sClass.getLetter().toLowerCase().equals(classLetter.toLowerCase())) {
                         for (Student s : studentsRepository.findByClassId(sClass.getId())) {
+                            if(s.getRole().equals("ADMIN")){
+                                continue;
+                            }
+
                             Homework homework = new Homework();
                             homework.setOwnerId(s.getVkId());
                             homework.setTaskText(outOfBrackets);
