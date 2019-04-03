@@ -1249,11 +1249,10 @@ public class MessageService {
                 return;
             }
         }
-        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+
+        student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
         studentsRepository.save(student);
-
-
-        sendMessage("Здравствуйте!");
+        queryBrancher();
 
     }
 
