@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -16,33 +16,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MessageService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20436">
-              <caret line="899" column="16" lean-forward="false" selection-start-line="899" selection-start-column="16" selection-end-line="899" selection-end-column="16" />
+            <state relative-caret-position="260">
+              <caret line="253" column="40" lean-forward="false" selection-start-line="253" selection-start-column="40" selection-end-line="253" selection-end-column="40" />
               <folding>
                 <element signature="e#2883#2932#0" expanded="false" />
                 <element signature="e#4466#4527#0" expanded="false" />
                 <element signature="e#5054#5217#0" expanded="false" />
                 <element signature="e#8409#8453#0" expanded="false" />
-                <element signature="e#13819#13869#0" expanded="false" />
+                <element signature="e#13843#13893#0" expanded="false" />
                 <element signature="method#studentGetKey#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
-                <element signature="e#43306#43332#0" expanded="false" />
+                <element signature="e#43330#43356#0" expanded="false" />
                 <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentSchoolRegistration#0;class#MessageService#0" expanded="false" />
                 <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
+                <marker date="1554303669943" expanded="true" signature="10745:10927" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddHomeworkSystem.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AddHomeworkSystem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="243" column="29" lean-forward="false" selection-start-line="243" selection-start-column="29" selection-end-line="243" selection-end-column="29" />
+            <state relative-caret-position="3588">
+              <caret line="156" column="54" lean-forward="false" selection-start-line="156" selection-start-column="53" selection-end-line="156" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -51,8 +52,8 @@
       <file leaf-file-name="HomeworkAttentionSystem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="54" column="76" lean-forward="true" selection-start-line="54" selection-start-column="76" selection-end-line="54" selection-end-column="76" />
+            <state relative-caret-position="1014">
+              <caret line="54" column="76" lean-forward="false" selection-start-line="54" selection-start-column="76" selection-end-line="54" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -135,7 +136,6 @@
       <find>vk.mes</find>
       <find>SHOW_SCHEDULE</find>
       <find>if (privateKeysRepository</find>
-      <find>activateKey</find>
       <find>уведомленеия</find>
       <find>THREAD</find>
       <find>субб</find>
@@ -158,6 +158,7 @@
       <find>сгенерировать ключ доверенного ученика</find>
       <find>SEND_HOMEWORK_ATTENTION</find>
       <find>if(sf.format</find>
+      <find>activateKey</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Max\Documents\GitHub\Test-Server\src\main\java\com\max\example\files</dir>
@@ -214,10 +215,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/entities/StudentStatus.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/services/SchedulechangesCleanerService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/services/AttentionService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Homework.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" />
       </list>
     </option>
   </component>
@@ -305,6 +306,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -389,10 +391,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -535,13 +536,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
-    </task>
-    <task id="LOCAL-00152" summary="homework attention system">
-      <created>1552139635316</created>
-      <option name="number" value="00152" />
-      <option name="presentableId" value="LOCAL-00152" />
-      <option name="project" value="LOCAL" />
-      <updated>1552139635317</updated>
     </task>
     <task id="LOCAL-00153" summary="homework attention system">
       <created>1552139814765</created>
@@ -879,7 +873,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554295844066</updated>
     </task>
-    <option name="localTasksCounter" value="201" />
+    <task id="LOCAL-00201" summary="reworked homework attention subsystem (homework remover) (Long-value changed to Date-object)">
+      <created>1554295958137</created>
+      <option name="number" value="00201" />
+      <option name="presentableId" value="LOCAL-00201" />
+      <option name="project" value="LOCAL" />
+      <updated>1554295958137</updated>
+    </task>
+    <option name="localTasksCounter" value="202" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -893,18 +894,18 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291714" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6027242" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291714" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6027242" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22663802" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22986037" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39954597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39954597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -944,7 +945,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="schedule changes attention fixed (HashSet added)" />
     <MESSAGE value="schedule changes attention fixed (HashSet added 2)" />
     <MESSAGE value="schedule changes attention fixed (loggers)" />
     <MESSAGE value="schedule name (percent-eraser)" />
@@ -969,7 +969,8 @@
     <MESSAGE value="reworked homework attention subsystem (homework remover)" />
     <MESSAGE value="reworked homework attention subsystem (homework remover) v2" />
     <MESSAGE value="reworked homework attention subsystem (homework remover) (Long-value changed to Date-object)" />
-    <option name="LAST_COMMIT_MESSAGE" value="reworked homework attention subsystem (homework remover) (Long-value changed to Date-object)" />
+    <MESSAGE value="Reworked key activation system" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reworked key activation system" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1022,13 +1023,14 @@
             <element signature="e#4466#4527#0" expanded="false" />
             <element signature="e#5054#5217#0" expanded="false" />
             <element signature="e#8409#8453#0" expanded="false" />
-            <element signature="e#13819#13869#0" expanded="false" />
+            <element signature="e#13843#13893#0" expanded="false" />
             <element signature="method#studentGetKey#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
-            <element signature="e#43306#43332#0" expanded="false" />
+            <element signature="e#43330#43356#0" expanded="false" />
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentSchoolRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
+            <marker date="1554303669943" expanded="true" signature="10745:10927" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1091,13 +1093,14 @@
             <element signature="e#4466#4527#0" expanded="false" />
             <element signature="e#5054#5217#0" expanded="false" />
             <element signature="e#8409#8453#0" expanded="false" />
-            <element signature="e#13819#13869#0" expanded="false" />
+            <element signature="e#13843#13893#0" expanded="false" />
             <element signature="method#studentGetKey#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
-            <element signature="e#43306#43332#0" expanded="false" />
+            <element signature="e#43330#43356#0" expanded="false" />
             <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentSchoolRegistration#0;class#MessageService#0" expanded="false" />
             <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
+            <marker date="1554303669943" expanded="true" signature="10745:10927" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1303,7 +1306,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="15" column="35" lean-forward="false" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1341,26 +1343,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20436">
-          <caret line="899" column="16" lean-forward="false" selection-start-line="899" selection-start-column="16" selection-end-line="899" selection-end-column="16" />
-          <folding>
-            <element signature="e#2883#2932#0" expanded="false" />
-            <element signature="e#4466#4527#0" expanded="false" />
-            <element signature="e#5054#5217#0" expanded="false" />
-            <element signature="e#8409#8453#0" expanded="false" />
-            <element signature="e#13819#13869#0" expanded="false" />
-            <element signature="method#studentGetKey#0;class#MessageService#0" expanded="false" />
-            <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
-            <element signature="e#43306#43332#0" expanded="false" />
-            <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
-            <element signature="method#studentSchoolRegistration#0;class#MessageService#0" expanded="false" />
-            <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Homework.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1300">
@@ -1377,17 +1359,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="54" column="76" lean-forward="true" selection-start-line="54" selection-start-column="76" selection-end-line="54" selection-end-column="76" />
+        <state relative-caret-position="1014">
+          <caret line="54" column="76" lean-forward="false" selection-start-line="54" selection-start-column="76" selection-end-line="54" selection-end-column="76" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="243" column="29" lean-forward="false" selection-start-line="243" selection-start-column="29" selection-end-line="243" selection-end-column="29" />
+        <state relative-caret-position="3588">
+          <caret line="156" column="54" lean-forward="false" selection-start-line="156" selection-start-column="53" selection-end-line="156" selection-end-column="54" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="253" column="40" lean-forward="false" selection-start-line="253" selection-start-column="40" selection-end-line="253" selection-end-column="40" />
+          <folding>
+            <element signature="e#2883#2932#0" expanded="false" />
+            <element signature="e#4466#4527#0" expanded="false" />
+            <element signature="e#5054#5217#0" expanded="false" />
+            <element signature="e#8409#8453#0" expanded="false" />
+            <element signature="e#13843#13893#0" expanded="false" />
+            <element signature="method#studentGetKey#0;class#MessageService#0" expanded="false" />
+            <element signature="method#studentServiceAddHomework#0;class#MessageService#0" expanded="false" />
+            <element signature="e#43330#43356#0" expanded="false" />
+            <element signature="method#studentRegionRegistration#0;class#MessageService#0" expanded="false" />
+            <element signature="method#studentSchoolRegistration#0;class#MessageService#0" expanded="false" />
+            <element signature="method#studentRoleRegistration#0;class#MessageService#0" expanded="false" />
+            <marker date="1554303669943" expanded="true" signature="10745:10927" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

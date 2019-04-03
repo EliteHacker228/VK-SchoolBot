@@ -242,26 +242,26 @@ public class MessageService {
 
             switch (StudentStatus.valueOf(student.getStatus())) {
                 case STUDENT_REGION_REGISTRATION:
-                    if (privateKeysRepository.findByKey(vkGroupMessage.getText()).size() > 0) {
-                        activateKey(student);
-                        return;
-                    }
+//                    if (privateKeysRepository.findByKey(vkGroupMessage.getText()).size() > 0) {
+//                        activateKey(student);
+//                        return;
+//                    }
                     studentRegionRegistration();
                     break;
 
                 case STUDENT_SCHOOL_REGISTRATION:
-                    if (privateKeysRepository.findByKey(vkGroupMessage.getText()).size() > 0) {
-                        activateKey(student);
-                        return;
-                    }
+//                    if (privateKeysRepository.findByKey(vkGroupMessage.getText()).size() > 0) {
+//                        activateKey(student);
+//                        return;
+//                    }
                     studentSchoolRegistration();
                     break;
 
                 case STUDENT_CLASS_REGISTRATION:
-                    if (privateKeysRepository.findByKey(vkGroupMessage.getText()).size() > 0) {
-                        activateKey(student);
-                        return;
-                    }
+//                    if (privateKeysRepository.findByKey(vkGroupMessage.getText()).size() > 0) {
+//                        activateKey(student);
+//                        return;
+//                    }
                     studentClassRegistration();
                     break;
 
