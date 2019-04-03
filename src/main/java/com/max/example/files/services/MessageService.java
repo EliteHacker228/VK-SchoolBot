@@ -855,7 +855,9 @@ public class MessageService {
                 sendMessage("У вас уже есть дополнительные разрешения");
             }
 
+            student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
             studentsRepository.save(student);
+            queryBrancher();
 
             return;
         }
@@ -1084,7 +1086,7 @@ public class MessageService {
         sendMessage("Привет! Ты пока не зарегистрирован в нашей системе!" +
                 "Для того, чтобы зарегистрироваться, ответь на несколько вопросов.");
 
-        sendMessage("Какой твой регион?");
+        sendMessage("Какой твой регион? Укажи его номер в списке");
         int counter = 1;
 
         String regions = "";
