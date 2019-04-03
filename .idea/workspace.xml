@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="admins now wouldn't get homework attentions">
+    <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Homework.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Homework.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -40,21 +38,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddHomeworkSystem.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AddHomeworkSystem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
+            <state relative-caret-position="511">
               <caret line="239" column="0" lean-forward="true" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeworkAttentionSystem.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HomeworkAttentionSystem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="54" column="76" lean-forward="false" selection-start-line="54" selection-start-column="76" selection-end-line="54" selection-end-column="76" />
+            <state relative-caret-position="563">
+              <caret line="65" column="70" lean-forward="false" selection-start-line="65" selection-start-column="70" selection-end-line="65" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -218,8 +216,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/services/AttentionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/services/MessageService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/datanodes/classes/Homework.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java" />
       </list>
     </option>
   </component>
@@ -537,13 +535,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
-    </task>
-    <task id="LOCAL-00147" summary="homework attention system ( )">
-      <created>1552046964451</created>
-      <option name="number" value="00147" />
-      <option name="presentableId" value="LOCAL-00147" />
-      <option name="project" value="LOCAL" />
-      <updated>1552046964451</updated>
     </task>
     <task id="LOCAL-00148" summary="homework attention system ( )">
       <created>1552054330158</created>
@@ -881,7 +872,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554284683270</updated>
     </task>
-    <option name="localTasksCounter" value="196" />
+    <task id="LOCAL-00196" summary="reworked homework attention system">
+      <created>1554289518093</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
+      <option name="project" value="LOCAL" />
+      <updated>1554289518093</updated>
+    </task>
+    <option name="localTasksCounter" value="197" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -946,8 +944,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="first version of schedule changes" />
-    <MESSAGE value="first version of schedule changes 2" />
     <MESSAGE value="schedule changes attention fixe" />
     <MESSAGE value="schedule changes attention fixed (TreeSet added)" />
     <MESSAGE value="schedule changes attention fixed (HashSet added)" />
@@ -971,7 +967,9 @@
     <MESSAGE value="fixed instructions + added status changing after key activation" />
     <MESSAGE value="renaming 9th instruction" />
     <MESSAGE value="admins now wouldn't get homework attentions" />
-    <option name="LAST_COMMIT_MESSAGE" value="admins now wouldn't get homework attentions" />
+    <MESSAGE value="reworked homework attention system" />
+    <MESSAGE value="reworked homework attention subsystem (homework remover)" />
+    <option name="LAST_COMMIT_MESSAGE" value="reworked homework attention subsystem (homework remover)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1378,18 +1376,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="511">
-          <caret line="54" column="76" lean-forward="false" selection-start-line="54" selection-start-column="76" selection-end-line="54" selection-end-column="76" />
+          <caret line="239" column="0" lean-forward="true" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="239" column="0" lean-forward="true" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
+        <state relative-caret-position="563">
+          <caret line="65" column="70" lean-forward="false" selection-start-line="65" selection-start-column="70" selection-end-line="65" selection-end-column="70" />
           <folding />
         </state>
       </provider>

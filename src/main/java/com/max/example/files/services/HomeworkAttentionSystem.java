@@ -46,13 +46,13 @@ public class HomeworkAttentionSystem implements CommandLineRunner {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (true){
+                while (true) {
                     Iterable<Homework> hwIterable = homeworkRepository.findAll();
                     Date date = new Date();
                     System.out.println("Поиск ДЗ");
-                    for(Homework hw: hwIterable){
+                    for (Homework hw : hwIterable) {
                         System.out.println();
-                        if(hw.getRemindDate()<=date.getTime() && !hw.getReminded()){
+                        if (hw.getRemindDate() <= date.getTime() && !hw.getReminded()) {
                             try {
                                 vk.messages().send(actor).userId(hw.getOwnerId()).message("Напоминание о домашнем задании:\n" +
                                         hw.getTaskText()).execute();
@@ -62,6 +62,8 @@ public class HomeworkAttentionSystem implements CommandLineRunner {
                             } catch (ClientException e) {
                                 e.printStackTrace();
                             }
+                        } else if (hw.getRemindDate() >= date.getTime() && hw.getReminded()) {
+                            homeworkRepository.deleteById(hw.getId());
                         }
                     }
 
