@@ -41,8 +41,8 @@
       <file leaf-file-name="AddHomeworkSystem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-260">
-              <caret line="245" column="29" lean-forward="false" selection-start-line="245" selection-start-column="29" selection-end-line="245" selection-end-column="29" />
+            <state relative-caret-position="157">
+              <caret line="243" column="29" lean-forward="false" selection-start-line="243" selection-start-column="29" selection-end-line="243" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -128,7 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>//2</find>
       <find>Вам поступи</find>
       <find>sn.set</find>
       <find>studentAddScheduleChanges</find>
@@ -158,6 +157,7 @@
       <find>Ключ акти</find>
       <find>сгенерировать ключ доверенного ученика</find>
       <find>SEND_HOMEWORK_ATTENTION</find>
+      <find>if(sf.format</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Max\Documents\GitHub\Test-Server\src\main\java\com\max\example\files</dir>
@@ -536,13 +536,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00151" summary="homework attention system ( )">
-      <created>1552055376732</created>
-      <option name="number" value="00151" />
-      <option name="presentableId" value="LOCAL-00151" />
-      <option name="project" value="LOCAL" />
-      <updated>1552055376732</updated>
-    </task>
     <task id="LOCAL-00152" summary="homework attention system">
       <created>1552139635316</created>
       <option name="number" value="00152" />
@@ -879,7 +872,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554295356163</updated>
     </task>
-    <option name="localTasksCounter" value="200" />
+    <task id="LOCAL-00200" summary="reworked homework attention subsystem (homework remover) (Long-value changed to Date-object)">
+      <created>1554295844066</created>
+      <option name="number" value="00200" />
+      <option name="presentableId" value="LOCAL-00200" />
+      <option name="project" value="LOCAL" />
+      <updated>1554295844066</updated>
+    </task>
+    <option name="localTasksCounter" value="201" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -944,7 +944,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="schedule changes attention fixed (TreeSet added)" />
     <MESSAGE value="schedule changes attention fixed (HashSet added)" />
     <MESSAGE value="schedule changes attention fixed (HashSet added 2)" />
     <MESSAGE value="schedule changes attention fixed (loggers)" />
@@ -969,7 +968,8 @@
     <MESSAGE value="reworked homework attention system" />
     <MESSAGE value="reworked homework attention subsystem (homework remover)" />
     <MESSAGE value="reworked homework attention subsystem (homework remover) v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="reworked homework attention subsystem (homework remover) v2" />
+    <MESSAGE value="reworked homework attention subsystem (homework remover) (Long-value changed to Date-object)" />
+    <option name="LAST_COMMIT_MESSAGE" value="reworked homework attention subsystem (homework remover) (Long-value changed to Date-object)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1385,8 +1385,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/AddHomeworkSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-260">
-          <caret line="245" column="29" lean-forward="false" selection-start-line="245" selection-start-column="29" selection-end-line="245" selection-end-column="29" />
+        <state relative-caret-position="157">
+          <caret line="243" column="29" lean-forward="false" selection-start-line="243" selection-start-column="29" selection-end-line="243" selection-end-column="29" />
           <folding />
         </state>
       </provider>
