@@ -23,8 +23,11 @@ public class Homework {
     @Column(name="remind_date")
     private Long remindDate;
 
-    public Homework(){
+    @Column(name="is_reminded")
+    private Boolean isReminded;
 
+    public Homework(){
+        this.isReminded=false;
     }
 
     public Integer getId() {
@@ -65,5 +68,13 @@ public class Homework {
 
     public void setRemindDate(Long remindDate) {
         this.remindDate = remindDate;
+    }
+
+    public Boolean getReminded() {
+        return isReminded;
+    }
+
+    public void setReminded(Boolean reminded) {
+        isReminded = reminded;
     }
 }

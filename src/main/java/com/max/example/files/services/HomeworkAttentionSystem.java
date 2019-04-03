@@ -52,7 +52,7 @@ public class HomeworkAttentionSystem implements CommandLineRunner {
                     System.out.println("Поиск ДЗ");
                     for(Homework hw: hwIterable){
                         System.out.println();
-                        if(hw.getRemindDate()<=date.getTime()){
+                        if(hw.getRemindDate()<=date.getTime() && !hw.getReminded()){
                             try {
                                 vk.messages().send(actor).userId(hw.getOwnerId()).message("Напоминание о домашнем задании:\n" +
                                         hw.getTaskText()).execute();

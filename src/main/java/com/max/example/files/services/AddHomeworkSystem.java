@@ -91,10 +91,18 @@ public class AddHomeworkSystem {
 
                                 SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
                                 String date = inBrackets.split(";")[1] + "." + new GregorianCalendar().get(Calendar.YEAR);
-                                Date dDate = df.parse(date);
+                                Date dDate = df.parse(date); //дата сдачи
 
                                 homework.setDate(dDate.getTime());//
                                 homework.setRemindDate(dDate.getTime() - 86400000L);//date-сутки
+                                //if(sf.format(dDate.getTime() - 86400000L).equals(sf.format(new Date())))
+                                //if(homework.getRemindDate()-homework.getDate())//дата напоминания минус дата сдачи
+                                GregorianCalendar g = new GregorianCalendar();
+                                g.add(GregorianCalendar.DAY_OF_MONTH, +1);
+
+                                if(sf.format(new Date()).equals(sf.format(dDate)) || sf.format(g.getTimeInMillis()).equals(homework.getRemindDate())){
+                                    homework.setReminded(true);
+                                }
                                 homeworkRepository.save(homework);
                                 sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n" + outOfBrackets + " (" + sf.format(homework.getDate()) + ") ", s.getVkId());
                             }
@@ -131,6 +139,13 @@ public class AddHomeworkSystem {
 
                             homework.setDate(dDate.getTime());//
                             homework.setRemindDate(dDate.getTime() - 86400000L);//date-сутки
+
+                            GregorianCalendar g = new GregorianCalendar();
+                            g.add(GregorianCalendar.DAY_OF_MONTH, +1);
+
+                            if(sf.format(new Date()).equals(sf.format(dDate)) || sf.format(g.getTimeInMillis()).equals(homework.getRemindDate())){
+                                homework.setReminded(true);
+                            }
                             homeworkRepository.save(homework);
                             sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n" + outOfBrackets + " (" + sf.format(homework.getDate()) + ") ", s.getVkId());
                         }
@@ -176,6 +191,13 @@ public class AddHomeworkSystem {
 
                                 homework.setDate(dDate.getTime());//
                                 homework.setRemindDate(dDate.getTime() - 86400000L);//date-сутки
+
+                                GregorianCalendar g = new GregorianCalendar();
+                                g.add(GregorianCalendar.DAY_OF_MONTH, +1);
+
+                                if(sf.format(new Date()).equals(sf.format(dDate)) || sf.format(g.getTimeInMillis()).equals(homework.getRemindDate())){
+                                    homework.setReminded(true);
+                                }
                                 homeworkRepository.save(homework);
                                 sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n"  + outOfBrackets + " (" + sf.format(homework.getDate()) + ") ", s.getVkId());
                             }
@@ -215,6 +237,13 @@ public class AddHomeworkSystem {
 
                             homework.setDate(dDate.getTime());//
                             homework.setRemindDate(dDate.getTime() - 86400000L);//date-сутки
+
+                            GregorianCalendar g = new GregorianCalendar();
+                            g.add(GregorianCalendar.DAY_OF_MONTH, +1);
+
+                            if(sf.format(new Date()).equals(sf.format(dDate)) || sf.format(g.getTimeInMillis()).equals(homework.getRemindDate())){
+                                homework.setReminded(true);
+                            }
                             homeworkRepository.save(homework);
                             sendMessage("\uD83D\uDCACВам поступило новое домашнее задание: \n"  + outOfBrackets + " (" + sf.format(homework.getDate()) + ") ", s.getVkId());
                         }
