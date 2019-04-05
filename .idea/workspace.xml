@@ -52,8 +52,8 @@
       <file leaf-file-name="HomeworkAttentionSystem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="563">
-              <caret line="64" column="78" lean-forward="false" selection-start-line="64" selection-start-column="78" selection-end-line="64" selection-end-column="78" />
+            <state relative-caret-position="303">
+              <caret line="54" column="77" lean-forward="false" selection-start-line="54" selection-start-column="77" selection-end-line="54" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -537,13 +537,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00154" summary="homework attention system">
-      <created>1552142072907</created>
-      <option name="number" value="00154" />
-      <option name="presentableId" value="LOCAL-00154" />
-      <option name="project" value="LOCAL" />
-      <updated>1552142072907</updated>
-    </task>
     <task id="LOCAL-00155" summary="homework attention system with date">
       <created>1552143898017</created>
       <option name="number" value="00155" />
@@ -880,7 +873,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554315846354</updated>
     </task>
-    <option name="localTasksCounter" value="203" />
+    <task id="LOCAL-00203" summary="Reworked homework removing function">
+      <created>1554479884901</created>
+      <option name="number" value="00203" />
+      <option name="presentableId" value="LOCAL-00203" />
+      <option name="project" value="LOCAL" />
+      <updated>1554479884902</updated>
+    </task>
+    <option name="localTasksCounter" value="204" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -945,7 +945,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="schedule changes attention fixed (HashSet added 2)" />
     <MESSAGE value="schedule changes attention fixed (loggers)" />
     <MESSAGE value="schedule name (percent-eraser)" />
     <MESSAGE value="schedule name (percent-eraser 2)" />
@@ -970,7 +969,8 @@
     <MESSAGE value="reworked homework attention subsystem (homework remover) v2" />
     <MESSAGE value="reworked homework attention subsystem (homework remover) (Long-value changed to Date-object)" />
     <MESSAGE value="Reworked key activation system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reworked key activation system" />
+    <MESSAGE value="Reworked homework removing function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reworked homework removing function" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1388,8 +1388,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="64" column="78" lean-forward="false" selection-start-line="64" selection-start-column="78" selection-end-line="64" selection-end-column="78" />
+        <state relative-caret-position="303">
+          <caret line="54" column="77" lean-forward="false" selection-start-line="54" selection-start-column="77" selection-end-line="54" selection-end-column="77" />
           <folding />
         </state>
       </provider>
