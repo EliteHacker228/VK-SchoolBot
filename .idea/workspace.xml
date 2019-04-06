@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="440b079a-b4d2-4e94-9302-a6df97740244" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java" afterPath="$PROJECT_DIR$/src/main/java/com/max/example/files/services/HomeworkAttentionSystem.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -540,13 +539,6 @@
       <option name="presentableId" value="Default" />
       <updated>1548864432030</updated>
     </task>
-    <task id="LOCAL-00157" summary="first version of schedule changes">
-      <created>1552146955200</created>
-      <option name="number" value="00157" />
-      <option name="presentableId" value="LOCAL-00157" />
-      <option name="project" value="LOCAL" />
-      <updated>1552146955200</updated>
-    </task>
     <task id="LOCAL-00158" summary="first version of schedule changes 2">
       <created>1552147340174</created>
       <option name="number" value="00158" />
@@ -883,7 +875,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554480444852</updated>
     </task>
-    <option name="localTasksCounter" value="206" />
+    <task id="LOCAL-00206" summary="Reworked homework removing function final (fixed tIME COUNT)">
+      <created>1554591001749</created>
+      <option name="number" value="00206" />
+      <option name="presentableId" value="LOCAL-00206" />
+      <option name="project" value="LOCAL" />
+      <updated>1554591001749</updated>
+    </task>
+    <option name="localTasksCounter" value="207" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -948,7 +947,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="schedule name (percent-eraser 2)" />
     <MESSAGE value="schedule name (percent-eraser 2.1)" />
     <MESSAGE value="schedule name (percent-eraser 2.1) + fixed schedule output" />
     <MESSAGE value="schedule name (percent-eraser 2.1) + fixed schedule output 2.0" />
@@ -973,7 +971,8 @@
     <MESSAGE value="Reworked homework removing function" />
     <MESSAGE value="Reworked homework removing function 2" />
     <MESSAGE value="Reworked homework removing function final" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reworked homework removing function final" />
+    <MESSAGE value="Reworked homework removing function final (fixed tIME COUNT)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reworked homework removing function final (fixed tIME COUNT)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
