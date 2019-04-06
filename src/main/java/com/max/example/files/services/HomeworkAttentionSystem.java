@@ -62,7 +62,7 @@ public class HomeworkAttentionSystem implements CommandLineRunner {
                             } catch (ClientException e) {
                                 e.printStackTrace();
                             }
-                        } else if (hw.getDate() <= date.getTime()) {
+                        } else if (hw.getDate()+21600000L <= date.getTime()) {
                             homeworkRepository.deleteById(hw.getId());
                         }
                     }
