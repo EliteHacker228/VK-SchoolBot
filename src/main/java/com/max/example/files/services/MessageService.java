@@ -18,6 +18,7 @@ import com.vk.api.sdk.objects.users.UserXtrCounters;
 import com.vk.api.sdk.queries.users.UserField;
 import com.vk.api.sdk.queries.users.UsersGetQuery;
 import com.vk.api.sdk.queries.users.UsersNameCase;
+import org.hibernate.jdbc.Expectation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -367,7 +368,7 @@ public class MessageService {
                 return;
 
             }
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             sendMessage("Неверная команда.  Отправьте боту любое сообщение, чтобы вызвать меню");//STUDENT_IN_ACTION
             student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
             studentsRepository.save(student);
@@ -375,172 +376,173 @@ public class MessageService {
         } //Проверка команды на валидность
 
 
-        switch (Integer.parseInt(query)) {
-            case ADD_HOMEWORK: //1
-                sendMessage("Записать ДЗ.\n" +
-                        "Инстукрция:\n" +
-                        "1. Отправьте боту сообщение вида: \"задание(день сдачи ДЗ-месяц сдачи ДЗ)\"\n" +
-                        "Пример:\n" +
-                        "Литература(05.02)\n" +
-                        "Алгебра(06.02)\n" +
-                        "2. Бот напомнит о задании за сутки до указанного вами срока\n" +
-                        "\n" +
-                        "Для отмены записи отправьте 0.");
-                student.setStatus(StudentStatus.STUDENT_CHOSED_ADD_HOMEWORK.name());
-                studentsRepository.save(student);
-                break;
-            case SHOW_HOMEWORK: //2
-                sendMessage("Просмотр всех записанных вами ДЗ");
-                studentShowAllHomework();
+        try {
+            switch (Integer.parseInt(query)) {
+                case ADD_HOMEWORK: //1
+                    sendMessage("Записать ДЗ.\n" +
+                            "Инстукрция:\n" +
+                            "1. Отправьте боту сообщение вида: \"задание(день сдачи ДЗ-месяц сдачи ДЗ)\"\n" +
+                            "Пример:\n" +
+                            "Литература(05.02)\n" +
+                            "Алгебра(06.02)\n" +
+                            "2. Бот напомнит о задании за сутки до указанного вами срока\n" +
+                            "\n" +
+                            "Для отмены записи отправьте 0.");
+                    student.setStatus(StudentStatus.STUDENT_CHOSED_ADD_HOMEWORK.name());
+                    studentsRepository.save(student);
+                    break;
+                case SHOW_HOMEWORK: //2
+                    sendMessage("Просмотр всех записанных вами ДЗ");
+                    studentShowAllHomework();
 //                student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
 //                studentsRepository.save(student);
-                break;
-            case MARKS_CALCULATOR: //3
-                student.setStatus(StudentStatus.STUDENT_CHOOSED_CALCULATOR.name());
-                studentsRepository.save(student);
-                sendMessage("Калькулятор оценок Школобота v1.0. \n" +
-                        "Инструкция: \n" +
-                        "1. Введите ваши оценки в одну строку без пробелов и других символов(например: 554354445)\n" +
-                        "2. Получите результат.\n" +
-                        "Примечание: калькулятор действует только для пятибалльной шкалы оценивания" +
-                        "\n" +
-                        "Для отмены записи отправьте 0.");
-                break;
-
-            case SHOW_SCHEDULE: //4
-                showScheduleNodes(true);
-
-                queryBrancher();
-                break;
-
-            case SEND_ATTENTION: //5
-                if (student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
-                        student.getRole().equals(StudentsRoles.ADMIN.name()) ||
-                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
-
-                    sendMessage("Напишите текст обяъвления здесь.\n" +
-                            "Текст должен быть вида:\n" +
-                            "1.текст объявления(10Б) - отправка обявления 10Б классу\n" +
-                            "2.текст объявления(10!) - отправка обявление всей параллели 10х классов\n" +
-                            "3.текст объявления(10Б, 9А, 8В) - отправка обявления 10Б, 9А и 8В классам\n" +
-                            "4.текст объявления(10-8) - отправка сообщения параллелям с 10 по 8\n" +
-                            "5.текст объявления(*) - отправка объявления всем параллелям\n" +
-                            "Для отмены отправки напишите 0");
-                    student.setStatus(StudentStatus.STUDENT_CHOSED_SEND_ATTENTION.name());
+                    break;
+                case MARKS_CALCULATOR: //3
+                    student.setStatus(StudentStatus.STUDENT_CHOOSED_CALCULATOR.name());
                     studentsRepository.save(student);
-
-                } else {
-                    sendMessage("Извините, такой команды нет");
-                    student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
-                    studentsRepository.save(student);
-                }
-
-                break;
-
-            case ADD_EDIT_SCHEDULE_CHANGES: //6
-                if (student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
-                        student.getRole().equals(StudentsRoles.ADMIN.name()) ||
-                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
-
-                    sendMessage("Для отправки ученикам уведомления о временном изменении расписания используйте эту функцию." +
-                            "Изменения удаляются в субботу в 20:00 по времени Екатеринбурга\n\n" +
-                            "" +
-                            "Введите расписание следующего формата:\n" +
-                            "имя_класса;\n" +
-                            "день недели:" +
-                            "   предмет1, предмет2, предмет3, предмет4\n\n" +
-                            "Например:\n" +
-
-                            "10Б;\n" +
-                            "Понедельник: Алгебра, Геометрия," +
-                            " Русский, Литература," +
-                            " Физика, Английский язык\n" +
-
-                            "Вторник: Алгебра, Геометрия," +
-                            " Русский, Литература," +
-                            " Физика, Английский язык\n" +
-                            "\nДля отмены отравьте 0");
-
-                    student.setStatus(StudentStatus.STUDENT_CHOOSED_SEND_SCHEDULE_CHANGES_ATTENTION.name());
-                    studentsRepository.save(student);
-                } else {
-                    sendMessage("Извините, такой команды нет");
-                    student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
-                    studentsRepository.save(student);
-                }
-                break;
-
-            case SEND_HOMEWORK_ATTENTION:
-                //sendMessage("Потом будет готов");
-                if (student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
-                        student.getRole().equals(StudentsRoles.ADMIN.name()) ||
-                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
-
-                    sendMessage("Для отправки ДЗ используйте команды, на примере следующих: \n" +
-                            "\n1. Предмет: задание(9-10; 12.05) - отправит задание, которое нужно сделать к 12.05 всем классам с 9 до 10 параллели. \n" +
-                            "\n2. Предмет: задание(10!; 12.05) - отправит задание, которое нужно сделать к 12.05 всей параллели 10х классов. \n" +
-                            "\n3. Предмет: задание(10Б; 12.05) - отправит задание, которое нужно сделать к 12.05 10Б классу. \n" +
-                            "\n4. Предмет: задание(10Б, 9А, 8Г, 11Д; 12.05) - отправит задание, которое нужно сделать к 12.05 всем классам, перечисленным через запятую. \n" +
+                    sendMessage("Калькулятор оценок Школобота v1.0. \n" +
+                            "Инструкция: \n" +
+                            "1. Введите ваши оценки в одну строку без пробелов и других символов(например: 554354445)\n" +
+                            "2. Получите результат.\n" +
+                            "Примечание: калькулятор действует только для пятибалльной шкалы оценивания" +
                             "\n" +
-                            "Для отмены отправьте боту 0.");
-                    //sendHomework();
-                    student.setStatus(StudentStatus.STUDENT_CHOSED_SEND_HOMEWORK_ATTENTION.name());
-                    studentsRepository.save(student);
-                } else {
-                    sendMessage("Извините, такой команды нет");
-                    student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
-                    studentsRepository.save(student);
-                }
-                break;
+                            "Для отмены записи отправьте 0.");
+                    break;
 
-            case ADD_OR_EDIT_SCHEDULE: //8
-                if (student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
-                        student.getRole().equals(StudentsRoles.ADMIN.name()) ||
-                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
-
-                    sendMessage("Для создания или изменения постоянного расписания используйте эту функцию. \n" +
-                            "Введите расписание следующего формата:\n" +
-                            "имя_класса;\n" +
-                            "день недели:" +
-                            "   предмет1, предмет2, предмет3, предмет4\n" +
-                            "Например:\n" +
-
-                            "10Б;\n" +
-                            "Понедельник: Алгебра, Геометрия," +
-                            " Русский, Литература," +
-                            " Физика, Английский язык\n" +
-
-                            "Вторник: Алгебра, Геометрия," +
-                            " Русский, Литература," +
-                            " Физика, Английский язык\n" +
-                            "\nДля отмены отравьте 0");
-
-                    student.setStatus(StudentStatus.STUDENT_CHOSED_SCHEDULE_NODE.name());
-                    studentsRepository.save(student);
-
-                } else {
-                    sendMessage("Извините, такой команды нет");
-                    student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
-                    studentsRepository.save(student);
-                }
-                break;
-
-
-            case HEADMAN_KEY_GENERATE: //9
-                if (student.getRole().equals(StudentsRoles.ADMIN.name()) ||
-                        student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
-                    sendMessage("Ключ доступа для старосты(действителен 1 раз): " + studentGetKey(StudentsRoles.TRUSTED_STUDENT));
-
-                    student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
-                    studentsRepository.save(student);
+                case SHOW_SCHEDULE: //4
+                    showScheduleNodes(true);
 
                     queryBrancher();
-                } else {
-                    sendMessage("Извините, такой команды нет");
-                    student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
-                    studentsRepository.save(student);
-                }
-                break;
+                    break;
+
+                case SEND_ATTENTION: //5
+                    if (student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
+                            student.getRole().equals(StudentsRoles.ADMIN.name()) ||
+                            student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
+
+                        sendMessage("Напишите текст обяъвления здесь.\n" +
+                                "Текст должен быть вида:\n" +
+                                "1.текст объявления(10Б) - отправка обявления 10Б классу\n" +
+                                "2.текст объявления(10!) - отправка обявление всей параллели 10х классов\n" +
+                                "3.текст объявления(10Б, 9А, 8В) - отправка обявления 10Б, 9А и 8В классам\n" +
+                                "4.текст объявления(10-8) - отправка сообщения параллелям с 10 по 8\n" +
+                                "5.текст объявления(*) - отправка объявления всем параллелям\n" +
+                                "Для отмены отправки напишите 0");
+                        student.setStatus(StudentStatus.STUDENT_CHOSED_SEND_ATTENTION.name());
+                        studentsRepository.save(student);
+
+                    } else {
+                        sendMessage("Извините, такой команды нет");
+                        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                        studentsRepository.save(student);
+                    }
+
+                    break;
+
+                case ADD_EDIT_SCHEDULE_CHANGES: //6
+                    if (student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
+                            student.getRole().equals(StudentsRoles.ADMIN.name()) ||
+                            student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
+
+                        sendMessage("Для отправки ученикам уведомления о временном изменении расписания используйте эту функцию." +
+                                "Изменения удаляются в субботу в 20:00 по времени Екатеринбурга\n\n" +
+                                "" +
+                                "Введите расписание следующего формата:\n" +
+                                "имя_класса;\n" +
+                                "день недели:" +
+                                "   предмет1, предмет2, предмет3, предмет4\n\n" +
+                                "Например:\n" +
+
+                                "10Б;\n" +
+                                "Понедельник: Алгебра, Геометрия," +
+                                " Русский, Литература," +
+                                " Физика, Английский язык\n" +
+
+                                "Вторник: Алгебра, Геометрия," +
+                                " Русский, Литература," +
+                                " Физика, Английский язык\n" +
+                                "\nДля отмены отравьте 0");
+
+                        student.setStatus(StudentStatus.STUDENT_CHOOSED_SEND_SCHEDULE_CHANGES_ATTENTION.name());
+                        studentsRepository.save(student);
+                    } else {
+                        sendMessage("Извините, такой команды нет");
+                        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                        studentsRepository.save(student);
+                    }
+                    break;
+
+                case SEND_HOMEWORK_ATTENTION:
+                    //sendMessage("Потом будет готов");
+                    if (student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
+                            student.getRole().equals(StudentsRoles.ADMIN.name()) ||
+                            student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
+
+                        sendMessage("Для отправки ДЗ используйте команды, на примере следующих: \n" +
+                                "\n1. Предмет: задание(9-10; 12.05) - отправит задание, которое нужно сделать к 12.05 всем классам с 9 до 10 параллели. \n" +
+                                "\n2. Предмет: задание(10!; 12.05) - отправит задание, которое нужно сделать к 12.05 всей параллели 10х классов. \n" +
+                                "\n3. Предмет: задание(10Б; 12.05) - отправит задание, которое нужно сделать к 12.05 10Б классу. \n" +
+                                "\n4. Предмет: задание(10Б, 9А, 8Г, 11Д; 12.05) - отправит задание, которое нужно сделать к 12.05 всем классам, перечисленным через запятую. \n" +
+                                "\n" +
+                                "Для отмены отправьте боту 0.");
+                        //sendHomework();
+                        student.setStatus(StudentStatus.STUDENT_CHOSED_SEND_HOMEWORK_ATTENTION.name());
+                        studentsRepository.save(student);
+                    } else {
+                        sendMessage("Извините, такой команды нет");
+                        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                        studentsRepository.save(student);
+                    }
+                    break;
+
+                case ADD_OR_EDIT_SCHEDULE: //8
+                    if (student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
+                            student.getRole().equals(StudentsRoles.ADMIN.name()) ||
+                            student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
+
+                        sendMessage("Для создания или изменения постоянного расписания используйте эту функцию. \n" +
+                                "Введите расписание следующего формата:\n" +
+                                "имя_класса;\n" +
+                                "день недели:" +
+                                "   предмет1, предмет2, предмет3, предмет4\n" +
+                                "Например:\n" +
+
+                                "10Б;\n" +
+                                "Понедельник: Алгебра, Геометрия," +
+                                " Русский, Литература," +
+                                " Физика, Английский язык\n" +
+
+                                "Вторник: Алгебра, Геометрия," +
+                                " Русский, Литература," +
+                                " Физика, Английский язык\n" +
+                                "\nДля отмены отравьте 0");
+
+                        student.setStatus(StudentStatus.STUDENT_CHOSED_SCHEDULE_NODE.name());
+                        studentsRepository.save(student);
+
+                    } else {
+                        sendMessage("Извините, такой команды нет");
+                        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                        studentsRepository.save(student);
+                    }
+                    break;
+
+
+                case HEADMAN_KEY_GENERATE: //9
+                    if (student.getRole().equals(StudentsRoles.ADMIN.name()) ||
+                            student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
+                        sendMessage("Ключ доступа для старосты(действителен 1 раз): " + studentGetKey(StudentsRoles.TRUSTED_STUDENT));
+
+                        student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
+                        studentsRepository.save(student);
+
+                        queryBrancher();
+                    } else {
+                        sendMessage("Извините, такой команды нет");
+                        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                        studentsRepository.save(student);
+                    }
+                    break;
 
                 /* case 7:
                 if(student.getRole().equals(StudentsRoles.TRUSTED_STUDENT.name()) ||
@@ -574,37 +576,43 @@ public class MessageService {
                 break;*/
 
 
-            case TEACHER_KEY_GENERATE: //10
-                if (student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
-                    sendMessage("Ключ доступа для учителя(действителен 1 раз): " + studentGetKey(StudentsRoles.ADMIN));
+                case TEACHER_KEY_GENERATE: //10
+                    if (student.getRole().equals(StudentsRoles.MAIN_ADMIN.name())) {
+                        sendMessage("Ключ доступа для учителя(действителен 1 раз): " + studentGetKey(StudentsRoles.ADMIN));
 
-                    student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
+                        student.setStatus(StudentStatus.STUDENT_CHOOSE.name());
+                        studentsRepository.save(student);
+
+                        queryBrancher();
+                    } else {
+                        sendMessage("Извините, такой команды нет");
+                        student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+                        studentsRepository.save(student);
+                    }
+                    break;
+
+                case RE_REGISTRATION: //0
+                    sendMessage("Данная функция удалит следующие данные вашей учётной записи:\n" +
+                            "-Регион\n" +
+                            "-Школа\n" +
+                            "-Класс\n" +
+                            "Если вы хотите продолжить, отправьте 1.\n" +
+                            "Для отмены отправьте 0.");
+                    student.setStatus(StudentStatus.STUDENT_CHOOSED_RE_REGISTRATION.name());
                     studentsRepository.save(student);
+                    break;
 
-                    queryBrancher();
-                } else {
+                default:
                     sendMessage("Извините, такой команды нет");
                     student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
                     studentsRepository.save(student);
-                }
-                break;
-
-            case RE_REGISTRATION: //0
-                sendMessage("Данная функция удалит следующие данные вашей учётной записи:\n" +
-                        "-Регион\n" +
-                        "-Школа\n" +
-                        "-Класс\n" +
-                        "Если вы хотите продолжить, отправьте 1.\n" +
-                        "Для отмены отправьте 0.");
-                student.setStatus(StudentStatus.STUDENT_CHOOSED_RE_REGISTRATION.name());
-                studentsRepository.save(student);
-            break;
-
-            default:
-                sendMessage("Извините, такой команды нет");
-                student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
-                studentsRepository.save(student);
-                break;
+                    break;
+            }
+        }catch(Exception e){
+            sendMessage("Неверная команда.  Отправьте боту любое сообщение, чтобы вызвать меню");//STUDENT_IN_ACTION
+            student.setStatus(StudentStatus.STUDENT_IN_ACTION.name());
+            studentsRepository.save(student);
+            return;
         }
     }
 
