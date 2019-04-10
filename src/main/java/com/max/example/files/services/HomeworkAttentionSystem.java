@@ -54,7 +54,7 @@ public class HomeworkAttentionSystem implements CommandLineRunner {
                         System.out.println();
                         if (hw.getRemindDate() <= date.getTime() && !hw.getReminded()) {
                             try {
-                                vk.messages().send(actor).userId(hw.getOwnerId()).message("Напоминание о домашнем задании:\n" +
+                                vk.messages().send(actor).userId(hw.getOwnerId()).message("\uD83D\uDD2EНапоминание о домашнем задании:\n" +
                                         hw.getTaskText()).execute();
                                 homeworkRepository.deleteById(hw.getId());
                             } catch (ApiException e) {

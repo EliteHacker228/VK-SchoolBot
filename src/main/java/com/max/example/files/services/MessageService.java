@@ -740,7 +740,7 @@ public class MessageService {
             for (Student student1 : studentsRepository.findByClassId(sClass)) {
                 System.out.println("Student: "+student1.getVkId());
                 try {
-                    vk.messages().send(actor).userId(student1.getVkId()).message("☀ Вам поступили новые изменения в расписании!").execute();
+                    vk.messages().send(actor).userId(student1.getVkId()).message("☀ Вам поступили новые изменения в расписании! Выберите пункт \"4\" для просмотра").execute();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
