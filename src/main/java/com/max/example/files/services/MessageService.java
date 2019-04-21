@@ -949,7 +949,7 @@ public class MessageService {
         SimpleDateFormat sf = new SimpleDateFormat("dd.MM");
         for (Homework hw : homeworkList) {
             Date date = new Date(hw.getDate());
-            message += String.valueOf(count) + ". (" + sf.format(date) + ") " + hw.getTaskText() + "\n";
+            message += String.valueOf(count) + ". (" + sf.format(date) + ")\n " + hw.getTaskText() + "\n";
             count++;
 
         }
