@@ -947,9 +947,10 @@ public class MessageService {
         String message = "";
         int count = 1;
         SimpleDateFormat sf = new SimpleDateFormat("dd.MM");
+        SimpleDateFormat getRussianDayName = new SimpleDateFormat("EEEE", new Locale("ru", "RU"));
         for (Homework hw : homeworkList) {
             Date date = new Date(hw.getDate());
-            message += String.valueOf(count) + ". (" + sf.format(date) + ")\n " + hw.getTaskText() + "\n";
+            message += String.valueOf(count) + ". ("+getRussianDayName.format(date).substring(0, 1).toUpperCase()+getRussianDayName.format(date).substring(1)+", "+ sf.format(date) + ")\n " + hw.getTaskText() + "\n";
             count++;
 
         }
